@@ -1,0 +1,9 @@
+/* CSS declarations go here */
+.nav > li > a.active {
+    color:green !important;
+}
+#login-dropdown-list{
+
+    left:-20px;
+    position:inherit;
+}
