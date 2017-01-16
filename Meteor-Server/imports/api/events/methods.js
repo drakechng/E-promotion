@@ -5,15 +5,15 @@
 
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Settings } from './settings.js';
+import { Events } from './eventsData';
 
 Meteor.methods({
-    'settings.upsert'(company_name,industry,contact) {
+    'events.upsert'(company_name,industry,contact) {
         check(company_name, String);
         check(industry, String);
         check(contact, Number);
 
-        return Settings.upsert({
+        return Events.upsert({
             userId: this.userId ,
         },{
             $set:{

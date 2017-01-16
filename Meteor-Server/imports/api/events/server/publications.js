@@ -4,8 +4,8 @@
 // All links-related publications
 
 import { Meteor } from 'meteor/meteor';
-import { Settings } from '../settings';
+import { Events } from '../eventsData';
 
-Meteor.publish('settings', function () {
-    return Settings.find({userId: this.userId});
+Meteor.publish('events', function () {
+    return Events.find({userId: this.userId});
 });
