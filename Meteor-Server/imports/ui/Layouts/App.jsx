@@ -5,7 +5,6 @@ import NavBar from './NavBar'
 import AsideBar from './AsideBar'
 import '../stylesheets/_all-skins.css'
 import '../stylesheets/AdminLTE.css'
-import '../../lib/stylesheets/ionic.min.css'
 
 export default React.createClass({
     render() {

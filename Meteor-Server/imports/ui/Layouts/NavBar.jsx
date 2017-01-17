@@ -13,9 +13,6 @@ constructor(props){
    render(){
         return(
             <header className="main-header">
-
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
-
                 <a href="index2.html" className="logo">
                     <span className="logo-mini"><b>A</b>LT</span>
                     <span className="logo-lg"><b>Admin</b>LTE</span>
