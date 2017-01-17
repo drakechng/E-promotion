@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
+import NavLink from './NavLink'
 
 export default class AsideBar extends Component {
    render(){
@@ -28,8 +29,8 @@ return(
                 <li className="header">MAIN NAVIGATION</li>
 
                   <li>
-                     <a href="index2.html">
-                        <i className="fa fa-dashboard"></i> <span>Overview</span></a></li>
+                      <NavLink to="/events">
+                        <i className="fa fa-dashboard"></i> <span>Overview</span></NavLink></li>
 
                   <li className="treeview">
                      <a href="#">
@@ -39,7 +40,7 @@ return(
             </span>
                      </a>
                      <ul className="treeview-menu">
-                        <li><a href="pages/forms/voucher.html"><i className="fa fa-circle-o"></i>Voucher</a></li>
+                         <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Voucher</NavLink></li>
                         <li className="active"><a href="pages/forms/estamp.html"><i className="fa fa-circle-o"></i>E-Stamps System</a></li>
                         <li className="active"><a href="index2.html"><i className="fa fa-circle-o"></i>Reward Points System</a></li>
 
@@ -48,8 +49,8 @@ return(
                   </li>
 
                   <li>
-                     <a href="index2.html">
-                        <i className="fa fa-gear"></i> <span>Manage</span></a></li>
+                      <NavLink to="/settings">
+                          <i className="fa fa-gear"></i> <span>Manage</span></NavLink></li>
 
                   <li>
                      <a href="pages/calendar.html">

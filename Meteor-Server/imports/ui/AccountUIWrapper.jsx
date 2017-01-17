@@ -15,6 +15,6 @@ export default class AccountsUIWrapper extends Component {
     }
     render() {
         // Just render a placeholder container that will be filled in
-        return <span className="dropdown-menu-left"  ref="container"  />;
+        return <li className="dropdown"  ref="container"  />;
     }
 }

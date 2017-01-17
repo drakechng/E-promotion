@@ -1,23 +1,20 @@
 import React, {Component, PropTypes} from 'react';
 
+import AccountsUIWrapper from '../AccountUIWrapper.jsx';
+import NavLink from './NavLink'
 export default class NavBar extends Component{
 
-constructor(props){
-    super(props);
-}
-
-    troggleAsideBar(){
 
 
-    }
+
 
    render(){
         return(
             <header className="main-header">
-                <a href="index2.html" className="logo">
+                <NavLink className ="logo" to="/" onlyActiveOnIndex>
                     <span className="logo-mini"><b>A</b>LT</span>
-                    <span className="logo-lg"><b>Admin</b>LTE</span>
-                </a>
+                    <span className="logo-lg"><b>E</b>-promotion</span>
+                </NavLink>
 
                 <nav className="navbar navbar-static-top">
                     <a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -205,7 +202,8 @@ constructor(props){
                                     </li>
                                 </ul>
                             </li>
-                            <li className="dropdown user user-menu">
+                            <AccountsUIWrapper/>
+{/*                            <li className="dropdown user user-menu">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                     <img src="/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
                                         <span className="hidden-xs">Alexander Pierce</span>
@@ -241,7 +239,7 @@ constructor(props){
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>*/}
                             <li>
                                 <a href="#" data-toggle="control-sidebar"><i className="fa fa-gears"></i></a>
                             </li></ul></div>
