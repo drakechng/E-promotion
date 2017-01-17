@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 export default class NavBar extends Component{
+
 constructor(props){
     super(props);
 }
@@ -33,6 +34,7 @@ constructor(props){
                                     <li className="header">You have 4 messages</li>
                                     <li>
                                         <ul className="menu">
+                                            <li>
                                                 <a href="#">
                                                     <div className="pull-left">
                                                         <img src="/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
@@ -42,7 +44,7 @@ constructor(props){
                                                         <small><i className="fa fa-clock-o"></i> 5 mins</small>
                                                     </h4>
                                                     <p>Why not buy a new awesome theme?</p>
-                                                </a></ul>
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
@@ -91,10 +93,10 @@ constructor(props){
                                                     </h4>
                                                     <p>Why not buy a new awesome theme?</p>
                                                 </a>
-                                            </li>
+                                            </li></ul></li>
+                                    <li className="footer"><a href="#">See All Messages</a></li>
                                         </ul>
                                     </li>
-                                    <li className="footer"><a href="#">See All Messages</a></li>
                             <li className="dropdown notifications-menu">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                     <i className="fa fa-bell-o"></i>
