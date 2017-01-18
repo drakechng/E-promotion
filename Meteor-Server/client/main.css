@@ -1,6 +1,6 @@
 /* CSS declarations go here */
-.nav > li > a.active {
-    color:green !important;
+a.active {
+    color:gold !important;
 }
 #login-dropdown-list{
 

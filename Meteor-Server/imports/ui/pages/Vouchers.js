@@ -3,6 +3,7 @@ import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data'
 import { VouchersData } from '../../api/vouchers/vouchersData'
 
+import SubNavBar from '../components/SubNavBar'
 const Vouchers =React.createClass({
     getInitialState () {
         return {
@@ -41,8 +42,10 @@ const Vouchers =React.createClass({
 
   render() {
     return (
-      <div>
-        <h2>Voucher List</h2>
+      <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
+          <SubNavBar title = "Voucher"/>
+          <section className="content">
+              <div className="row">
         <ul>
           <li>
             <form onSubmit={this.handleSubmit}>
@@ -53,7 +56,8 @@ const Vouchers =React.createClass({
           </li>
             {this.renderVouchers()}
         </ul>
-        {this.props.children}
+                  {this.props.children}</div>
+          </section>
       </div>
     )
   }

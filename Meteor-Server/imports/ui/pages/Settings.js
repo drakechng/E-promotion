@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {Settings} from  '../../api/settings/settings'
 import {createContainer} from 'meteor/react-meteor-data';
 import {SettingRow} from '../components/SettingRow';
+import SubNavBar from '../components/SubNavBar'
 class Setting extends Component {
 
 
@@ -16,8 +17,10 @@ class Setting extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Settings</h2>
+            <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
+                <SubNavBar title ="Settings"/>
+                <section className="content">
+                    <div className="row">
                 <form className="form-horizontal" onSubmit={this.handleSubmit}>
                     <SettingRow name="industry" label="Industry" model={this.props.settings}/>
                     <SettingRow name="company_name" label="Company Name" model={this.props.settings}/>
@@ -29,6 +32,7 @@ class Setting extends Component {
                     </div>
                 </form>
                 {this.props.children}
+                    </div></section>
             </div>
         )
     }
