@@ -41,7 +41,7 @@ return(
                      </a>
                      <ul className="treeview-menu">
                          <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Voucher</NavLink></li>
-                        <li className="active"><a href="pages/forms/estamp.html"><i className="fa fa-circle-o"></i>E-Stamps System</a></li>
+                         <li> <NavLink to="/estamps">  <i className="fa fa-circle-o"></i>E-Stamp System</NavLink></li>
                         <li className="active"><a href="index2.html"><i className="fa fa-circle-o"></i>Reward Points System</a></li>
 
 
