@@ -44,7 +44,7 @@ const EStamps =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <li key={eStamp.createdAt.toLocaleTimeString()}><NavLink to={"/estamps/"+eStamp.value+"/"+eStamp.fromDate}>{"S$"+eStamp.value}</NavLink></li>
+                <li key={eStamp.createdAt.toLocaleTimeString()}><NavLink to={"/estamps/"+eStamp.value+"/"+eStamp.fromDate}>{eStamp.value}</NavLink></li>
             );
         });
     },

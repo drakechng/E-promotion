@@ -9,6 +9,7 @@ import EStamps from '../../ui/pages/EStamps'
 import EStamp from '../../ui/pages/EStamp'
 import Home from '../../ui/pages/Home'
 import Setting from '../../ui/pages/Settings'
+import Manage from '../../ui/pages/Manage'
 
 Meteor.startup(() =>{
 render((
@@ -23,6 +24,7 @@ render((
             </Route>
             <Route path="/events" component={Events}/>
             <Route path="/settings" component={Setting}/>
+            <Route path="/manage" component={Manage}/>
         </Route>
     </Router>
 ), document.getElementById('react-root'))});

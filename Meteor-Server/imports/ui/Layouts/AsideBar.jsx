@@ -49,7 +49,7 @@ return(
                   </li>
 
                   <li>
-                      <NavLink to="/settings">
+                      <NavLink to="/manage">
                           <i className="fa fa-gear"></i> <span>Manage</span></NavLink></li>
 
                   <li>
