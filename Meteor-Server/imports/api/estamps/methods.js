@@ -22,10 +22,10 @@ Meteor.methods({
             username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).username ,
         });
     },
-    'estamps.remove'(taskId) {
-        check(taskId, String);
+    'estamps.remove'(_id) {
 
-        EStampsData.remove(taskId);
+
+        EStampsData.remove(_id);
     },
     'estamps.setChecked'(taskId, setChecked) {
         check(taskId, String);
