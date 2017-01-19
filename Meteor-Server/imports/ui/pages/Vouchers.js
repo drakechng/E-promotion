@@ -15,14 +15,20 @@ const Vouchers =React.createClass({
     },
   handleSubmit(event) {
     event.preventDefault();
-    const value = event.target.elements[0].value;
-    const validTime = event.target.elements[1].value;
-    const path = `/vouchers/${value}/${validTime}`;
+    const title = event.target.elements[0].value;
+    const desc = event.target.elements[1].value;
+    const value = event.target.elements[2].value;
+    const fromDate = event.target.elements[3].value;
+    const toDate = event.target.elements[4].value;
+    const path = `/vouchers/${title}/${desc}/${value}/${fromDate}/${toDate}`;
 
-      Meteor.call('vouchers.insert', value,validTime);
+      Meteor.call('vouchers.insert', title, desc, value, fromDate, toDate);
       // Clear form
       event.target.elements[0].value = "";
       event.target.elements[1].value = "";
+      event.target.elements[2].value = "";
+      event.target.elements[3].value = "";
+      event.target.elements[4].value = "";
       this.context.router.push(path);
 
   },
@@ -35,7 +41,7 @@ const Vouchers =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <li key={voucher.createdAt.toLocaleTimeString()}><NavLink to={"/vouchers/"+voucher.value+"/"+voucher.validTime}>{"S$"+voucher.value}</NavLink></li>
+                <li key={voucher.createdAt.toLocaleTimeString()}><NavLink to={"/vouchers/"+voucher.value+"/"+voucher.fromDate}>{"S$"+voucher.value}</NavLink></li>
             );
         });
     },
@@ -43,17 +49,42 @@ const Vouchers =React.createClass({
   render() {
     return (
       <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
-          <SubNavBar title = "Voucher"/>
+          <SubNavBar title = "New voucher"/>
           <section className="content">
               <div className="row">
         <ul>
-          <li>
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" placeholder="Voucher Price"/> / {' '}
-              <input type="date" placeholder="Validation Time"/>{' '}
-              <button type="submit">Go</button>
-            </form>
-          </li>
+
+              <form className="new-task" onSubmit={this.handleSubmit}>
+                  <table><tr>
+                      <td>Voucher Title:</td>
+                      <td><input
+                          type="text"
+                          placeholder=""
+                      /></td></tr>
+                      <tr><td> Voucher Description:</td>
+                          <td><textarea
+                              placeholder=""
+                          /></td></tr>
+                      <tr>
+                      <td>Voucher Amount:</td>
+                      <td><input
+                          type="text"
+                          placeholder=""
+                      /></td></tr>
+                      <tr><td>Valid Date:</td>
+                          <td><input
+                              type="date"
+                              placeholder=""
+                          /></td><td>to</td><td><input
+                              type="date"
+                              placeholder=""
+                          /></td></tr>
+                      <tr><td></td>
+                          <td><button type="submit">Submit</button></td>
+                      </tr>
+                  </table>
+              </form>
+
             {this.renderVouchers()}
         </ul>
                   {this.props.children}</div>

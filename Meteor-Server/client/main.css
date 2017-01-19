@@ -1,11 +1,91 @@
 /* CSS declarations go here */
+.content-header {
+    font-family:  Tahoma, Geneva, sans-serif;
+    padding-top: 50px;
+    padding-left: 40px;
+    height: 100px;
+    color: black;
+    font-weight: bold;
+    align: center;
+
+}
+
+body {
+    font-family:  Tahoma, Geneva, sans-serif;
+    font-size: 13px;
+}
+
+
 a.active {
     color:gold !important;
+    font-family:  Tahoma, Geneva, sans-serif;
+    font-size: 13px;
+
 }
+
+
 #login-dropdown-list{
 
     left:-445%;
 }
 h2{
     margin: 0;
+}
+
+table {
+    width: 60%;
+}
+
+tr{
+    width: 70%;
+}
+td {
+    width: 30%;
+}
+
+input {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 100%;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+
+button {
+    background-color: white;
+    border: 1px solid grey;
+    color: black;
+    padding: 5px 10px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+
+}
+
+textarea {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 70px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 100%;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }

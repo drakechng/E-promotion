@@ -3,7 +3,7 @@ import { check } from 'meteor/check';
 import { VouchersData} from './vouchersData'
 
 Meteor.methods({
-    'vouchers.insert'(value,validTime) {
+    'vouchers.insert'(title,desc,value,fromDate,toDate) {
         check(value, String);
 
         // Make sure the user is logged in before inserting a task
@@ -12,8 +12,11 @@ Meteor.methods({
         }
 
         VouchersData.insert({
+            title,
+            desc,
             value,
-            validTime,
+            fromDate,
+            toDate,
             createdAt: new Date(),
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).username ,
