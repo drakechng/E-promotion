@@ -8,16 +8,23 @@ import React, {Component, PropTypes} from 'react';
 import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data'
 import { EStampsData } from '../../api/estamps/estampsData'
+import ManageEStamp from './ManageEStamp'
 
 import SubNavBar from '../components/SubNavBar'
-const manageVouchers =React.createClass({
+const manage =React.createClass({
     getInitialState () {
         return {
             hideCompleted: false,
         };
     },
-    contextTypes:{
+    contextTypes: {
         router: React.PropTypes.object
+    },
+
+    deleteThisTask() {
+        console.log(this.props.eStamps._id);
+        EStampsData.remove(this.props.eStamps._id);
+
     },
 
     renderEStamps() {
@@ -29,9 +36,10 @@ const manageVouchers =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <table>
 
-                    <tr><td>{eStamp.title}</td><td>{eStamp.value}</td></tr>
+                <table>
+                    <ManageEStamp eStamps = {eStamp}/>
+
                 </table>
             );
         });
@@ -63,4 +71,4 @@ export default createContainer(() => {
     return {
         eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
     };
-}, manageVouchers);
+}, manage);

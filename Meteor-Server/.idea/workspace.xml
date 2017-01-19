@@ -16,12 +16,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="methods.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/api/estamps/methods.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="200">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="73" selection-end-column="1" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vouchers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/Vouchers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="24" column="75" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="75" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Manage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Manage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imports/ui/pages/Manage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="55" column="82" lean-forward="true" selection-start-line="55" selection-start-column="82" selection-end-line="55" selection-end-column="82" />
               <folding>
                 <element signature="e#43#85#0" expanded="false" />
                 <element signature="e#86#136#0" expanded="true" />
@@ -61,11 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EStamps.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/pages/EStamps.js">
+      <file leaf-file-name="App.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/Layouts/App.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="46" column="124" lean-forward="false" selection-start-line="46" selection-start-column="124" selection-end-line="46" selection-end-column="124" />
+            <state relative-caret-position="102">
+              <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageEStamp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/ManageEStamp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="26" column="160" lean-forward="false" selection-start-line="26" selection-start-column="160" selection-end-line="26" selection-end-column="160" />
               <folding>
                 <element signature="e#43#93#0" expanded="true" />
               </folding>
@@ -73,12 +105,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubNavBar.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/components/SubNavBar.jsx">
+      <file leaf-file-name="EStamps.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/EStamps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="748">
+              <caret line="46" column="124" lean-forward="false" selection-start-line="46" selection-start-column="124" selection-end-line="46" selection-end-column="124" />
+              <folding>
+                <element signature="e#43#93#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,14 +179,15 @@
         <option value="$PROJECT_DIR$/imports/api/estamps/server/publications.js" />
         <option value="$PROJECT_DIR$/imports/api/estamps/estampsData.js" />
         <option value="$PROJECT_DIR$/imports/startup/server/register-api.js" />
-        <option value="$PROJECT_DIR$/imports/api/estamps/methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/SubNavBar.jsx" />
         <option value="$PROJECT_DIR$/imports/startup/client/routes.jsx" />
         <option value="$PROJECT_DIR$/imports/ui/pages/EStamps.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/EStamp.js" />
         <option value="$PROJECT_DIR$/imports/ui/Layouts/AsideBar.jsx" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/Manage.js" />
         <option value="$PROJECT_DIR$/client/main.css" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/ManageEStamp.js" />
+        <option value="$PROJECT_DIR$/imports/api/estamps/methods.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/Manage.js" />
       </list>
     </option>
   </component>
@@ -510,7 +545,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
     <property name="js.meteor.library.was.enabled" value="true" />
@@ -641,15 +676,15 @@
       <workItem from="1484537629693" duration="6678000" />
       <workItem from="1484713169216" duration="1740000" />
       <workItem from="1484720922252" duration="11211000" />
-      <workItem from="1484794016196" duration="7482000" />
+      <workItem from="1484794016196" duration="15560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31901000" />
+    <option name="totallyTimeSpent" value="39979000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22108346" sideWeight="0.49503547" order="0" side_tool="false" content_ui="combo" />
@@ -735,14 +770,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="72" lean-forward="true" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/SettingRow.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -816,7 +843,7 @@
         <state relative-caret-position="240">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding>
-            <element signature="e#0#50#0" expanded="false" />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,14 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/Layouts/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -900,13 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Voucher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -935,16 +947,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/api/e-stamps/methods.js" />
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Vouchers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1313">
-          <caret line="82" column="48" lean-forward="true" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#50#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/api/e-stamps/estampsData.js" />
     <entry file="file://$PROJECT_DIR$/imports/api/e-stamps/server/publications.js" />
     <entry file="file://$PROJECT_DIR$/imports/api/estamps/server/publications.js">
@@ -1004,24 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/vouchers/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/estamps/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="6" column="56" lean-forward="false" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
@@ -1051,8 +1035,24 @@
         <state relative-caret-position="221">
           <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Voucher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/SubNavBar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,20 +1066,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/EStamps.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/Layouts/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="46" column="124" lean-forward="false" selection-start-line="46" selection-start-column="124" selection-end-line="46" selection-end-column="124" />
-          <folding>
-            <element signature="e#43#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/SubNavBar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1092,22 +1082,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Manage.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/EStamps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="748">
+          <caret line="46" column="124" lean-forward="false" selection-start-line="46" selection-start-column="124" selection-end-line="46" selection-end-column="124" />
           <folding>
-            <element signature="e#43#85#0" expanded="false" />
-            <element signature="e#86#136#0" expanded="true" />
+            <element signature="e#43#93#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/vouchers/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="200">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="73" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Vouchers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="75" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/ManageEStamp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="26" column="160" lean-forward="false" selection-start-line="26" selection-start-column="160" selection-end-line="26" selection-end-column="160" />
+          <folding>
+            <element signature="e#43#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/estamps/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/Manage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="55" column="82" lean-forward="true" selection-start-line="55" selection-start-column="82" selection-end-line="55" selection-end-column="82" />
+          <folding>
+            <element signature="e#43#85#0" expanded="false" />
+            <element signature="e#86#136#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
