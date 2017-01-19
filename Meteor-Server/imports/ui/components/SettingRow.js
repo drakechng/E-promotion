@@ -11,9 +11,7 @@ export class SettingRow extends Component {
     }
 
     handleChange(e) {
-        if (this.props.model != undefined) {
             this.props.model[this.props.name] = e.target.value;
-        }
         this.setState({[e.target.name]: e.target.value});
     }
 
