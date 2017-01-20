@@ -29,7 +29,7 @@ return(
                 <li className="header">MAIN NAVIGATION</li>
 
                   <li>
-                      <NavLink to="/events">
+                      <NavLink to="/">
                         <i className="fa fa-dashboard"></i> <span>Overview</span></NavLink></li>
 
                   <li className="treeview">
@@ -48,9 +48,23 @@ return(
                      </ul>
                   </li>
 
-                  <li>
-                      <NavLink to="/manage">
-                          <i className="fa fa-gear"></i> <span>Manage</span></NavLink></li>
+                <li className="treeview">
+                    <a href="#">
+                        <i className="fa fa-gear"></i> <span>Manage</span>
+                        <span className="pull-right-container">
+              <i className="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul className="treeview-menu">
+                        <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Vouchers</NavLink></li>
+                        <li> <NavLink to="/manage">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <NavLink to="/events">
+                        <i className="fa fa-dashboard"></i> <span>Events</span></NavLink></li>
 
                   <li>
                      <a href="pages/calendar.html">
