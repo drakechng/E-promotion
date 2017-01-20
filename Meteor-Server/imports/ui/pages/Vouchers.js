@@ -49,7 +49,8 @@ const Vouchers =React.createClass({
   render() {
     return (
       <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
-          <SubNavBar title = "New voucher"/>
+          <SubNavBar title = "Create voucher"/>
+
           <section className="content">
               <div className="row">
         <ul>
