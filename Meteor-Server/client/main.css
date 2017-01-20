@@ -1,19 +1,6 @@
 /* CSS declarations go here */
-.content-header {
-    font-family:  Tahoma, Geneva, sans-serif;
-    padding-top: 50px;
-    padding-left: 40px;
-    height: 100px;
-    color: black;
-    font-weight: bold;
-    align: center;
 
-}
 
-body {
-    font-family:  Tahoma, Geneva, sans-serif;
-    font-size: 13px;
-}
 
 
 a.active {

@@ -9,15 +9,17 @@ export default class SubNavBar extends Component {
                     {this.props.title}
 
                 </h1>
-                <ol className="breadcrumb">
-                    <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
-                    <li><a href="#">Forms</a></li>
-                    <li className="active">General Elements</li>
-                </ol>
-            </section>
+
+        </section>
 
         )
     }
 
 
 }
+
+/* <ol className="breadcrumb">
+    <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Forms</a></li>
+    <li className="active">General Elements</li>
+</ol> */
