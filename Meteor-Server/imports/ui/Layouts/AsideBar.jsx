@@ -64,7 +64,7 @@ return(
                 </li>
                 <li>
                     <NavLink to="/events">
-                        <i className="fa fa-dashboard"></i> <span>Events</span></NavLink></li>
+                        <i className="fa fa-sticky-note-o"></i> <span>Events</span></NavLink></li>
 
                   <li>
                      <a href="pages/calendar.html">

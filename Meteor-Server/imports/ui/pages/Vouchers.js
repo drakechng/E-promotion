@@ -76,7 +76,7 @@ const Vouchers =React.createClass({
                           <td><input
                               type="date"
                               placeholder=""
-                          /></td><td>to</td><td><input
+                          /></td><td><center>to</center></td><td><input
                               type="date"
                               placeholder=""
                           /></td></tr>
