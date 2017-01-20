@@ -18,10 +18,11 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;
+  font-size: 13px;
 }
 /* Layout */
 .wrapper {
@@ -143,10 +144,11 @@ body.hold-transition .main-header .logo {
 .content {
   min-height: 250px;
   padding: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 30px;
+  margin-left: 30px;
   padding-left: 15px;
   padding-right: 15px;
+  background-color: white;
 }
 /* H1 - H6 font */
 h1,
@@ -309,11 +311,17 @@ a:focus {
 }
 .content-header {
   position: relative;
-  padding: 15px 15px 0 15px;
+  padding: 30px 30px 0 30px;
 }
 .content-header > h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 22px;
+  padding-left: 35px;
+  padding-top: 35px;
+  height: 80px;
+  background-color: white;
+  text-align: center;
+
 }
 .content-header > h1 > small {
   font-size: 15px;
@@ -573,7 +581,7 @@ a:focus {
 .sidebar-menu .treeview-menu > li > a {
   padding: 5px 5px 5px 15px;
   display: block;
-  font-size: 14px;
+  font-size: 12px;
 }
 .sidebar-menu .treeview-menu > li > a > .fa,
 .sidebar-menu .treeview-menu > li > a > .glyphicon,
