@@ -10,6 +10,9 @@ import EStamp from '../../ui/pages/EStamp'
 import Home from '../../ui/pages/Home'
 import Setting from '../../ui/pages/Settings'
 import Manage from '../../ui/pages/Manage'
+import PageNotFound from '../../ui/pages/PageNotFound'
+import Members from '../../ui/pages/Members'
+import AddMember from '../../ui/pages/AddMember'
 
 Meteor.startup(() =>{
 render((
@@ -25,6 +28,9 @@ render((
             <Route path="/events" component={Events}/>
             <Route path="/settings" component={Setting}/>
             <Route path="/manage" component={Manage}/>
+            <Route path="/members" component={Members}/>
+            <Route path="/addmember" component={AddMember}/>
+            <Route path="/*" component={PageNotFound}/>
         </Route>
     </Router>
 ), document.getElementById('react-root'))});

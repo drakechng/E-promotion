@@ -58,8 +58,8 @@ return(
                     <ul className="treeview-menu">
                         <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Vouchers</NavLink></li>
                         <li> <NavLink to="/manage">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
-
-
+                        <li> <NavLink to="/members">  <i className="fa fa-circle-o"></i>Members</NavLink></li>
+                        <li> <NavLink to="/addmember">  <i className="fa fa-circle-o"></i>All Customers</NavLink></li>
                     </ul>
                 </li>
                 <li>
