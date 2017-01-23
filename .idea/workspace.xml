@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c52bdb02-d839-48e0-9abb-c04edf99d6b6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/api/customers/server/publications.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/api/members/membersData.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/api/members/methods.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/api/members/server/publications.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/ui/pages/AddMember.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/ui/pages/Member.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/ui/pages/Members.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meteor-Server/imports/ui/pages/PageNotFound.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Meteor-Server/imports/startup/client/routes.jsx" afterPath="$PROJECT_DIR$/Meteor-Server/imports/startup/client/routes.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Meteor-Server/imports/startup/server/register-api.js" afterPath="$PROJECT_DIR$/Meteor-Server/imports/startup/server/register-api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Meteor-Server/imports/ui/Layouts/AsideBar.jsx" afterPath="$PROJECT_DIR$/Meteor-Server/imports/ui/Layouts/AsideBar.jsx" />
-    </list>
+    <list default="true" id="c52bdb02-d839-48e0-9abb-c04edf99d6b6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,9 +30,10 @@
         <entry file="file://$PROJECT_DIR$/Meteor-Server/imports/ui/pages/AddMember.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+              <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <marker date="1484905943118" expanded="true" signature="210:274" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -91,6 +79,7 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#75#114#0" expanded="true" />
+                <marker date="1484905807401" expanded="true" signature="377:486" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -134,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/Meteor-Server/imports/ui/pages/Vouchers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-684">
-              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -1510,16 +1499,16 @@
       <workItem from="1484557185952" duration="2926000" />
       <workItem from="1484624501260" duration="18400000" />
       <workItem from="1484709572893" duration="6785000" />
-      <workItem from="1484893781779" duration="12387000" />
+      <workItem from="1484893781779" duration="12780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40504000" />
+    <option name="totallyTimeSpent" value="40897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="118" y="170" width="1723" height="755" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1802,7 +1791,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1830,7 +1819,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1856,7 +1845,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1882,7 +1871,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1900,7 +1889,7 @@
         <state relative-caret-position="478">
           <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1950,7 +1939,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#75#114#0" expanded="true" />
+            <element signature="e#75#114#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2006,6 +1995,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#75#114#0" expanded="true" />
+            <marker date="1484905807401" expanded="true" signature="377:486" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2013,7 +2003,7 @@
     <entry file="file://$PROJECT_DIR$/Meteor-Server/imports/ui/pages/Vouchers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-684">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -2029,9 +2019,10 @@
     <entry file="file://$PROJECT_DIR$/Meteor-Server/imports/ui/pages/AddMember.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <marker date="1484905943118" expanded="true" signature="210:274" ph="{...}" />
           </folding>
         </state>
       </provider>
