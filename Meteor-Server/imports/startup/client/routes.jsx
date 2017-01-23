@@ -12,6 +12,7 @@ import Setting from '../../ui/pages/Settings'
 import Manage from '../../ui/pages/Manage'
 import PageNotFound from '../../ui/pages/PageNotFound'
 import Members from '../../ui/pages/Members'
+import Member from '../../ui/pages/Member'
 import AddMember from '../../ui/pages/AddMember'
 
 Meteor.startup(() =>{
@@ -28,7 +29,9 @@ render((
             <Route path="/events" component={Events}/>
             <Route path="/settings" component={Setting}/>
             <Route path="/manage" component={Manage}/>
-            <Route path="/members" component={Members}/>
+            <Route path="/members" component={Members}>
+                <Route path="/members/:_id" component={Member}/>
+            </Route>
             <Route path="/addmember" component={AddMember}/>
             <Route path="/*" component={PageNotFound}/>
         </Route>

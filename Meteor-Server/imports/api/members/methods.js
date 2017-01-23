@@ -16,9 +16,13 @@ Meteor.methods({
         },{
             $set:{
                 UpdateAt:new Date(),
+                address: Meteor.users.findOne({_id:customer}).emails[0].address,
                 options
             }
             }
         );
     },
+    'members.find'(id){
+        return MembersData.findOne({_id:id})
+    }
 });

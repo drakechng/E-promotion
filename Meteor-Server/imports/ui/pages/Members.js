@@ -14,14 +14,23 @@ const Members = React.createClass({
             );
         });
     },
+    distribute(){
+
+    },
     render() {
         return <div  className="content-wrapper"  style={{minHeight : 997+"px"}}>
 
             <SubNavBar title = "Error"/>
             <section className="content">
                 <div className="row">
+            {this.props.members.map((members)=>
 
-                </div></section>
+                <button onClick={()=>this.addMember(members._id)}>{members.address}</button>
+
+            )}</div>
+
+                {this.props.children}
+            </section>
         </div>
     }
 })

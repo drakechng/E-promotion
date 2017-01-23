@@ -1,15 +1,27 @@
 /**
  * Created by xiongchenyu on 20/1/17.
  */
-import React from 'react'
+import React, {Component, PropTypes} from 'react';
+import NavLink from '../Layouts/NavLink'
+import { createContainer } from 'meteor/react-meteor-data'
+import { MembersData } from '../../api/members/membersData';
 
-export default React.createClass({
+const Member = React.createClass({
+
     render() {
-        const { title, desc, value, fromDate, toDate } = this.props.params
+
+        console.log(this.props)
         return (
             <div>
-                <h2>{title} / {desc} / {"S$"+value} / {fromDate} / {toDate}</h2>
             </div>
         )
     }
 })
+
+export default createContainer(() => {
+    console.log(this.props)
+    Meteor.subscribe('members');
+    return {
+        members: MembersData.find({}, { sort: { createdAt: -1 } }).fetch(),
+    };
+}, Member);
