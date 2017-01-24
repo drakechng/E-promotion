@@ -4,17 +4,7 @@ import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data'
 import { MembersData } from '../../api/members/membersData'
 const Members = React.createClass({
-    renderMembers() {
-        let filteredMembers = this.props.members;
-        return filteredMembers.map((member) => {
-            const currentUserId = this.props.currentUser && this.props.currentUser._id;
-
-            return (
-                <li key={member.createdAt.toLocaleTimeString()}><NavLink to={"/vouchers/"+member.value+"/"+member.fromDate}>{"S$"+member.value}</NavLink></li>
-            );
-        });
-    },
-    distribute(){
+    displayMember(){
 
     },
     render() {
@@ -23,11 +13,14 @@ const Members = React.createClass({
             <SubNavBar title = "Error"/>
             <section className="content">
                 <div className="row">
-            {this.props.members.map((members)=>
+                    <ul>
+            {this.props.members.map((member)=>
 
-                <button onClick={()=>this.addMember(members._id)}>{members.address}</button>
+            <li ><NavLink to={"/members/"+member._id}>{member.address}</NavLink></li>
 
-            )}</div>
+            )}
+                    </ul>
+            </div>
 
                 {this.props.children}
             </section>

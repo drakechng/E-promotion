@@ -9,7 +9,6 @@ import { MembersData } from './membersData';
 
 Meteor.methods({
     'members.upsert'(customer,options) {
-
         return MembersData.upsert({
             merchant: this.userId ,
                 customer: customer ,
@@ -22,7 +21,16 @@ Meteor.methods({
             }
         );
     },
-    'members.find'(id){
-        return MembersData.findOne({_id:id})
-    }
+    'members.addVouchers'(customer,voucher_id,number) {
+
+        let  key = 'vouchers.'+voucher_id;
+        return MembersData.upsert({
+                merchant: this.userId ,
+                customer: customer ,
+            },{
+                $set:{[key]:number
+                }
+            }
+        );
+    },
 });

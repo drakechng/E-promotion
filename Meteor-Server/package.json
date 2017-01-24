@@ -13,6 +13,7 @@
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
+    "react-dual-listbox": "^0.5.1",
     "react-router": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
     "simple-react-form": "^1.8.0",

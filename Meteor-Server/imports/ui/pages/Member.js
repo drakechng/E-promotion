@@ -1,27 +1,69 @@
-/**
+/**one
  * Created by xiongchenyu on 20/1/17.
  */
 import React, {Component, PropTypes} from 'react';
 import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data'
-import { MembersData } from '../../api/members/membersData';
+import { MembersData } from '../../api/members/membersData'
 
+import { VouchersData } from '../../api/vouchers/vouchersData'
+import AddVoucher from '../components/AddVoucher'
 const Member = React.createClass({
+    getInitialState () {
+        return {
+            selected:['Default']
+        };
+    },
+    onChange(selected) {
+        this.setState({ selected });
+    },
+    getMember(){
+       const {_id} = this.props.params;
+       return Meteor.call('members.find',_id)
 
+    },
+    getVoucher(){
+        let options = []
+        this.props.vouchers.map((voucher)=>
+            options.push({value:voucher._id,lable:voucher.value})
+        )
+        console.log(options)
+        return options
+    },
+    renderVouchers() {
+        let filteredVouchers = this.props.vouchers;
+        if (this.state.hideCompleted) {
+            filteredVouchers = filteredVouchers.filter(voucher => !voucher.checked);
+        }
+        return filteredVouchers.map((voucher) => {
+            const currentUserId = this.props.currentUser && this.props.currentUser._id;
+
+            return (
+                <AddVoucher customer = {this.props.member.customer} voucher ={ voucher}/>
+            );
+        });
+    },
     render() {
-
-        console.log(this.props)
-        return (
+       return (
             <div>
+                <ul>
+                    {this.renderVouchers()}
+                </ul>
+                {this.props.member?
+                <p>
+                    {this.props.member._id}
+                </p>
+                :""
+                }
             </div>
         )
     }
 })
 
-export default createContainer(() => {
-    console.log(this.props)
-    Meteor.subscribe('members');
+export default createContainer(({params}) => {
+    Meteor.subscribe('vouchers')
     return {
-        members: MembersData.find({}, { sort: { createdAt: -1 } }).fetch(),
-    };
+        vouchers: VouchersData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        member:MembersData.findOne({_id:params._id})
+    }
 }, Member);
