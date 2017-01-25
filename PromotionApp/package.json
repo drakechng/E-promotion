@@ -1,0 +1,38 @@
+{
+  "name": "PromotionApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "color": "^1.0.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "native-base": "^0.5.22",
+    "react": "15.4.2",
+    "react-native": "0.40.0",
+    "react-native-code-push": "^1.17.0-beta",
+    "react-native-easy-grid": "^0.1.8",
+    "react-native-meteor": "^1.0.3",
+    "react-native-modalbox": "^1.3.8",
+    "react-native-navigation-redux-helpers": "^0.5.0",
+    "react-native-vector-icons": "^4.0.0",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-persist": "^4.1.0",
+    "redux-thunk": "^2.2.0",
+    "remote-redux-devtools": "^0.5.7"
+  },
+  "devDependencies": {
+    "babel-jest": "18.0.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "18.1.0",
+    "mocha": "^3.2.0",
+    "react-test-renderer": "15.4.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
