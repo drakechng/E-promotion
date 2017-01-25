@@ -15,7 +15,7 @@ Meteor.methods({
         },{
             $set:{
                 UpdateAt:new Date(),
-                address: Meteor.users.findOne({_id:customer}).emails[0].address,
+                username: Meteor.users.findOne({_id:customer}).username,
                 options
             }
             }

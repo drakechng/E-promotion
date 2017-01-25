@@ -16,7 +16,7 @@ const Members = React.createClass({
                     <ul>
             {this.props.members.map((member)=>
 
-            <li ><NavLink to={"/members/"+member._id}>{member.address}</NavLink></li>
+            <li ><NavLink to={"/members/"+member._id}>{member.username}</NavLink></li>
 
             )}
                     </ul>

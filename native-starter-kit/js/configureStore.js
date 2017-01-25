@@ -10,9 +10,9 @@ import promise from './promise';
 export default function configureStore(onCompletion:()=>void):any {
   const enhancer = compose(
     applyMiddleware(thunk, promise),
-    devTools({
+/*    devTools({
       name: 'nativestarterkit', realtime: true,
-    }),
+    }),*/
   );
 
   const store = createStore(reducer, enhancer);

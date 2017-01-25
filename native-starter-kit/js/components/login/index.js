@@ -21,11 +21,6 @@ class Login extends Component {
         Meteor.connect(url);
     }
 
-    getMeteorData() {
-        return {
-            user: Meteor.user(),
-        };
-    }
   static propTypes = {
     setUser: React.PropTypes.func,
     replaceAt: React.PropTypes.func,
@@ -57,9 +52,9 @@ class Login extends Component {
     }
 
     setSignup(route) {
-        let  email = this.state.name;
+        let  username = this.state.name;
         let password = this.state.password;
-        Accounts.createUser({email, password,profile: {
+        Accounts.createUser({username, password,profile: {
             type: 'c',
             point: 0,
             IsActive: 0

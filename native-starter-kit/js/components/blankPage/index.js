@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, Title, Content, Text, Button, Icon } from 'native-base';
-
+import { Container, Header, Title, Content, Text, Button, Icon,Alert } from 'native-base';
+import Meteor, { createContainer,Accounts } from 'react-native-meteor';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
@@ -30,7 +30,6 @@ class BlankPage extends Component {
 
   render() {
     const { props: { name, index, list } } = this;
-
     return (
       <Container style={styles.container}>
         <Header>
@@ -47,6 +46,10 @@ class BlankPage extends Component {
 
         <Content padder>
           <Text>
+              {this.props.members?
+              this.props.members._id
+              :""
+              }
             {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
           </Text>
         </Content>
@@ -70,4 +73,19 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, bindAction)(BlankPage);
+
+ const MeteorContainer = createContainer(params=>{
+    Meteor.subscribe('members');
+    alert(Meteor.subscribe('members'))
+    for( key in Meteor.collection('members').find())
+    {
+        alert(key)
+
+    }
+    console.log("fdgsdfg");
+    return {
+        members: Meteor.collection('members').findOne({customer:Meteor.userId()})
+    };
+}, BlankPage);
+
+export default connect(mapStateToProps, bindAction)(MeteorContainer);

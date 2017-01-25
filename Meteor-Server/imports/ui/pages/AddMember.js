@@ -15,7 +15,7 @@ const AddMember = React.createClass({
             {this.props.customers.map((customer)=>
 
 
-                <button onClick={()=>this.addMember(customer._id)}>{customer.emails[0].address}</button>
+                <button onClick={()=>this.addMember(customer._id)}>{customer.username}</button>
 
             )}</div></section>
         </div>
