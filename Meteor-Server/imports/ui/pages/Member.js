@@ -37,9 +37,14 @@ const Member = React.createClass({
         }
         return filteredVouchers.map((voucher) => {
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
+            let quantity = 0;
+            for (let key in this.props.member.vouchers){
+                if(key == voucher._id ){
 
+                quantity = this.props.member.vouchers[key]}
+            }
             return (
-                <AddVoucher customer = {this.props.member.customer} voucher ={ voucher}/>
+                <AddVoucher customer = {this.props.member.customer} quantity = {quantity} voucher ={ voucher}/>
             );
         });
     },
