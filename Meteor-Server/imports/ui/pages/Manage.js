@@ -9,6 +9,8 @@ import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data'
 import { EStampsData } from '../../api/estamps/estampsData'
 import ManageEStamp from './ManageEStamp'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { List } from 'material-ui'
 
 import SubNavBar from '../components/SubNavBar'
 const manage =React.createClass({
@@ -36,11 +38,11 @@ const manage =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
+                <MuiThemeProvider>
 
-                <table>
-                    <ManageEStamp eStamps = {eStamp}/>
+                        <ManageEStamp eStamps = {eStamp}/>
 
-                </table>
+                </MuiThemeProvider>
             );
         });
     },
@@ -51,10 +53,7 @@ const manage =React.createClass({
                 <SubNavBar title = "Manage E-Stamps"/>
                 <section className="content">
                     <div className="row">
-                        <ul><table>
-
-                            <tr><td><b>Title</b></td><td><b>No. of Stamps</b></td></tr>
-                        </table>
+                        <ul>
                          {this.renderEStamps()}
                         </ul>
                         {this.props.children}</div>
