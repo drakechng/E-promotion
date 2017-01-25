@@ -29,7 +29,7 @@ return(
                 <li className="header">MAIN NAVIGATION</li>
 
                   <li>
-                      <NavLink to="/events">
+                      <NavLink to="/">
                         <i className="fa fa-dashboard"></i> <span>Overview</span></NavLink></li>
 
                   <li className="treeview">
@@ -42,15 +42,28 @@ return(
                      <ul className="treeview-menu">
                          <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Voucher</NavLink></li>
                          <li> <NavLink to="/estamps">  <i className="fa fa-circle-o"></i>E-Stamp System</NavLink></li>
-                        <li className="active"><a href="index2.html"><i className="fa fa-circle-o"></i>Reward Points System</a></li>
 
 
                      </ul>
                   </li>
 
-                  <li>
-                      <NavLink to="/manage">
-                          <i className="fa fa-gear"></i> <span>Manage</span></NavLink></li>
+                <li className="treeview">
+                    <a href="#">
+                        <i className="fa fa-gear"></i> <span>Manage</span>
+                        <span className="pull-right-container">
+              <i className="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul className="treeview-menu">
+                        <li> <NavLink to="/manage-vouchers">  <i className="fa fa-circle-o"></i>Vouchers</NavLink></li>
+                        <li> <NavLink to="/manage-estamps">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
+                        <li> <NavLink to="/members">  <i className="fa fa-circle-o"></i>Members</NavLink></li>
+                        <li> <NavLink to="/addmember">  <i className="fa fa-circle-o"></i>All Customers</NavLink></li>
+                    </ul>
+                </li>
+                <li>
+                    <NavLink to="/events">
+                        <i className="fa fa-sticky-note-o"></i> <span>Events</span></NavLink></li>
 
                   <li>
                      <a href="pages/calendar.html">

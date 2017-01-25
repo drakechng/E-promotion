@@ -49,7 +49,8 @@ const Vouchers =React.createClass({
   render() {
     return (
       <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
-          <SubNavBar title = "New voucher"/>
+          <SubNavBar title = "Create voucher"/>
+
           <section className="content">
               <div className="row">
         <ul>
@@ -75,7 +76,7 @@ const Vouchers =React.createClass({
                           <td><input
                               type="date"
                               placeholder=""
-                          /></td><td>to</td><td><input
+                          /></td><td><center>to</center></td><td><input
                               type="date"
                               placeholder=""
                           /></td></tr>
