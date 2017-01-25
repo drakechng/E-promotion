@@ -42,7 +42,6 @@ return(
                      <ul className="treeview-menu">
                          <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Voucher</NavLink></li>
                          <li> <NavLink to="/estamps">  <i className="fa fa-circle-o"></i>E-Stamp System</NavLink></li>
-                        <li className="active"><a href="index2.html"><i className="fa fa-circle-o"></i>Reward Points System</a></li>
 
 
                      </ul>
@@ -56,8 +55,8 @@ return(
             </span>
                     </a>
                     <ul className="treeview-menu">
-                        <li> <NavLink to="/vouchers">  <i className="fa fa-circle-o"></i>Vouchers</NavLink></li>
-                        <li> <NavLink to="/manage">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
+                        <li> <NavLink to="/manage-vouchers">  <i className="fa fa-circle-o"></i>Vouchers</NavLink></li>
+                        <li> <NavLink to="/manage-estamps">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
                         <li> <NavLink to="/members">  <i className="fa fa-circle-o"></i>Members</NavLink></li>
                         <li> <NavLink to="/addmember">  <i className="fa fa-circle-o"></i>All Customers</NavLink></li>
                     </ul>

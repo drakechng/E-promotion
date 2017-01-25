@@ -12,8 +12,8 @@ export default class NavBar extends Component{
         return(
             <header className="main-header">
                 <NavLink className ="logo" to="/" onlyActiveOnIndex>
-                    <span className="logo-mini"><b>A</b>LT</span>
-                    <span className="logo-lg"><b>E</b>-promotion</span>
+                    <span className="logo-mini"><b>D</b></span>
+                    <span className="logo-lg"><b>D</b>ashboard</span>
                 </NavLink>
 
                 <nav className="navbar navbar-static-top">
