@@ -21,6 +21,9 @@ Meteor.methods({
             }
         );
     },
+    'members.fetch'(customer,options) {
+        return MembersData.find({}).fetch();
+    },
     'members.addVouchers'(customer,voucher_id,number) {
 
         let  key = 'vouchers.'+voucher_id;

@@ -67,7 +67,6 @@ class Login extends Component {
                 this.props.replaceAt('login', { key: route }, this.props.navigation.key);}});
     }
   render() {
-      console.log("Application Start");
     return (
       <Container>
         <View style={styles.container}>

@@ -37,6 +37,7 @@ class App extends Component {
     };
   }
 
+/*
   componentDidMount() {
     CodePush.sync({ updateDialog: true, installMode: CodePush.InstallMode.IMMEDIATE },
       (status) => {
@@ -61,6 +62,7 @@ class App extends Component {
       }
     );
   }
+*/
 
   render() {
     if (this.state.showDownloadingModal) {
