@@ -6,8 +6,9 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
+import Meteor, { createContainer,Collection } from 'react-native-meteor';
 import { openDrawer } from '../../actions/drawer';
-import { setIndex } from '../../actions/shopList';
+import { setIndex,setShop } from '../../actions/shopList';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
 
@@ -35,7 +36,21 @@ class Home extends Component {
     this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
   }
 
+  setShop(members){
+      let shop = [];
+      if (members != null){
+         members.map((member)=>
+          shop.push(member.merchant)
+          )
+          console.log(this.props)
+
+          this.props.setShop(shop)
+      }
+  }
+
   render() {
+      console.log(this.props)
+      this.setShop(this.props.members);
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header>
@@ -72,6 +87,7 @@ class Home extends Component {
 function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
+    setShop:shop => dispatch(setShop(shop)),
     openDrawer: () => dispatch(openDrawer()),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
@@ -85,4 +101,13 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, bindAction)(Home);
+const connector =  connect(mapStateToProps, bindAction)(Home);
+
+export default createContainer((props)=>{
+     const handle = Meteor.subscribe("members");
+
+    return {
+        member: handle.ready(),
+        members: Meteor.collection('memberships').find({customer:Meteor.userId()}),
+    };
+}, connector);

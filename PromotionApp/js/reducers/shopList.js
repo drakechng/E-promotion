@@ -1,6 +1,6 @@
 
 import type { Action } from '../actions/types';
-import { SET_INDEX } from '../actions/shopList';
+import { SET_INDEX ,SET_SHOP} from '../actions/shopList';
 
 export type State = {
     list: string

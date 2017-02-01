@@ -2,6 +2,7 @@
 import type { Action } from './types';
 
 export const SET_INDEX = 'SET_INDEX';
+export const SET_SHOP  = 'SET_SHOP';
 
 export function setIndex(index:number):Action {
   return {
