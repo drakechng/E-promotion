@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-
 import NavLink from './NavLink'
 
 export default class AsideBar extends Component {
@@ -29,7 +28,7 @@ return(
                 <li className="header">MAIN NAVIGATION</li>
 
                   <li>
-                      <NavLink to="/">
+                      <NavLink onlyActiveOnIndex={true} to="/">
                         <i className="fa fa-dashboard"></i> <span>Overview</span></NavLink></li>
 
                   <li className="treeview">
