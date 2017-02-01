@@ -45,10 +45,10 @@ class BlankPage extends Component {
 
         <Content padder>
           <Text>
-              {this.props.members?
+              {this.props.members == undefined?
                  JSON.stringify(this.props.members.vouchers)
 
-              :""
+              :"No Voucher"
               }
             {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
           </Text>

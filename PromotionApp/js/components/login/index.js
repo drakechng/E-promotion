@@ -16,7 +16,6 @@ const background = require('../../../images/shadow.png');
 class Login extends Component {
 
     componentWillMount() {
-        console.log(Meteor);
         const url = 'ws://localhost:3000/websocket';
         Meteor.connect(url);
     }
