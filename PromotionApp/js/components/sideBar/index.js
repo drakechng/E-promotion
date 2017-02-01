@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Content, Text, List, ListItem } from 'native-base';
 
-import { setIndex } from '../../actions/list';
+import { setIndex } from '../../actions/shopList';
 import navigateTo from '../../actions/sideBarNav';
 import myTheme from '../../themes/base-theme';
 

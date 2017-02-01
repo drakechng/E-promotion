@@ -9,3 +9,11 @@ export function setIndex(index:number):Action {
     payload: index,
   };
 }
+
+export function setShop(shop:Array) {
+   return{
+     type: SET_SHOP,
+       payload: shop,
+   }
+
+}
