@@ -4952,3 +4952,7 @@ table.text-center th {
 .stampCard {
   padding: 10px;
 }
+.stamp {
+  padding:10px;
+  display: inline;
+}

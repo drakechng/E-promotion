@@ -23,8 +23,6 @@ Meteor.methods({
         });
     },
     'estamps.remove'(_id) {
-
-
         EStampsData.remove(_id);
     },
     'estamps.setChecked'(taskId, setChecked) {

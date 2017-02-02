@@ -6,27 +6,46 @@ import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data';
 import { EStampsData } from '../../api/estamps/estampsData';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar'
+import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 import FlatButton from 'material-ui/FlatButton';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-
+//import Stamp from '../components/StampIcon'
 
 // Task component - represents a single todo item
-export default class ManageEStamp extends Component {
 
+export class ManageEStamp extends Component {
 
     deleteThisTask() {
         console.log(this.props);
         Meteor.call('estamps.remove', this.props.eStamps._id);
     }
 
+    renderStamps(){
+        const stampNumber = this.props.eStamps.value;
+        let stampId = [];
+        for (i=0; i<stampNumber ; i++) {
+            stampId[i] = i+1;
+        }
+        return ( null
+            //stampId.map((x, i) => (
+                //<Stamp key={i+1}/>
+            //))
+        );
+    }
+
     render() {
         // Give tasks a different className when they are checked off,
         // so that we can style them nicely in CSS
         console.log(this.props);
-
+        /*
+        const stampNumbers = this.props.value;
+        let stampArray = [];
+        for (i=0; i<stampNumbers; i++) {
+            stampArray[i] = i+1;
+        }
+        */
         return (
             <div className = "stampCard">
                 <Card style={{
@@ -36,17 +55,23 @@ export default class ManageEStamp extends Component {
                     <CardMedia
                         style = {{margin: '40 bottom'}}
                         overlay={
-                            <CardTitle title={this.props.eStamps.title}>
-                                <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
+                            <CardTitle style = {{ padding: '10'}} title={this.props.eStamps.title}>
+                                <div>
+                                    {this.renderStamps()}
+                                </div>
                             </CardTitle>
                         }
                     >
                         <img src="ui/EstampsManage/loyalty-cards-test-1.jpg"/>
                     </CardMedia>
-                    <CardTitle title="Number of E-stamps" subtitle ="Number of E-stamps"/>
-                    <CardActions>
-                        <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
-                        <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />
+                    <CardTitle title="Number of E-stamps" />
+                    <CardActions style = {{ position: 'relative' }}>
+                        <FlatButton
+                            icon={<HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />}
+                        />
+                        <FlatButton
+                            icon={<HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />}
+                        />
                     </CardActions>
                 </Card>
             </div>
@@ -60,3 +85,9 @@ export default class ManageEStamp extends Component {
     }
 }
 
+export default createContainer(() => {
+    console.log(EStampsData);
+    return {
+        eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
+    };
+}, ManageEStamp);

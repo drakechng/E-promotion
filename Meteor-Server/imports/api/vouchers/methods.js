@@ -21,6 +21,8 @@ Meteor.methods({
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).address == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
         });
+
+
     },
     'vouchers.remove'(taskId) {
         check(taskId, String);

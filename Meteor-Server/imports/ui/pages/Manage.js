@@ -40,7 +40,7 @@ const manage =React.createClass({
             return (
                 <MuiThemeProvider>
 
-                        <ManageEStamp eStamps = {eStamp}/>
+                        <ManageEStamp eStamps = {eStamp} key = {eStamp._id}/>
 
                 </MuiThemeProvider>
             );
