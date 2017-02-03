@@ -6,46 +6,43 @@ import NavLink from '../Layouts/NavLink'
 import { createContainer } from 'meteor/react-meteor-data';
 import { EStampsData } from '../../api/estamps/estampsData';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar';
+import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip';
 import FlatButton from 'material-ui/FlatButton';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-//import Stamp from '../components/StampIcon'
+import Stamp from '../components/StampIcon';
+
 
 // Task component - represents a single todo item
+export default class ManageEStamp extends Component {
 
-export class ManageEStamp extends Component {
 
     deleteThisTask() {
         console.log(this.props);
         Meteor.call('estamps.remove', this.props.eStamps._id);
     }
 
-    renderStamps(){
+    renderStamp() {
         const stampNumber = this.props.eStamps.value;
-        let stampId = [];
-        for (i=0; i<stampNumber ; i++) {
-            stampId[i] = i+1;
+        let stamp = [];
+        for (i=0; i < stampNumber; i++) {
+            stamp[i] = i+1;
         }
-        return ( null
-            //stampId.map((x, i) => (
-                //<Stamp key={i+1}/>
-            //))
-        );
+        return stamp.map((stamp) => (
+            <Stamp key = {stamp}/>
+        ));
+    }
+
+    increaseStamp(eStamps){
+
     }
 
     render() {
         // Give tasks a different className when they are checked off,
         // so that we can style them nicely in CSS
         console.log(this.props);
-        /*
-        const stampNumbers = this.props.value;
-        let stampArray = [];
-        for (i=0; i<stampNumbers; i++) {
-            stampArray[i] = i+1;
-        }
-        */
+
         return (
             <div className = "stampCard">
                 <Card style={{
@@ -55,23 +52,21 @@ export class ManageEStamp extends Component {
                     <CardMedia
                         style = {{margin: '40 bottom'}}
                         overlay={
-                            <CardTitle style = {{ padding: '10'}} title={this.props.eStamps.title}>
-                                <div>
-                                    {this.renderStamps()}
-                                </div>
+                            <CardTitle title="">
+                                {this.renderStamp()}
                             </CardTitle>
                         }
                     >
                         <img src="ui/EstampsManage/loyalty-cards-test-1.jpg"/>
                     </CardMedia>
-                    <CardTitle title="Number of E-stamps" />
-                    <CardActions style = {{ position: 'relative' }}>
-                        <FlatButton
-                            icon={<HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />}
-                        />
-                        <FlatButton
-                            icon={<HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />}
-                        />
+                    <CardTitle title={this.props.eStamps.title} subtitle ={this.props.eStamps.desc}/>
+                    <CardActions>
+                        <FlatButton>
+                            <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
+                        </FlatButton>
+                        <FlatButton onClick={this.increaseStamp.bind(this, this.props.eStamps)}>
+                            <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />
+                        </FlatButton>
                     </CardActions>
                 </Card>
             </div>
@@ -85,9 +80,3 @@ export class ManageEStamp extends Component {
     }
 }
 
-export default createContainer(() => {
-    console.log(EStampsData);
-    return {
-        eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
-    };
-}, ManageEStamp);

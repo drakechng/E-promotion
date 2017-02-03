@@ -1,10 +1,18 @@
 import React,{Component} from  'react';
 import Avatar from 'material-ui/Avatar';
 
+const styles = {
+    chip: {
+        margin: 5,
+    },
+}
+
 export default class Stamp extends Component {
     render() {
-        <div className="stamp">
-            <Avatar src="ui/EstampsManage/E-stamps.jpg"/>
-        </div>
+        return(
+            <div className="stamp">
+                <Avatar style={styles.chip} src="ui/EstampsManage/E-stamps.jpg"/>
+            </div>
+        )
     }
 }

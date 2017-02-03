@@ -19,7 +19,7 @@ Meteor.methods({
             toDate,
             createdAt: new Date(),
             owner: this.userId,
-            username: Meteor.users.findOne(this.userId).address == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
+            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
         });
     },
     'estamps.remove'(_id) {
@@ -36,6 +36,32 @@ Meteor.methods({
         EStampsData.update(taskId, { $set: { checked: setChecked } });
     },
     'estamps.setPrivate'(taskId, setToPrivate) {
+        check(taskId, String);
+        check(setToPrivate, Boolean);
+
+        const task = EStampsData.findOne(taskId);
+
+        // Make sure only the task owner can make a task private
+        if (task.owner !== this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        EStampsData.update(taskId, { $set: { private: setToPrivate } });
+    },
+    'estamps.increaseStamp'(taskId, setToPrivate) {
+        check(taskId, String);
+        check(setToPrivate, Boolean);
+
+        const task = EStampsData.findOne(taskId);
+
+        // Make sure only the task owner can make a task private
+        if (task.owner !== this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        EStampsData.update(taskId, { $set: { private: setToPrivate } });
+    },
+    'estamps.decreaseStamp'(taskId, setToPrivate) {
         check(taskId, String);
         check(setToPrivate, Boolean);
 

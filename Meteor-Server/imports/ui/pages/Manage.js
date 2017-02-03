@@ -38,11 +38,7 @@ const manage =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <MuiThemeProvider>
-
-                        <ManageEStamp eStamps = {eStamp} key = {eStamp._id}/>
-
-                </MuiThemeProvider>
+                    <ManageEStamp eStamps = {eStamp} key = {eStamp._id}/>
             );
         });
     },
@@ -53,10 +49,13 @@ const manage =React.createClass({
                 <SubNavBar title = "Manage E-Stamps"/>
                 <section className="content">
                     <div className="row">
-                        <ul>
-                         {this.renderEStamps()}
-                        </ul>
-                        {this.props.children}</div>
+                        <MuiThemeProvider>
+                            <ul>
+                                {this.renderEStamps()}
+                            </ul>
+                        </MuiThemeProvider>
+                        {this.props.children}
+                    </div>
                 </section>
             </div>
         )
