@@ -38,11 +38,7 @@ const manage =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <MuiThemeProvider>
-
-                        <ManageEStamp eStamps = {eStamp}/>
-
-                </MuiThemeProvider>
+                    <ManageEStamp eStamps = {eStamp} key = {eStamp._id}/>
             );
         });
     },
@@ -53,10 +49,13 @@ const manage =React.createClass({
                 <SubNavBar title = "Manage E-Stamps"/>
                 <section className="content">
                     <div className="row">
-                        <ul>
-                         {this.renderEStamps()}
-                        </ul>
-                        {this.props.children}</div>
+                        <MuiThemeProvider>
+                            <ul>
+                                {this.renderEStamps()}
+                            </ul>
+                        </MuiThemeProvider>
+                        {this.props.children}
+                    </div>
                 </section>
             </div>
         )
@@ -67,7 +66,8 @@ const manage =React.createClass({
 export default createContainer(() => {
     Meteor.subscribe('estamps');
     console.log(EStampsData);
+    user = Meteor.userId();
     return {
-        eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        eStamps: EStampsData.find({owner: user}, { sort: { createdAt: -1 } }).fetch(),
     };
 }, manage);

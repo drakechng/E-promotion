@@ -8,7 +8,7 @@ export type State = {
 
 const initialState = {
   list: [
-    'Default Shop',
+      {id:null,company_name:"default"}
   ],
   selectedIndex: undefined,
 };

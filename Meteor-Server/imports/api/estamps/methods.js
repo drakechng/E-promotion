@@ -23,8 +23,6 @@ Meteor.methods({
         });
     },
     'estamps.remove'(_id) {
-
-
         EStampsData.remove(_id);
     },
     'estamps.setChecked'(taskId, setChecked) {
@@ -50,4 +48,13 @@ Meteor.methods({
 
         EStampsData.update(taskId, { $set: { private: setToPrivate } });
     },
+    updateEStampCard(eStampsCard) {
+        if (this.userId != eStampsCard.owner) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        EStampsData.update(eStampsCard._id,
+            { $set: eStampsCard });
+    },
+
 });

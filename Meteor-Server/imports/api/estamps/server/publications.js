@@ -3,6 +3,7 @@
  */
 import { Meteor } from 'meteor/meteor';
 import { EStampsData } from '../estampsData';
+
 Meteor.publish('estamps', function tasksPublication() {
     return EStampsData.find({
         $or: [

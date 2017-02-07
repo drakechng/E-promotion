@@ -11,15 +11,84 @@ import Chip from 'material-ui/Chip';
 import FlatButton from 'material-ui/FlatButton';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-
+import Stamp from '../components/StampIcon';
+import ActionDeleteForever from 'material-ui/svg-icons/action/delete-forever';
+import { red500 } from 'material-ui/styles/colors';
 
 // Task component - represents a single todo item
 export default class ManageEStamp extends Component {
 
 
-    deleteThisTask() {
+    deleteThisTask(estampsId) {
         console.log(this.props);
-        Meteor.call('estamps.remove', this.props.eStamps._id);
+        Meteor.call('estamps.remove', estampsId, (error) => {
+            if (error) {
+                alert("aiya something went wrong: " + error.reason);
+            } else {
+                console.log("estamps card deleted")
+            }
+        });
+    }
+
+    renderStamp() {
+        const stampNumber = this.props.eStamps.value;
+        let stamp = [];
+        for (i=0; i < stampNumber; i++) {
+            stamp[i] = i+1;
+        }
+        return stamp.map((stamp) => (
+            <Stamp key = {stamp}/>
+        ));
+    }
+
+    increaseStamp(eStamps){
+        const estamps = this.props.eStamps;
+        const currentStampNumber = estamps.value;
+        const newStampNumber = currentStampNumber + 1;
+
+        let eStampCard = {
+            _id: estamps._id,
+            title: estamps.title,
+            desc: estamps.desc,
+            value: newStampNumber,
+            fromDate: estamps.fromDate,
+            toDate: estamps.toDate,
+            createdAt: estamps.createdAt,
+            owner: estamps.owner,
+            username: estamps.username,
+        }
+        Meteor.call('updateEStampCard', eStampCard, (error) => {
+            if(error) {
+                alert("something went wrong: " + error.reason);
+            } else {
+                console.log("estamp increased");
+            }
+        })
+    }
+
+    decreaseStamp(eStamps){
+        const estamps = this.props.eStamps;
+        const currentStampNumber = estamps.value;
+        const newStampNumber = currentStampNumber - 1;
+
+        let eStampCard = {
+            _id: estamps._id,
+            title: estamps.title,
+            desc: estamps.desc,
+            value: newStampNumber,
+            fromDate: estamps.fromDate,
+            toDate: estamps.toDate,
+            createdAt: estamps.createdAt,
+            owner: estamps.owner,
+            username: estamps.username,
+        }
+        Meteor.call('updateEStampCard', eStampCard, (error) => {
+            if(error) {
+                alert("something went wrong: " + error.reason);
+            } else {
+                console.log("estamp decreased");
+            }
+        })
     }
 
     render() {
@@ -30,23 +99,35 @@ export default class ManageEStamp extends Component {
         return (
             <div className = "stampCard">
                 <Card style={{
-                    width: '80%',
+                    width: '95%',
                     margin: '0 auto'
                 }}>
                     <CardMedia
                         style = {{margin: '40 bottom'}}
                         overlay={
-                            <CardTitle title={this.props.eStamps.title}>
-                                <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
+                            <CardTitle title="">
+                                {this.renderStamp()}
                             </CardTitle>
                         }
                     >
-                        <img src="ui/EstampsManage/loyalty-cards-test-1.jpg"/>
+                        <img src="ui/EstampsManage/loyalty card.jpg"/>
                     </CardMedia>
-                    <CardTitle title="Number of E-stamps" subtitle ="Number of E-stamps"/>
+                    <CardTitle title={this.props.eStamps.title}
+                               subtitle ={this.props.eStamps.desc}
+                               rightIcon={<ActionDeleteForever hoverColor={red500}
+                                                               onClick={this.deleteThisTask.bind(this, this.props.eStamps._id)} />}
+                    >
+                    </CardTitle>
                     <CardActions>
-                        <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
-                        <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />
+                        <FlatButton onClick={this.increaseStamp.bind(this, this.props.eStamps)}>
+                            <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
+                        </FlatButton>
+                        <FlatButton onClick={this.decreaseStamp.bind(this, this.props.eStamps)}>
+                            <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />
+                        </FlatButton>
+                        <ActionDeleteForever hoverColor={red500}
+                                             onClick={this.deleteThisTask.bind(this, this.props.eStamps._id)}
+                                             className="stampDeleteButton"/>
                     </CardActions>
                 </Card>
             </div>

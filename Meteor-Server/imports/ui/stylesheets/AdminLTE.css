@@ -4952,3 +4952,11 @@ table.text-center th {
 .stampCard {
   padding: 10px;
 }
+.stamp {
+  display: inline;
+}
+.stampDeleteButton {
+  position: absolute;
+  right: 5%;
+  z-index: +1;
+}

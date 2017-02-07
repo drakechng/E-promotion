@@ -58,7 +58,6 @@ return(
                         <li> <NavLink to="/manage-estamps">  <i className="fa fa-circle-o"></i>E-Stamps</NavLink></li>
                         <li> <NavLink to="/members">  <i className="fa fa-circle-o"></i>Members</NavLink></li>
                         <li> <NavLink to="/addmember">  <i className="fa fa-circle-o"></i>All Customers</NavLink></li>
-                        <li> <NavLink to="/settings">  <i className="fa fa-circle-o"></i>Settings</NavLink></li>
                     </ul>
                 </li>
                 <li>

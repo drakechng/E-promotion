@@ -8,7 +8,7 @@ import { Grid, Row } from 'react-native-easy-grid';
 
 import Meteor, { createContainer,Collection } from 'react-native-meteor';
 import { openDrawer } from '../../actions/drawer';
-import { setIndex,setShop } from '../../actions/shopList';
+import { setIndex } from '../../actions/shopList';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
 
@@ -21,7 +21,7 @@ class Home extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    list: React.PropTypes.arrayOf(React.PropTypes.object),
     setIndex: React.PropTypes.func,
     openDrawer: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
@@ -42,15 +42,12 @@ class Home extends Component {
          members.map((member)=>
           shop.push(member.merchant)
           )
-          console.log(this.props)
 
           this.props.setShop(shop)
       }
   }
 
   render() {
-      console.log(this.props)
-      this.setShop(this.props.members);
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header>
@@ -73,7 +70,7 @@ class Home extends Component {
                   style={styles.row}
                   onPress={() => this.pushRoute('blankPage', i)}
                 >
-                  <Text style={styles.text}>{item}</Text>
+                  <Text style={styles.text}>{item.company_name}</Text>
                 </TouchableOpacity>
               </Row>
             )}
@@ -87,7 +84,6 @@ class Home extends Component {
 function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
-    setShop:shop => dispatch(setShop(shop)),
     openDrawer: () => dispatch(openDrawer()),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),

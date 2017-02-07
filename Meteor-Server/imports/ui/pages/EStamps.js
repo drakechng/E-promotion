@@ -56,7 +56,6 @@ const EStamps =React.createClass({
                 <section className="content">
                     <div className="row">
                         <ul>
-
                             <form className="new-task" onSubmit={this.handleSubmit}>
                                 <table><tr>
                                     <td>E-Stamp Title:</td>
@@ -87,7 +86,6 @@ const EStamps =React.createClass({
                                     </tr>
                                 </table>
                             </form>
-
                             {this.renderEStamps()}
                         </ul>
                         {this.props.children}</div>
