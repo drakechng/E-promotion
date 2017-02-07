@@ -22,7 +22,7 @@ Meteor.methods({
             }
         );
     },
-    'members.fetchMerchants'(customer,options) {
+    'members.fetchMerchants'(customer) {
         let merchants =  MembersData.find({customer:customer},{fields:{merchant:1}}).fetch();
         let merchantId = [];
         for(let key in merchants){
