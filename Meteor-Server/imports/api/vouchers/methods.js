@@ -19,7 +19,7 @@ Meteor.methods({
             toDate,
             createdAt: new Date(),
             owner: this.userId,
-            username: Meteor.users.findOne(this.userId).address == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
+            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
         });
     },
     'vouchers.remove'(taskId) {
@@ -49,5 +49,21 @@ Meteor.methods({
         }
 
         VouchersData.update(taskId, { $set: { private: setToPrivate } });
+    },
+
+    'vouchers.upsert'(_id, newTitle, newDesc) {
+
+
+        return VouchersData.upsert({
+                _id: _id ,
+            },{
+                $set:{
+                    UpdateAt:new Date(),
+                    title: newTitle,
+                    desc: newDesc,
+
+                }
+            }
+        );
     },
 });

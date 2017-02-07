@@ -81,7 +81,7 @@ const Vouchers =React.createClass({
                               placeholder=""
                           /></td></tr>
                       <tr><td></td>
-                          <td><button type="submit">Submit</button></td>
+                          <td><button type="submit" className ="formButton">Submit</button></td>
                       </tr>
                   </table>
               </form>

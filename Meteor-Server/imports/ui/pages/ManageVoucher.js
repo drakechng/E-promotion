@@ -14,6 +14,16 @@ export default class ManageVoucher extends Component {
     deleteThisTask() {
         console.log(this.props);
         Meteor.call('vouchers.remove', this.props.vouchers._id);
+        }
+
+    updateVoucher(event) {
+        event.preventDefault();
+        const newTitle = event.target.elements[0].value;
+       const newDesc = event.target.elements[1].value;
+
+        event.target.elements[0].value = "";
+        event.target.elements[1].value = "";
+        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc );
     }
 
     render() {
@@ -22,12 +32,23 @@ export default class ManageVoucher extends Component {
         console.log(this.props);
 
         return (
-            <table>
 
-                <tr><td>{this.props.vouchers.title}</td><td>{this.props.vouchers.value}</td><td><button className="delete" onClick={this.deleteThisTask.bind(this)}>
+
+            <tr> <form className="new-task" onSubmit={this.updateVoucher.bind(this)}><td><input
+                type="text"
+                className ="update"
+                placeholder={this.props.vouchers.title}
+            /></td><td><input
+                type="text"
+                className ="update"
+                placeholder={this.props.vouchers.desc}
+            />
+                <button type="submit" hidden ="hidden">go</button>
+            </td></form><td>{this.props.vouchers.value}
+               </td> <td><button className="delete" onClick={this.deleteThisTask.bind(this)}>
                     &times;
                 </button></td></tr>
-            </table>
+
         );
     }
 }

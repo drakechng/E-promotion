@@ -78,12 +78,12 @@ const EStamps =React.createClass({
                                         <td><input
                                             type="date"
                                             placeholder=""
-                                        /></td><td><center>to</center></td><td><input
+                                        /></td><td width="10%"><center>to</center></td><td><input
                                             type="date"
                                             placeholder=""
                                         /></td></tr>
                                     <tr><td></td>
-                                        <td><button type="submit">Submit</button></td>
+                                        <td><button type="submit" className ="formButton">Submit</button></td>
                                     </tr>
                                 </table>
                             </form>

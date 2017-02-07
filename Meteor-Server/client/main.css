@@ -27,6 +27,13 @@ td {
     width: 30%;
 }
 
+input.update{
+
+    border: none;
+
+}
+
+
 input {
     border: 1px solid #DADADA;
     color: #888;
@@ -46,9 +53,22 @@ input {
 
 button {
     background-color: white;
-    border: 1px solid grey;
+    border: 0px solid grey;
     color: black;
     padding: 5px 10px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+
+}
+
+.formButton {
+    background-color: white;
+    border: 1px solid grey;
+    color: black;
+    padding: 4px 9px;
     height: 30px;
     text-align: center;
     text-decoration: none;
