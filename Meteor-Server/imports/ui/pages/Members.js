@@ -32,6 +32,6 @@ const Members = React.createClass({
 export default createContainer(() => {
     Meteor.subscribe('members');
     return {
-        members: MembersData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        members: MembersData.find({merchant:Meteor.userId()}, { sort: { createdAt: -1 } }).fetch(),
     };
 }, Members);
