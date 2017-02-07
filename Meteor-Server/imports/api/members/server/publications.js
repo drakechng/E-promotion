@@ -7,5 +7,6 @@ import { Meteor } from 'meteor/meteor';
 import { MembersData } from '../membersData';
 
 Meteor.publish('members', function () {
-    return MembersData.find();
+    console.log(this.userId);
+    return MembersData.find({});
 });

@@ -15,7 +15,7 @@ class BlankPage extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    list: React.PropTypes.arrayOf(React.PropTypes.object),
     openDrawer: React.PropTypes.func,
     popRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -49,7 +49,7 @@ class BlankPage extends Component {
                  JSON.stringify(this.props.members.vouchers)
 
               }
-            {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
+            {(!isNaN(index)) ? list[index].company_name : 'Create Something Awesome . . .'}
           </Text>
         </Content>
       </Container>
@@ -72,14 +72,15 @@ const mapStateToProps = state => ({
 });
 
 
-const connector = connect(mapStateToProps, bindAction)(BlankPage);
 
- export default createContainer((props)=>{
+ const container = createContainer((props)=>{
+     console.log(props)
      const handle = Meteor.subscribe("members");
 
     return {
         member: handle.ready(),
-        members: Meteor.collection('memberships').findOne({customer:Meteor.userId()}),
+        members: Meteor.collection('memberships').findOne({customer:Meteor.userId(),merchant:props.list[props.index].id}),
     };
-}, connector);
+}, BlankPage);
 
+export default connect(mapStateToProps, bindAction)(container);
