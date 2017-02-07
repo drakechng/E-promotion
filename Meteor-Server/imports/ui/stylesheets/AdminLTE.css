@@ -4955,3 +4955,8 @@ table.text-center th {
 .stamp {
   display: inline;
 }
+.stampDeleteButton {
+  position: absolute;
+  right: 5%;
+  z-index: +1;
+}

@@ -48,30 +48,13 @@ Meteor.methods({
 
         EStampsData.update(taskId, { $set: { private: setToPrivate } });
     },
-    'estamps.increaseStamp'(taskId, setToPrivate) {
-        check(taskId, String);
-        check(setToPrivate, Boolean);
-
-        const task = EStampsData.findOne(taskId);
-
-        // Make sure only the task owner can make a task private
-        if (task.owner !== this.userId) {
+    updateEStampCard(eStampsCard) {
+        if (this.userId != eStampsCard.owner) {
             throw new Meteor.Error('not-authorized');
         }
 
-        EStampsData.update(taskId, { $set: { private: setToPrivate } });
+        EStampsData.update(eStampsCard._id,
+            { $set: eStampsCard });
     },
-    'estamps.decreaseStamp'(taskId, setToPrivate) {
-        check(taskId, String);
-        check(setToPrivate, Boolean);
 
-        const task = EStampsData.findOne(taskId);
-
-        // Make sure only the task owner can make a task private
-        if (task.owner !== this.userId) {
-            throw new Meteor.Error('not-authorized');
-        }
-
-        EStampsData.update(taskId, { $set: { private: setToPrivate } });
-    },
 });

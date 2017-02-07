@@ -66,7 +66,8 @@ const manage =React.createClass({
 export default createContainer(() => {
     Meteor.subscribe('estamps');
     console.log(EStampsData);
+    user = Meteor.userId();
     return {
-        eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        eStamps: EStampsData.find({owner: user}, { sort: { createdAt: -1 } }).fetch(),
     };
 }, manage);

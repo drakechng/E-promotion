@@ -11,7 +11,7 @@ export default class Stamp extends Component {
     render() {
         return(
             <div className="stamp">
-                <Avatar style={styles.chip} src="ui/EstampsManage/E-stamps.jpg"/>
+                <Avatar style={styles.chip} src="ui/EstampsManage/E-stamps1.jpg"/>
             </div>
         )
     }
