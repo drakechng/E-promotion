@@ -42,4 +42,16 @@ Meteor.methods({
             }
         );
     },
+    'members.addEstamps'(customer,estamp_id,number) {
+
+        let  key = 'estamps.'+estamp_id;
+        return MembersData.upsert({
+                merchant: this.userId ,
+                customer: customer ,
+            },{
+                $set:{[key]:number
+                }
+            }
+        );
+    },
 });

@@ -15,7 +15,10 @@ export default AddVoucher = React.createClass({
     render() {
        return (
            <li>
+               <label>{this.props.voucher.title}</label>
+<br/>
                <label>{this.props.voucher.value}</label>
+
                <br/>
                    <label>{this.props.quantity}</label>
                <button onClick={()=>this.addVoucher()}>+</button>
