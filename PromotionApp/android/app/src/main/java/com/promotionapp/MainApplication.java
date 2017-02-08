@@ -34,7 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new VectorIconsPackage(),
-            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG)
+            new CodePush("Pg-ENyvzR9VtDbvsT22Mh0lSvlJrVk8ac6XdM", getApplicationContext(), BuildConfig.DEBUG)
       );
     }
   };
