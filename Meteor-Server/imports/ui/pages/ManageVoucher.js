@@ -19,11 +19,15 @@ export default class ManageVoucher extends Component {
     updateVoucher(event) {
         event.preventDefault();
         const newTitle = event.target.elements[0].value;
-       const newDesc = event.target.elements[1].value;
+        const newDesc = event.target.elements[1].value;
+        const newValue = event.target.elements[2].value;
+
+
 
         event.target.elements[0].value = "";
         event.target.elements[1].value = "";
-        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc );
+        event.target.elements[2].value = "";
+        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc, newValue );
     }
 
     render() {
@@ -36,16 +40,18 @@ export default class ManageVoucher extends Component {
 
             <tr> <form className="new-task" onSubmit={this.updateVoucher.bind(this)}><td><input
                 type="text"
-                className ="update"
                 placeholder={this.props.vouchers.title}
-            /></td><td><input
+            />
+             </td> <td> <input
                 type="text"
-                className ="update"
                 placeholder={this.props.vouchers.desc}
             />
-                <button type="submit" hidden ="hidden">go</button>
-            </td></form><td>{this.props.vouchers.value}
-               </td> <td><button className="delete" onClick={this.deleteThisTask.bind(this)}>
+
+            </td><td><input
+                type="text"
+                placeholder={this.props.vouchers.value}
+            />
+               </td> <button type="submit" hidden ="hidden">go</button></form><td><button className="delete" onClick={this.deleteThisTask.bind(this)}>
                     &times;
                 </button></td></tr>
 

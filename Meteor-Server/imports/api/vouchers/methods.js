@@ -53,16 +53,20 @@ Meteor.methods({
         VouchersData.update(taskId, { $set: { private: setToPrivate } });
     },
 
-    'vouchers.upsert'(_id, newTitle, newDesc) {
+    'vouchers.upsert'(_id, newTitle, newDesc, newValue) {
 
 
-        return VouchersData.upsert({
+
+        return VouchersData.upsert(
+
+            {
                 _id: _id ,
             },{
                 $set:{
                     UpdateAt:new Date(),
                     title: newTitle,
                     desc: newDesc,
+                    value: newValue,
 
                 }
             }
