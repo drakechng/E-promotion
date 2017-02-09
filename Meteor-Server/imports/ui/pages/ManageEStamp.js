@@ -43,8 +43,8 @@ export default class ManageEStamp extends Component {
 
     increaseStamp(eStamps){
         const estamps = this.props.eStamps;
-        const currentStampNumber = estamps.value;
-        const newStampNumber = currentStampNumber + 1;
+        const currentStampNumber = new Number(estamps.value);
+        let newStampNumber = currentStampNumber + 1;
 
         let eStampCard = {
             _id: estamps._id,
@@ -68,7 +68,7 @@ export default class ManageEStamp extends Component {
 
     decreaseStamp(eStamps){
         const estamps = this.props.eStamps;
-        const currentStampNumber = estamps.value;
+        const currentStampNumber =  new Number(estamps.value);
         const newStampNumber = currentStampNumber - 1;
 
         let eStampCard = {

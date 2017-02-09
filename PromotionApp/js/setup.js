@@ -27,5 +27,4 @@ function setup():React.Component {
 
   return Root;
 }
-
 export default setup;

@@ -41,10 +41,14 @@ export default class ManageVoucher extends Component {
         event.preventDefault();
         const newTitle = event.target.elements[0].value;
         const newDesc = event.target.elements[1].value;
+        const newValue = event.target.elements[2].value;
+
+
 
         event.target.elements[0].value = "";
         event.target.elements[1].value = "";
-        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc );
+        event.target.elements[2].value = "";
+        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc, newValue );
     }
 
     render() {
