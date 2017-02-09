@@ -8,6 +8,8 @@ import { VouchersData } from '../../api/vouchers/vouchersData'
 import ManageVoucher from './ManageVoucher'
 
 import SubNavBar from '../components/SubNavBar'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 const manage2 =React.createClass({
     getInitialState () {
         return {
@@ -31,13 +33,10 @@ const manage2 =React.createClass({
         }
         return filteredVouchers.map((voucher) => {
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
-
             return (
-
-                <table>
-                    <ManageVoucher vouchers = {voucher}/>
-
-                </table>
+                <MuiThemeProvider>
+                    <ManageVoucher vouchers = {voucher} key={voucher._id}/>
+                </MuiThemeProvider>
             );
         });
     },
