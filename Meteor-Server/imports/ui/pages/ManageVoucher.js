@@ -57,7 +57,7 @@ export default class ManageVoucher extends Component {
         console.log(this.props);
         const actions = [
             <FlatButton
-                label="Ok"
+                label="Done"
                 primary={true}
                 keyboardFocused={true}
                 onTouchTap={this.handleClose.bind(this)}
@@ -67,34 +67,44 @@ export default class ManageVoucher extends Component {
 
         return (
             <div>
-                <RaisedButton label="Edit Voucher" onTouchTap={this.handleOpen.bind(this)} onClick={this.handleOpen.bind(this)}/>
-                <Dialog
-                    title="Dialog With Date Picker"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={this.handleClose.bind(this)}
-                >
-                    test
-                </Dialog>
-                <table>
+
+
                     <tr>
-                        <form className="new-task" onSubmit={this.updateVoucher.bind(this)}><td><input
-                            type="text"
-                            className ="update"
-                            placeholder={this.props.vouchers.title}
-                        /></td><td><input
-                            type="text"
-                            className ="update"
-                            placeholder={this.props.vouchers.desc}
-                        />
-                            <button type="submit" hidden ="hidden">go</button>
-                        </td></form><td>{this.props.vouchers.value}
+                       <td>{this.props.vouchers.title}
+                        </td><td>{this.props.vouchers.desc}
+                       </td><td>{this.props.vouchers.value}
                         </td> <td><button className="delete" onClick={this.deleteThisTask.bind(this)}>
                             &times;
-                        </button></td>
+                        </button></td> <td><RaisedButton label="Edit" onTouchTap={this.handleOpen.bind(this)} onClick={this.handleOpen.bind(this)}/>
+                        <Dialog
+                            title="Edit Voucher"
+                            actions={actions}
+                            modal={false}
+                            open={this.state.open}
+                            onRequestClose={this.handleClose.bind(this)}
+                        >
+                            <form className="new-task" onSubmit={this.updateVoucher.bind(this)}>
+                                Title: <input
+                                type="text"
+                                className ="update"
+                                placeholder={this.props.vouchers.title}
+                            />
+                                Description: <input
+                                type="text"
+                                className ="update"
+                                placeholder={this.props.vouchers.desc}
+                            />
+                                Voucher Amount: <input
+                                    type="text"
+                                    className ="update"
+                                    placeholder={this.props.vouchers.value}
+                                />
+
+                                <button type="submit" hidden ="hidden">go</button>
+                            </form>
+                        </Dialog></td>
                     </tr>
-                </table>
+
             </div>
         );
     }

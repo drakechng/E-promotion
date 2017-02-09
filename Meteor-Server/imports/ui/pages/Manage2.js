@@ -49,7 +49,7 @@ const manage2 =React.createClass({
                     <div className="row">
                         <ul><table>
 
-                            <tr><td><b>Title</b></td><td><b>Description</b></td><td><b>Value</b></td><td><b>Remove</b></td></tr>
+                            <tr><td><b>Title</b></td><td><b>Description</b></td><td><b>Value</b></td><td><b>Remove</b></td><td><b>Edit</b></td></tr>
                         </table>
                             {this.renderVouchers()}
                         </ul>
