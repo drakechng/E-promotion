@@ -31,6 +31,10 @@ export default class ManageVoucher extends Component {
            open: false,
         });
     }
+    handleChange(e) {
+        this.props.vouchers.title = e.target.value;
+        this.setState({[e.target.title]: e.target.value});
+    }
 
     deleteThisTask() {
         console.log(this.props);
@@ -88,16 +92,22 @@ export default class ManageVoucher extends Component {
                                 type="text"
                                 className ="update"
                                 placeholder={this.props.vouchers.title}
+                                onChange={this.handleChange}
+                                value = {this.props.vouchers.title}
                             />
                                 Description: <input
                                 type="text"
                                 className ="update"
                                 placeholder={this.props.vouchers.desc}
+                                onChange={this.handleChange}
+                                value = {this.props.vouchers.desc}
                             />
                                 Voucher Amount: <input
                                     type="text"
                                     className ="update"
                                     placeholder={this.props.vouchers.value}
+                                    onChange={this.handleChange}
+                                    value = {this.props.vouchers.value}
                                 />
 
                                 <button type="submit" hidden ="hidden">go</button>
