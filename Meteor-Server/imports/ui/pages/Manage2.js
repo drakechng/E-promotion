@@ -64,7 +64,8 @@ const manage2 =React.createClass({
 export default createContainer(() => {
     Meteor.subscribe('vouchers');
     console.log(VouchersData);
+    user = Meteor.userId()
     return {
-        vouchers: VouchersData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        vouchers: VouchersData.find({ owner:user }, { sort: { createdAt: -1 } }).fetch(),
     };
 }, manage2);
