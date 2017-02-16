@@ -23,5 +23,5 @@ johanbrook:publication-collector  # Test a Meteor publication by collecting its 
 accounts-password
 react-meteor-data
 static-html
-fortawesome:fontawesome
 std:accounts-ui
+fortawesome:fontawesome

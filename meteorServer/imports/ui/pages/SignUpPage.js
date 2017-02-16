@@ -1,3 +1,6 @@
+/**
+ * Created by xiongchenyu on 16/2/17.
+ */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,23 +15,26 @@ import {Link} from 'react-router';
 import ThemeDefault from '../stylesheets/theme-default';
 import { Accounts } from 'meteor/accounts-base'
 import {styles} from'../stylesheets/accountStyle'
-
 import {browserHistory} from 'react-router'
+
 export default class LoginPage extends React.Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
-        console.log(this.refs)
-        let emailAddress = event.target.elements[0].value;
+        let username= event.target.elements[0].value;
         let password = event.target.elements[1].value;
-
-        Meteor.loginWithPassword(emailAddress, password, (error) => {
+        console.log(username,password)
+        Accounts.createUser({username, password,profile: {
+            type: 'c',
+            point: 0,
+            IsActive: 0
+        }}, (error) => {
             if (error) {
-                console.log(error);
-            } else {
+                alert(error.reason);
+            }else {
                 browserHistory.push('/')
-            }
-        });
+                alert("Success Now Auto Sign In")
+            }});
     }
 
     render() {
@@ -62,29 +68,13 @@ export default class LoginPage extends React.Component {
                                         iconStyle={styles.checkRemember.iconStyle}
                                     />
 
-                                        <RaisedButton label="Login"
+                                        <RaisedButton label="SignUp"
                                                       type = "submit"
                                                       primary={true}
                                                       style={styles.loginBtn}/>
                                 </div>
                             </form>
                         </Paper>
-
-                        <div style={styles.buttonsDiv}>
-                            <FlatButton
-                                label="Register"
-                                href="/signup"
-                                style={styles.flatButton}
-                                icon={<PersonAdd />}
-                            />
-
-                            <FlatButton
-                                label="Forgot Password?"
-                                href="/"
-                                style={styles.flatButton}
-                                icon={<Help />}
-                            />
-                        </div>
 
                         <div style={styles.buttonsDiv}>
                             <Link to="/" style={{...styles.btn, ...styles.btnFacebook}}>
