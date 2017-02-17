@@ -11,4 +11,5 @@ import '../../api/estamps/server/publications.js';
 import '../../api/members/server/publications';
 import '../../api/members/methods';
 import '../../api/customers/server/publications';
+import '../../api/schema-crud/server/server';
 
