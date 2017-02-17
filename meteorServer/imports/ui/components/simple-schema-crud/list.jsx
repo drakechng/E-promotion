@@ -2,12 +2,10 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
-import {FlowRouter} from 'meteor/kadira:flow-router'
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
-import Posts from './posts'
-import BackHome from '../../home/back-home'
-
+import Posts from '../../../api/schema-crud/posts'
+import {browserHistory} from 'react-router'
 const propTypes = {
   posts: React.PropTypes.array.isRequired,
   isLoading: React.PropTypes.bool.isRequired
@@ -25,12 +23,12 @@ class PostsList extends React.Component {
   }
 
   create () {
-    FlowRouter.go('simpleSchemaCrud.create')
+      browserHistory.push('/create');
   }
 
   renderPosts () {
     return this.props.posts.map(post => {
-      const onTouchTap = () => FlowRouter.go('simpleSchemaCrud.update', {postId: post._id})
+      const onTouchTap = () => browserHistory.push('/update/'+post._id)
       return (
         <ListItem key={post._id} primaryText={post.title} onTouchTap={onTouchTap}/>
       )
@@ -40,7 +38,6 @@ class PostsList extends React.Component {
   render () {
     return (
       <div>
-        <BackHome />
         <h1>Simple Schema Example</h1>
         <Paper>
           <List>

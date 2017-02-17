@@ -3,9 +3,8 @@ import {Form, Field} from 'simple-react-form'
 import RaisedButton from 'material-ui/RaisedButton'
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
-import {FlowRouter} from 'meteor/kadira:flow-router'
-
-import Posts from './posts'
+import {browserHistory} from 'react-router'
+import Posts from '../../../api/schema-crud/posts'
 
 const propTypes = {
   post: React.PropTypes.object
@@ -37,6 +36,7 @@ class PostsUpdate extends React.Component {
         doc={this.props.post}
         onSuccess={this.showSuccessMessage}>
           <Field fieldName='title'/>
+          <Field fieldName='title'/>
           <Field fieldName='body'/>
           <Field fieldName='date'/>
           <Field fieldName='authors'>
@@ -50,7 +50,7 @@ class PostsUpdate extends React.Component {
         </Form>
         <br/>
         <div>
-          <RaisedButton label='Back' onTouchTap={() => FlowRouter.go('simpleSchemaCrud.index')}/>
+          <RaisedButton label='Back' onTouchTap={() => browserHistory.push('/list')}/>
           <RaisedButton primary label='Save' onTouchTap={() => this.refs.form.submit()}/>
         </div>
         <p>
@@ -64,9 +64,9 @@ class PostsUpdate extends React.Component {
 
 PostsUpdate.propTypes = propTypes
 
-export default createContainer(({postId}) => {
-  const handler = Meteor.subscribe('simpleSchemaCrud.update', postId)
+export default createContainer(({params}) => {
+  const handler = Meteor.subscribe('simpleSchemaCrud.update', params._id)
   const isLoading = !handler.ready()
-  const post = Posts.findOne(postId)
+  const post = Posts.findOne(params._id)
   return {isLoading, post}
 }, PostsUpdate)
