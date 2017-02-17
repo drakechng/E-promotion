@@ -25,3 +25,4 @@ react-meteor-data
 static-html
 std:accounts-ui
 fortawesome:fontawesome
+aldeed:simple-schema

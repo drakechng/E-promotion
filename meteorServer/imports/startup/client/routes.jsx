@@ -1,7 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import injectTapEventPlugin from "react-tap-event-plugin";
 import App from '../../ui/layouts/App'
 import Dashboard from '../../ui/pages/DashboardPage'

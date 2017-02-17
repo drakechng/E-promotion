@@ -17,5 +17,4 @@ const themeDefault = getMuiTheme({
   }
 });
 
-
 export default themeDefault;
