@@ -1,5 +1,4 @@
 import React from 'react';
-import {browserHistory} from 'react-router'
 import {cyan600, pink600, purple600, orange600} from 'material-ui/styles/colors';
 import Assessment from 'material-ui/svg-icons/action/assessment';
 import Face from 'material-ui/svg-icons/action/face';
@@ -17,21 +16,6 @@ import 'flexboxgrid/css/flexboxgrid.css';
 export default class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isAuthenticated: Meteor.user()}
-    }
-
-    componentWillMount() {
-        // Check that the user is logged in before the component mounts
-        if (!this.state.isAuthenticated) {
-                        browserHistory.push('/login');
-        }
-    }
-
-    componentDidUpdate() {
-        // Navigate to a sign in page if the user isn't authenticated when data changes
-        if (!this.state.isAuthenticated) {
-                        browserHistory.push('/login');
-        }
     }
 
     render() {

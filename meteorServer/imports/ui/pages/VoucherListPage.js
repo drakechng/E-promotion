@@ -43,7 +43,8 @@ const TablePage = () => {
 
   return (
     <PageBase title="Table Page"
-              navigation="Application / Table Page">
+              navigation="Application / Table Page"
+    >
 
       <Link to="/form" >
         <FloatingActionButton style={styles.floatingActionButton}  iconStyle={{backgroundColor: pink500}}>

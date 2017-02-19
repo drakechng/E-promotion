@@ -12,6 +12,7 @@ import TablePage from '../../ui/pages/VoucherListPage'
 import List from '../../ui/components/simple-schema-crud/list'
 import Create from '../../ui/components/simple-schema-crud/create'
 import Update from '../../ui/components/simple-schema-crud/update'
+import SpotifySong from '../../ui/pages/SpotifySong'
 
 
 Meteor.startup(() =>{
@@ -19,8 +20,8 @@ Meteor.startup(() =>{
 render((
     <Router history={browserHistory}>
         <Route path="login" component={LoginPage}/>
+        <Route path="/signup" component={SignUpPage} />
         <Route path="/" component={App}>
-            <Route path="/signup" component={SignUpPage} />
             <IndexRoute component={Dashboard}/>
             <Route path="dashboard" component={Dashboard}/>
             <Route path="form" component={FormPage}/>
@@ -28,6 +29,7 @@ render((
             <Route path="list" component={List}/>
             <Route path="create" component={Create}/>
             <Route path="update/:_id" component={Update}/>
+            <Route path="spotify" component={SpotifySong}/>
             <Route path="*" component={NotFoundPage}/>
         </Route>
     </Router>
