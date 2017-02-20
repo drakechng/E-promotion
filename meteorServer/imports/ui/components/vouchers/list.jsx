@@ -6,6 +6,7 @@ import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
 import voucherData from '../../../api/vouchers/vouchersData'
 import {browserHistory} from 'react-router'
+import PageBase from '../PageBase';
 const propTypes = {
   posts: React.PropTypes.array.isRequired,
   isLoading: React.PropTypes.bool.isRequired
@@ -37,16 +38,16 @@ class PostsList extends React.Component {
 
   render () {
     return (
+        <PageBase title="Vouchers Management"
+                  navigation="Application / Vouchers Management"
+        >
       <div>
-        <h1>Vouchers Management</h1>
-        <Paper>
           <List>
-            <Subheader>Vouchers</Subheader>
             <ListItem primaryText='Create' onTouchTap={this.create}/>
             {this.renderPosts()}
           </List>
-        </Paper>
       </div>
+        </PageBase>
     )
   }
 
