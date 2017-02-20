@@ -5,50 +5,42 @@ import LeftDrawer from '../components/LeftDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from '../stylesheets/theme-default';
 import Data from '../../api/data';
-import { Tracker } from 'meteor/tracker'
+import {Tracker} from 'meteor/tracker'
 import {browserHistory} from 'react-router'
+import {connect}  from 'react-redux';
+import {toggleDrawer} from '../redux/actions/ui-actions'
+import { bindActionCreators } from 'redux'
+
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            navDrawerOpen: false,
-        };
     }
 
     componentWillMount() {
         // Check that the user is logged in before the component mounts
         Tracker.autorun(() => {
-            if(!Meteor.userId()) {
+            if (!Meteor.userId()) {
                 browserHistory.push('/login')
             }
         })
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.width !== nextProps.width) {
-            this.setState({navDrawerOpen: nextProps.width === LARGE});
-        }
-
-    }
 
     handleChangeRequestNavDrawer() {
-        this.setState({
-            navDrawerOpen: !this.state.navDrawerOpen
-        });
+        this.props.toggleDrawer();
     }
 
     render() {
-        let {navDrawerOpen} = this.state;
         const paddingLeftDrawerOpen = 236;
 
         const styles = {
             header: {
-                paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0
+                paddingLeft: this.props.navDrawerOpen ? paddingLeftDrawerOpen : 0
             },
             container: {
                 margin: '80px 20px 20px 15px',
-                paddingLeft: navDrawerOpen && this.props.width !== SMALL ? paddingLeftDrawerOpen : 0
+                paddingLeft: this.props.navDrawerOpen && this.props.width !== SMALL ? paddingLeftDrawerOpen : 0
             }
         };
 
@@ -58,9 +50,9 @@ class App extends React.Component {
                     <Header styles={styles.header}
                             handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
 
-                    <LeftDrawer navDrawerOpen={navDrawerOpen}
+                    <LeftDrawer navDrawerOpen={this.props.navDrawerOpen}
                                 menus={Data.menus}
-                                username="User Admin"/>
+                                username={Meteor.userId()}/>
 
                     <div style={styles.container}>
                         {this.props.children}
@@ -76,4 +68,14 @@ App.propTypes = {
     width: PropTypes.number
 };
 
-export default withWidth()(App);
+function mapDispatchToProps(dispatch) {
+    return {
+        toggleDrawer: bindActionCreators(toggleDrawer,dispatch)
+    };
+}
+
+const mapStateToProps = state => ({
+    navDrawerOpen: state.userInterface.navDrawerOpen,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withWidth()(App));

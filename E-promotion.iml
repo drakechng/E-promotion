@@ -25,5 +25,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
+    <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
   </component>
 </module>

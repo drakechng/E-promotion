@@ -3,7 +3,7 @@ import {Form} from 'simple-react-form'
 import RaisedButton from 'material-ui/RaisedButton'
 // import ArrayComponent from 'simple-react-form-material-ui/lib/array'
 import {browserHistory} from 'react-router'
-import Posts from '../../../api/schema-crud/posts'
+import vouchersData from '../../../api/vouchers/vouchersData'
 
 export default class PostsCreate extends React.Component {
   render () {
@@ -11,7 +11,7 @@ export default class PostsCreate extends React.Component {
       <div>
         <h1>Create a post</h1>
         <Form
-        collection={Posts}
+        collection={vouchersData}
         type='insert'
         ref='form'
         logErrors

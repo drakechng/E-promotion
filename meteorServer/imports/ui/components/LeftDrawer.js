@@ -3,8 +3,8 @@ import Drawer from 'material-ui/Drawer';
 import {spacing, typography} from 'material-ui/styles';
 import {white, blue600} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
-import {Link} from 'react-router';
 import Avatar from 'material-ui/Avatar';
+import NavLink from '../layouts/NavLink'
 
 const LeftDrawer = (props) => {
   let { navDrawerOpen } = props;
@@ -66,7 +66,7 @@ const LeftDrawer = (props) => {
               style={styles.menuItem}
               primaryText={menu.text}
               leftIcon={menu.icon}
-              containerElement={<Link to={menu.link}/>}
+              containerElement={<NavLink to={menu.link}/>}
             />
           )}
         </div>

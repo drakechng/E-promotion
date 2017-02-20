@@ -4,7 +4,7 @@ import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
-import Posts from '../../../api/schema-crud/posts'
+import voucherData from '../../../api/vouchers/vouchersData'
 import {browserHistory} from 'react-router'
 const propTypes = {
   posts: React.PropTypes.array.isRequired,
@@ -38,10 +38,10 @@ class PostsList extends React.Component {
   render () {
     return (
       <div>
-        <h1>Simple Schema Example</h1>
+        <h1>Vouchers Management</h1>
         <Paper>
           <List>
-            <Subheader>Posts</Subheader>
+            <Subheader>Vouchers</Subheader>
             <ListItem primaryText='Create' onTouchTap={this.create}/>
             {this.renderPosts()}
           </List>
@@ -56,8 +56,8 @@ PostsList.propTypes = propTypes
 PostsList.defaultProps = defaultProps
 
 export default createContainer(() => {
-  const handler = Meteor.subscribe('simpleSchemaCrud.index')
+  const handler = Meteor.subscribe('vouchers.index')
   const isLoading = !handler.ready()
-  const posts = Posts.find().fetch()
+  const posts = voucherData.find().fetch()
   return {isLoading, posts}
 }, PostsList)

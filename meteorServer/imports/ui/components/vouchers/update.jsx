@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
 import {browserHistory} from 'react-router'
-import Posts from '../../../api/schema-crud/posts'
+import vouchersData from '../../../api/vouchers/vouchersData'
 
 const propTypes = {
   post: React.PropTypes.object
@@ -36,16 +36,15 @@ class PostsUpdate extends React.Component {
         doc={this.props.post}
         onSuccess={this.showSuccessMessage}>
           <Field fieldName='title'/>
-          <Field fieldName='title'/>
-          <Field fieldName='body'/>
-          <Field fieldName='date'/>
-          <Field fieldName='authors'>
+          <Field fieldName='description'/>
+          <Field fieldName='valid_date'/>
+          <Field fieldName='vouchers'>
             <Field fieldName='name'/>
-            <Field fieldName='age'/>
+            <Field fieldName='value'/>
           </Field>
           <Field fieldName='editor'>
             <Field fieldName='name'/>
-            <Field fieldName='age'/>
+            <Field fieldName='value'/>
           </Field>
         </Form>
         <br/>
@@ -65,8 +64,8 @@ class PostsUpdate extends React.Component {
 PostsUpdate.propTypes = propTypes
 
 export default createContainer(({params}) => {
-  const handler = Meteor.subscribe('simpleSchemaCrud.update', params._id)
+  const handler = Meteor.subscribe('voucher.update', params._id)
   const isLoading = !handler.ready()
-  const post = Posts.findOne(params._id)
+  const post = vouchersData.findOne(params._id)
   return {isLoading, post}
 }, PostsUpdate)

@@ -32,6 +32,7 @@ export default class LoginPage extends React.Component {
             if (error) {
                 alert(error.reason);
             }else {
+               Meteor.call('settings.upsert',"",1,"","",false)
                 browserHistory.push('/')
                 alert("Success Now Auto Sign In")
             }});

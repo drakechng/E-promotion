@@ -8,6 +8,7 @@ import Menu from 'material-ui/svg-icons/navigation/menu';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './SearchBox';
+import {browserHistory} from 'react-router'
 
 class Header extends React.Component {
 
@@ -50,9 +51,7 @@ class Header extends React.Component {
                             targetOrigin={{horizontal: 'right', vertical: 'top'}}
                             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem key={1} primaryText="Application 1"/>
-                    <MenuItem key={2} primaryText="Application 2"/>
-                    <MenuItem key={3} primaryText="Application 3"/>
+                    <MenuItem key={1} onTouchTap={()=>browserHistory.push('/settings') } primaryText="Settings"/>
                   </IconMenu>
                   <IconMenu color={white}
                             iconButtonElement={
@@ -61,7 +60,7 @@ class Header extends React.Component {
                             targetOrigin={{horizontal: 'right', vertical: 'top'}}
                             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem primaryText="Sign out"/>
+                    <MenuItem onTouchTap={()=> Meteor.logout()} primaryText="Sign out"/>
                   </IconMenu>
                 </div>
               }
