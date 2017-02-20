@@ -3,21 +3,21 @@ import {Form} from 'simple-react-form'
 import RaisedButton from 'material-ui/RaisedButton'
 // import ArrayComponent from 'simple-react-form-material-ui/lib/array'
 import {browserHistory} from 'react-router'
-import vouchersData from '../../../api/vouchers/vouchersData'
+import estampsData from '../../../api/estamps/estampsData'
 
-export default class VouchersCreate extends React.Component {
+export default class EstampsCreate extends React.Component {
   render () {
     return (
       <div>
-        <h1>Create a voucher</h1>
+        <h1>Create a Estamp</h1>
         <Form
-        collection={vouchersData}
+        collection={estampsData}
         type='insert'
         ref='form'
         logErrors
-        onSuccess={(docId) => browserHistory.push('/vouchersList')}/>
+        onSuccess={(docId) => browserHistory.push('/estampsList')}/>
         <br/>
-        <RaisedButton label='Cancel' onTouchTap={() => browserHistory.push('/voucherList')}/>
+        <RaisedButton label='Cancel' onTouchTap={() => browserHistory.push('/estampsList')}/>
         <RaisedButton primary label='Create' onTouchTap={() => this.refs.form.submit()}/>
       </div>
     )

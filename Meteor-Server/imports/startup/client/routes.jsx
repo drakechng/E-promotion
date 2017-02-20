@@ -16,15 +16,12 @@ import PageNotFound from '../../ui/pages/PageNotFound'
 import Members from '../../ui/pages/Members'
 import Member from '../../ui/pages/Member'
 import AddMember from '../../ui/pages/AddMember'
-import { Accounts, STATES } from 'meteor/std:accounts-ui';
 
 Meteor.startup(() =>{
 render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home}/>
-            <Route path="/signin" component={() => <Accounts.ui.LoginForm />} />
-            <Route path="/signup" component={() => <Accounts.ui.LoginForm formState={STATES.SIGN_UP} />} />
             <Route path="/vouchers" component={Vouchers}>
                 <Route path="/vouchers/:title/:desc/:value/:fromDate/:toDate" component={Voucher}/>
             </Route>

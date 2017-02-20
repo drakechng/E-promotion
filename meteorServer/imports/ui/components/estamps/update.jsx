@@ -4,13 +4,13 @@ import RaisedButton from 'material-ui/RaisedButton'
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
 import {browserHistory} from 'react-router'
-import vouchersData from '../../../api/vouchers/vouchersData'
+import estampsData from '../../../api/estamps/estampsData'
 
 const propTypes = {
-  voucher: React.PropTypes.object
+  estamp: React.PropTypes.object
 }
 
-class VouchersUpdate extends React.Component {
+class EstampsUpdate extends React.Component {
 
   constructor (props) {
     super(props)
@@ -19,7 +19,7 @@ class VouchersUpdate extends React.Component {
   }
 
   showSuccessMessage () {
-    this.setState({successMessage: 'Voucher saved'})
+    this.setState({successMessage: 'Estamp saved'})
     setTimeout(() => {
       this.setState({successMessage: null})
     }, 1000)
@@ -28,29 +28,22 @@ class VouchersUpdate extends React.Component {
   render () {
     return (
       <div>
-        <h1>Voucher update</h1>
+        <h1>Estamp update</h1>
         <Form
-        collection={vouchersData}
+        collection={estampsData}
         type='update'
         ref='form'
-        doc={this.props.voucher}
+        doc={this.props.estamp}
         onSuccess={this.showSuccessMessage}>
           <Field fieldName='title'/>
           <Field fieldName='description'/>
           <Field fieldName='start_date'/>
           <Field fieldName='valid_date'/>
-          <Field fieldName='vouchers'>
-            <Field fieldName='name'/>
-            <Field fieldName='value'/>
-          </Field>
-          <Field fieldName='editor'>
-            <Field fieldName='name'/>
-            <Field fieldName='value'/>
-          </Field>
+            <Field fieldName='max'/>
         </Form>
         <br/>
         <div>
-          <RaisedButton label='Back' onTouchTap={() => browserHistory.push('/vouchersList')}/>
+          <RaisedButton label='Back' onTouchTap={() => browserHistory.push('/estampsList')}/>
           <RaisedButton primary label='Save' onTouchTap={() => this.refs.form.submit()}/>
         </div>
         <p>
@@ -62,11 +55,11 @@ class VouchersUpdate extends React.Component {
 
 }
 
-VouchersUpdate.propTypes = propTypes
+EstampsUpdate.propTypes = propTypes
 
 export default createContainer(({params}) => {
-  const handler = Meteor.subscribe('voucher.update', params._id)
+  const handler = Meteor.subscribe('estamps.update', params._id)
   const isLoading = !handler.ready()
-  const voucher = vouchersData.findOne(params._id)
-  return {isLoading, voucher}
-}, VouchersUpdate)
+  const estamp = estampsData.findOne(params._id)
+  return {isLoading, estamp}
+}, EstampsUpdate)

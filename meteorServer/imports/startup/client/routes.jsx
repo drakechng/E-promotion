@@ -8,11 +8,14 @@ import FormPage from '../../ui/pages/VoucherModifyPage'
 import LoginPage from '../../ui/pages/LoginPage'
 import SignUpPage from '../../ui/pages/SignUpPage'
 import NotFoundPage from '../../ui/pages/NotFoundPage'
-import TablePage from '../../ui/pages/VoucherListPage'
+import CustomersPage from '../../ui/pages/CustomersPage'
 import SettingsPage from '../../ui/pages/SettingsPage'
-import List from '../../ui/components/vouchers/list'
-import Create from '../../ui/components/vouchers/create'
-import Update from '../../ui/components/vouchers/update'
+import VouchersList from '../../ui/components/vouchers/list'
+import VouchersCreate from '../../ui/components/vouchers/create'
+import VouchersUpdate from '../../ui/components/vouchers/update'
+import EstampsList from '../../ui/components/estamps/list'
+import EstampsCreate from '../../ui/components/estamps/create'
+import EstampsUpdate from '../../ui/components/estamps/update'
 import SpotifySong from '../../ui/pages/SpotifySong'
 import {Provider, connect} from 'react-redux';
 import configureStore from '../../ui/redux/configureStore';
@@ -28,11 +31,14 @@ Meteor.startup(() => {
                     <IndexRoute component={Dashboard}/>
                     <Route path="dashboard" component={Dashboard}/>
                     <Route path="form" component={FormPage}/>
-                    <Route path="table" component={TablePage}/>
+                    <Route path="customersList" component={CustomersPage}/>
                     <Route path="settings" component={SettingsPage}/>
-                    <Route path="list" component={List}/>
-                    <Route path="create" component={Create}/>
-                    <Route path="update/:_id" component={Update}/>
+                    <Route path="vouchersList" component={VouchersList}/>
+                    <Route path="vouchersCreate" component={VouchersCreate}/>
+                    <Route path="vouchersUpdate/:_id" component={VouchersUpdate}/>
+                    <Route path="estampsList" component={EstampsList}/>
+                    <Route path="estampsCreate" component={EstampsCreate}/>
+                    <Route path="estampsUpdate/:_id" component={EstampsUpdate}/>
                     <Route path="spotify" component={SpotifySong}/>
                     <Route path="*" component={NotFoundPage}/>
                 </Route>

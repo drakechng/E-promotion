@@ -42,8 +42,8 @@ const TablePage = () => {
   };
 
   return (
-    <PageBase title="Table Page"
-              navigation="Application / Table Page"
+    <PageBase title="Customer Page"
+              navigation="Application / Customer Page"
     >
 
       <Link to="/form" >
