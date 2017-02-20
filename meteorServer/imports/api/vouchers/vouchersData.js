@@ -8,8 +8,8 @@ import ArrayComponent from 'simple-react-form-material-ui/lib/array'
 import ObjectComponent from 'simple-react-form-material-ui/lib/object'
 import HiddenField from '../../ui/components/HiddenField.jsx'
 
-const Posts = new Meteor.Collection('posts')
-Posts.allow({
+const vouchersData = new Meteor.Collection('vouchers')
+vouchersData.allow({
         update: () => {
             return true;
         },
@@ -35,7 +35,7 @@ const voucher = new SimpleSchema({
     }
 })
 
-Posts.attachSchema(new SimpleSchema({
+vouchersData.attachSchema(new SimpleSchema({
     title: {
         type: String,
         srf: {
@@ -97,4 +97,4 @@ Posts.attachSchema(new SimpleSchema({
 
 }))
 
-export default Posts
+export default vouchersData
