@@ -12,7 +12,7 @@ export default AddEstamp = React.createClass({
     },
     render() {
         return (
-            <li>
+            <li key ={this.props.estamp._id}>
                 <label>{this.props.estamp.title}</label>
                 <br/>
                 <label>{this.props.estamp.value}</label>

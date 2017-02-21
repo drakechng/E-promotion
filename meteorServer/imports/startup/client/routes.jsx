@@ -32,11 +32,11 @@ Meteor.startup(() => {
                 <Route path="/" component={App}>
                     <IndexRoute component={Dashboard}/>
                     <Route path="dashboard" component={Dashboard}/>
+                    <Route path="settings" component={SettingsPage}/>
                     <Route path="form" component={FormPage}/>
                     <Route path="membersList" component={MembersPage}>
                         <Route path="/membersList/:_id" component={MembersEditPage}/>
                     </Route>
-                    <Route path="settings" component={SettingsPage}/>
                     <Route path="vouchersList" component={VouchersList}/>
                     <Route path="vouchersCreate" component={VouchersCreate}/>
                     <Route path="vouchersUpdate/:_id" component={VouchersUpdate}/>

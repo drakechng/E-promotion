@@ -28,15 +28,16 @@ Meteor.methods({
         }
         return Settings.find({userId: {$in: merchantId}}).fetch();
     },
-    'members.addVouchers'(customer, voucher_id, number) {
+    'members.addVouchers'(customer, voucher_id, index,quantity) {
 
-        let key = 'vouchers.' + voucher_id;
+        let key = 'vouchers.' + voucher_id +"."+index;
+
         return MembersData.upsert({
                 merchant: this.userId,
                 customer: customer,
             }, {
                 $set: {
-                    [key]: number
+                    [key]:quantity
                 }
             }
         );

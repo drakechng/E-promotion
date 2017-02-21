@@ -10,6 +10,8 @@ import Subheader from 'material-ui/Subheader';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 import AddIcon from 'material-ui/svg-icons/action/note-add';
 import Paper from 'material-ui/Paper';
+
+
 export default class AddVoucher extends React.Component{
    constructor(){
        super();
@@ -22,20 +24,25 @@ export default class AddVoucher extends React.Component{
 
     }
     renderVouchers(voucher,index){
-        console.log(index)
+
+        let quantity = 0;
+        if(this.props.quantityMap[index] != undefined){
+           quantity = this.props.quantityMap[index];
+        }
         return(
         <ListItem
+            key = {index+"dsfsf"}
             leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={yellow600} />}
             rightIcon={<AddIcon />}
             primaryText={voucher.name}
-            secondaryText={voucher.value}
-            onTouchTap={()=>this.addVoucher(index,1)}
+            secondaryText={"S$"+voucher.value+" Total Number: "+quantity}
+            onTouchTap={()=>this.addVoucher(index,quantity+1)}
         />)
     }
     render() {
         return (
-        <Paper zDepth={3} >
-                    <List >
+        <Paper style={{marginBottom:50}} zDepth={3} >
+                    <List key = {this.props.voucher._id}>
                         <Subheader inset={true}>{this.props.voucher.title +":" + this.props.description}</Subheader>
                         <Subheader inset={true}>{"Until:"+this.props.voucher.valid_date.toLocaleString()}</Subheader>
                         {

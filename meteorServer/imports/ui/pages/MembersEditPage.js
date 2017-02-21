@@ -8,7 +8,7 @@ import estampsData from "../../api/estamps/estampsData";
 import vouchersData from "../../api/vouchers/vouchersData";
 import AddVoucher from "../components/members/AddVoucher";
 import AddEstamps from "../components/members/AddEstamp";
-const Member = React.createClass({
+const MemberEditPage = React.createClass({
     getInitialState () {
         return {
             selected: ['Default']
@@ -38,16 +38,13 @@ const Member = React.createClass({
         return filteredVouchers.map((voucher) => {
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
             let quantityMap = {};
-/*            for (let key in this.props.member.vouchers) {
+            for (let key in this.props.member.vouchers) {
                 if (key == voucher._id) {
-                    if(this.props.member.vouchers[key][index] != undefined){
-                    let key = this.props.member.vouchers[key][index];
-                    let quantity = this.props.member.vouchers[key][quantity];
-                    quantityMap.push({key:quantity})}
+                    quantityMap = this.props.member.vouchers[key]
                 }
-            }*/
+            }
             return (
-                <AddVoucher customer={this.props.member.customer} quantityMap={quantityMap} voucher={ voucher}/>
+                <AddVoucher key = {voucher._id} customer={this.props.member.customer} quantityMap={quantityMap} voucher={ voucher}/>
             );
         });
     },
@@ -66,7 +63,7 @@ const Member = React.createClass({
                 }
             }
             return (
-                <AddEstamps customer={this.props.member.customer} quantity={quantity} estamp={ estamp}/>
+                <AddEstamps key ={estamp._id} customer={this.props.member.customer} quantity={quantity} estamp={ estamp}/>
             );
         });
     },
@@ -74,13 +71,9 @@ const Member = React.createClass({
         return (
             <div>
                 <p>Vouchers</p>
-                <ul>
                     {this.renderVouchers()}
-                </ul>
                 <p>E-Stamps</p>
-                <ul>
                     {this.renderEstamps()}
-                </ul>
                 {this.props.member ?
                     <p>
                         {this.props.member._id}
@@ -100,4 +93,4 @@ export default createContainer(({params}) => {
         estamps: estampsData.find({}, {sort: {createdAt: -1}}).fetch(),
         member: MembersData.findOne({_id: params._id})
     }
-}, Member);
+}, MemberEditPage);
