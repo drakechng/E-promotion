@@ -1,11 +1,9 @@
 let initialInterfaceState = {
-    companyName:null,
-    city:null,
-    industry:null,
-    contactNumber:null
+    companyName: null,
+    city: null,
+    industry: null,
+    contactNumber: null
 };
-
-
 
 
 export default function settings(state = initialInterfaceState, action) {
@@ -15,10 +13,10 @@ export default function settings(state = initialInterfaceState, action) {
         case 'SET_SETTINGS':
             return {
                 ...state,
-                companyName:action.payload.companyName,
-                city:action.payload.city,
-                industry:action.payload.industry,
-                contactNumber:action.payload.contactNumber,
+                companyName: action.payload.companyName,
+                city: action.payload.city,
+                industry: action.payload.industry,
+                contactNumber: action.payload.contactNumber,
 
             }
         default:

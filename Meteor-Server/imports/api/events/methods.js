@@ -1,11 +1,11 @@
-import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
-import { EventsData } from './eventsData'
+import {Meteor} from "meteor/meteor";
+import {check} from "meteor/check";
+import {EventsData} from "./eventsData";
 
 Meteor.methods({
-    'events.insert'(title,desc,date) {
+    'events.insert'(title, desc, date) {
         // Make sure the user is logged in before inserting a task
-        if (! this.userId) {
+        if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
@@ -15,7 +15,7 @@ Meteor.methods({
             date,
             createdAt: new Date(),
             owner: this.userId,
-            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).username ,
+            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name : Meteor.users.findOne(this.userId).username,
         });
     },
     'events.remove'(taskId) {
@@ -31,7 +31,7 @@ Meteor.methods({
             // If the task is private, make sure only the owner can check it off
             throw new Meteor.Error('not-authorized');
         }
-        EventsData.update(taskId, { $set: { checked: setChecked } });
+        EventsData.update(taskId, {$set: {checked: setChecked}});
     },
     'events.setPrivate'(taskId, setToPrivate) {
         check(taskId, String);
@@ -44,23 +44,21 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        EventsData.update(taskId, { $set: { private: setToPrivate } });
+        EventsData.update(taskId, {$set: {private: setToPrivate}});
     },
 });
-
-
 
 
 /**
  * Created by xiongchenyu on 13/1/17.
 
-// Methods related to links
+ // Methods related to links
 
-import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
-import { EventsData } from './eventsData';
+ import { Meteor } from 'meteor/meteor';
+ import { check } from 'meteor/check';
+ import { EventsData } from './eventsData';
 
-Meteor.methods({
+ Meteor.methods({
     'events.upsert'(company_name,industry,contact) {
         check(company_name, String);
         check(industry, String);
@@ -79,4 +77,4 @@ Meteor.methods({
         );
     },
 });
-*/
+ */

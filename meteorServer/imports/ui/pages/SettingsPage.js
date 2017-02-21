@@ -1,15 +1,15 @@
-import React from 'react';
-import {Link} from 'react-router';
-import RaisedButton from 'material-ui/RaisedButton';
-import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import Toggle from 'material-ui/Toggle';
-import {grey400} from 'material-ui/styles/colors';
-import Divider from 'material-ui/Divider';
-import PageBase from '../components/PageBase';
-import {Settings} from  '../../api/settings/settings'
-import {createContainer} from 'meteor/react-meteor-data';
+import React from "react";
+import {Link} from "react-router";
+import RaisedButton from "material-ui/RaisedButton";
+import MenuItem from "material-ui/MenuItem";
+import TextField from "material-ui/TextField";
+import SelectField from "material-ui/SelectField";
+import Toggle from "material-ui/Toggle";
+import {grey400} from "material-ui/styles/colors";
+import Divider from "material-ui/Divider";
+import PageBase from "../components/PageBase";
+import {Settings} from "../../api/settings/settings";
+import {createContainer} from "meteor/react-meteor-data";
 
 const styles = {
     toggleDiv: {
@@ -40,8 +40,9 @@ class SettingsPage extends React.Component {
         }
     }
 
-    onSelectChanged (event, index, value){
-        this.setState({selectValue:value})}
+    onSelectChanged(event, index, value) {
+        this.setState({selectValue: value})
+    }
 
 
     handleSubmit(event) {
@@ -53,8 +54,9 @@ class SettingsPage extends React.Component {
         const contact = Number(event.target.elements[3].value)
 
 
-        Meteor.call('settings.upsert', company_name,city, industry, contact,disabled);
+        Meteor.call('settings.upsert', company_name, city, industry, contact, disabled);
     }
+
     render() {
         if (!this.props.settings) {
             return false;
@@ -66,7 +68,7 @@ class SettingsPage extends React.Component {
                 <form onSubmit={this.handleSubmit}>
 
                     <TextField
-                        name = "company_name"
+                        name="company_name"
                         hintText="Company Name"
                         floatingLabelText="Company Name"
                         onChange={this.onChange}
@@ -74,11 +76,12 @@ class SettingsPage extends React.Component {
                         fullWidth={true}
                     />
 
-                    <SelectField  floatingLabelText="City" onChange={this.onSelectChanged} value={this.state.selectValue} fullWidth={true}>
+                    <SelectField floatingLabelText="City" onChange={this.onSelectChanged} value={this.state.selectValue}
+                                 fullWidth={true}>
 
-                        <MenuItem value={1} primaryText="Singapore" />
-                        <MenuItem value={2} primaryText="China" />
-                        <MenuItem value={3} primaryText="Australia" />
+                        <MenuItem value={1} primaryText="Singapore"/>
+                        <MenuItem value={2} primaryText="China"/>
+                        <MenuItem value={3} primaryText="Australia"/>
                     </SelectField>
 
                     <TextField
@@ -102,7 +105,7 @@ class SettingsPage extends React.Component {
                     <div style={styles.toggleDiv}>
                         <Toggle
                             label="Disabled"
-                            defaultToggled= {this.props.settings.disabled}
+                            defaultToggled={this.props.settings.disabled}
                             labelStyle={styles.toggleLabel}
                         />
                     </div>

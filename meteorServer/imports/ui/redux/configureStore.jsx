@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware} from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers/index';
-import thunk from 'redux-thunk';
+import {createStore, applyMiddleware} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
+import rootReducer from "./reducers/index";
+import thunk from "redux-thunk";
 
 const enhancer = composeWithDevTools(
     // Middleware you want to use in development:
@@ -9,6 +9,6 @@ const enhancer = composeWithDevTools(
     applyMiddleware(thunk),
 );
 
-const store = createStore( rootReducer,  enhancer );
+const store = createStore(rootReducer, enhancer);
 
 export default store;

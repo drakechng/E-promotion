@@ -1,19 +1,15 @@
 /**
  * Created by 128183 on 1/19/2017.
  */
-import React, {Component, PropTypes} from 'react';
-import NavLink from '../Layouts/NavLink'
-import { createContainer } from 'meteor/react-meteor-data';
-import { EStampsData } from '../../api/estamps/estampsData';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar'
-import Chip from 'material-ui/Chip';
-import FlatButton from 'material-ui/FlatButton';
-import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
-import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-import Stamp from '../components/StampIcon';
-import ActionDeleteForever from 'material-ui/svg-icons/action/delete-forever';
-import { red500 } from 'material-ui/styles/colors';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import {Card, CardActions, CardMedia, CardTitle} from "material-ui/Card";
+import FlatButton from "material-ui/FlatButton";
+import HardwareKeyboardArrowUp from "material-ui/svg-icons/hardware/keyboard-arrow-up";
+import HardwareKeyboardArrowDown from "material-ui/svg-icons/hardware/keyboard-arrow-down";
+import Stamp from "../components/StampIcon";
+import ActionDeleteForever from "material-ui/svg-icons/action/delete-forever";
+import {red500} from "material-ui/styles/colors";
 
 // Task component - represents a single todo item
 export default class ManageEStamp extends Component {
@@ -33,15 +29,15 @@ export default class ManageEStamp extends Component {
     renderStamp() {
         const stampNumber = this.props.eStamps.value;
         let stamp = [];
-        for (i=0; i < stampNumber; i++) {
-            stamp[i] = i+1;
+        for (i = 0; i < stampNumber; i++) {
+            stamp[i] = i + 1;
         }
         return stamp.map((stamp) => (
-            <Stamp key = {stamp}/>
+            <Stamp key={stamp}/>
         ));
     }
 
-    increaseStamp(eStamps){
+    increaseStamp(eStamps) {
         const estamps = this.props.eStamps;
         const currentStampNumber = new Number(estamps.value);
         let newStampNumber = currentStampNumber + 1;
@@ -58,7 +54,7 @@ export default class ManageEStamp extends Component {
             username: estamps.username,
         }
         Meteor.call('updateEStampCard', eStampCard, (error) => {
-            if(error) {
+            if (error) {
                 alert("something went wrong: " + error.reason);
             } else {
                 console.log("estamp increased");
@@ -66,9 +62,9 @@ export default class ManageEStamp extends Component {
         })
     }
 
-    decreaseStamp(eStamps){
+    decreaseStamp(eStamps) {
         const estamps = this.props.eStamps;
-        const currentStampNumber =  new Number(estamps.value);
+        const currentStampNumber = new Number(estamps.value);
         const newStampNumber = currentStampNumber - 1;
 
         let eStampCard = {
@@ -83,7 +79,7 @@ export default class ManageEStamp extends Component {
             username: estamps.username,
         }
         Meteor.call('updateEStampCard', eStampCard, (error) => {
-            if(error) {
+            if (error) {
                 alert("something went wrong: " + error.reason);
             } else {
                 console.log("estamp decreased");
@@ -97,13 +93,13 @@ export default class ManageEStamp extends Component {
         console.log(this.props);
 
         return (
-            <div className = "stampCard">
+            <div className="stampCard">
                 <Card style={{
                     width: '95%',
                     margin: '0 auto'
                 }}>
                     <CardMedia
-                        style = {{margin: '40 bottom'}}
+                        style={{margin: '40 bottom'}}
                         overlay={
                             <CardTitle title="">
                                 {this.renderStamp()}
@@ -113,17 +109,17 @@ export default class ManageEStamp extends Component {
                         <img src="ui/EstampsManage/loyalty card.jpg"/>
                     </CardMedia>
                     <CardTitle title={this.props.eStamps.title}
-                               subtitle ={this.props.eStamps.desc}
+                               subtitle={this.props.eStamps.desc}
                                rightIcon={<ActionDeleteForever hoverColor={red500}
                                                                onClick={this.deleteThisTask.bind(this, this.props.eStamps._id)} />}
                     >
                     </CardTitle>
                     <CardActions>
                         <FlatButton onClick={this.increaseStamp.bind(this, this.props.eStamps)}>
-                            <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}" />
+                            <HardwareKeyboardArrowUp style="{iconStyles} color={grey400}"/>
                         </FlatButton>
                         <FlatButton onClick={this.decreaseStamp.bind(this, this.props.eStamps)}>
-                            <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}" />
+                            <HardwareKeyboardArrowDown style="{iconStyles} color={grey400}"/>
                         </FlatButton>
                         <ActionDeleteForever hoverColor={red500}
                                              onClick={this.deleteThisTask.bind(this, this.props.eStamps._id)}

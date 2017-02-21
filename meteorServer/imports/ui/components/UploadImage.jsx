@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default class UploadImage extends React.Component {
     render() {
@@ -7,11 +7,11 @@ export default class UploadImage extends React.Component {
                 <p>
                     {this.props.label}
                 </p>
-                <img src={this.props.value} />
+                <img src={this.props.value}/>
                 <TextField
                     value={this.props.value}
                     hintText='Image Url'
-                    onChange={(event) => this.props.onChange(event.target.value)} />
+                    onChange={(event) => this.props.onChange(event.target.value)}/>
                 <p>
                     {this.props.errorMessage}
                 </p>

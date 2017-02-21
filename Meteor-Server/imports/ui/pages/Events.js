@@ -1,16 +1,15 @@
-import React, {Component, PropTypes} from 'react';
-import NavLink from '../Layouts/NavLink'
-import { createContainer } from 'meteor/react-meteor-data'
-import { EventsData } from '../../api/events/eventsData'
-
-import SubNavBar from '../components/SubNavBar'
-const Events =React.createClass({
+import React, {Component, PropTypes} from "react";
+import NavLink from "../Layouts/NavLink";
+import {createContainer} from "meteor/react-meteor-data";
+import {EventsData} from "../../api/events/eventsData";
+import SubNavBar from "../components/SubNavBar";
+const Events = React.createClass({
     getInitialState () {
         return {
             hideCompleted: false,
         };
     },
-    contextTypes:{
+    contextTypes: {
         router: React.PropTypes.object
     },
     handleSubmit(event) {
@@ -39,50 +38,59 @@ const Events =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <li key={eventt.createdAt.toLocaleTimeString()}><NavLink to={"/events/"+eventt.title+"/"+eventt.date}>{eventt.title}</NavLink></li>
+                <li key={eventt.createdAt.toLocaleTimeString()}><NavLink
+                    to={"/events/"+eventt.title+"/"+eventt.date}>{eventt.title}</NavLink></li>
             );
         });
     },
 
     render(){
-        return <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
-          <SubNavBar title = "Events"/>
-          <section className="content">
-            <div className="row">
-              <ul>
+        return <div className="content-wrapper" style={{minHeight : 997+"px"}}>
+            <SubNavBar title="Events"/>
+            <section className="content">
+                <div className="row">
+                    <ul>
 
-                <form className="new-task" onSubmit={this.handleSubmit}>
-                  <table><tr>
-                    <td>Event Title:</td>
-                    <td><input
-                        type="text"
-                        placeholder=""
-                    /></td></tr>
-                    <tr><td>Event Description:</td>
-                      <td><textarea
-                          placeholder=""
-                      /></td></tr>
+                        <form className="new-task" onSubmit={this.handleSubmit}>
+                            <table>
+                                <tr>
+                                    <td>Event Title:</td>
+                                    <td><input
+                                        type="text"
+                                        placeholder=""
+                                    /></td>
+                                </tr>
+                                <tr>
+                                    <td>Event Description:</td>
+                                    <td><textarea
+                                        placeholder=""
+                                    /></td>
+                                </tr>
 
-                    <tr><td>Date:</td>
-                      <td><input
-                          type="date"
-                          placeholder=""
-                      /></td> </tr>
-                    <tr><td></td>
-                      <td><button type="submit">Submit</button></td>
-                    </tr>
-                  </table>
-                </form>
+                                <tr>
+                                    <td>Date:</td>
+                                    <td><input
+                                        type="date"
+                                        placeholder=""
+                                    /></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button type="submit">Submit</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
 
 
-                  {this.renderEvents()}
-              </ul>
-                {this.props.children}</div>
-          </section>
+                        {this.renderEvents()}
+                    </ul>
+                    {this.props.children}</div>
+            </section>
         </div>
     }
 })
-
 
 
 export default createContainer(() => {
@@ -90,7 +98,7 @@ export default createContainer(() => {
     Meteor.subscribe('events');
     return {
 
-        events1: EventsData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        events1: EventsData.find({}, {sort: {createdAt: -1}}).fetch(),
     };
 }, Events);
 

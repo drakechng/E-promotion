@@ -1,19 +1,15 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Checkbox from 'material-ui/Checkbox';
-import PersonAdd from 'material-ui/svg-icons/social/person-add';
-import Help from 'material-ui/svg-icons/action/help';
-import TextField from 'material-ui/TextField';
-import {Link} from 'react-router';
-import ThemeDefault from '../stylesheets/theme-default';
-import { Accounts } from 'meteor/accounts-base'
-import {styles} from'../stylesheets/accountStyle'
-
-import {browserHistory} from 'react-router'
+import React, {Component} from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
+import FlatButton from "material-ui/FlatButton";
+import Checkbox from "material-ui/Checkbox";
+import PersonAdd from "material-ui/svg-icons/social/person-add";
+import Help from "material-ui/svg-icons/action/help";
+import TextField from "material-ui/TextField";
+import {Link, browserHistory} from "react-router";
+import ThemeDefault from "../stylesheets/theme-default";
+import {styles} from "../stylesheets/accountStyle";
 export default class LoginPage extends React.Component {
 
     handleOnSubmit(event) {
@@ -62,10 +58,10 @@ export default class LoginPage extends React.Component {
                                         iconStyle={styles.checkRemember.iconStyle}
                                     />
 
-                                        <RaisedButton label="Login"
-                                                      type = "submit"
-                                                      primary={true}
-                                                      style={styles.loginBtn}/>
+                                    <RaisedButton label="Login"
+                                                  type="submit"
+                                                  primary={true}
+                                                  style={styles.loginBtn}/>
                                 </div>
                             </form>
                         </Paper>

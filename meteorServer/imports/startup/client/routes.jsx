@@ -1,24 +1,24 @@
-import React from 'react'
-import {render} from 'react-dom'
-import {Router, Route, browserHistory, IndexRoute} from 'react-router'
+import React from "react";
+import {render} from "react-dom";
+import {Router, Route, browserHistory, IndexRoute} from "react-router";
 import injectTapEventPlugin from "react-tap-event-plugin";
-import App from '../../ui/layouts/App'
-import Dashboard from '../../ui/pages/DashboardPage'
-import FormPage from '../../ui/pages/VoucherModifyPage'
-import LoginPage from '../../ui/pages/LoginPage'
-import SignUpPage from '../../ui/pages/SignUpPage'
-import NotFoundPage from '../../ui/pages/NotFoundPage'
-import CustomersPage from '../../ui/pages/CustomersPage'
-import SettingsPage from '../../ui/pages/SettingsPage'
-import VouchersList from '../../ui/components/vouchers/list'
-import VouchersCreate from '../../ui/components/vouchers/create'
-import VouchersUpdate from '../../ui/components/vouchers/update'
-import EstampsList from '../../ui/components/estamps/list'
-import EstampsCreate from '../../ui/components/estamps/create'
-import EstampsUpdate from '../../ui/components/estamps/update'
-import SpotifySong from '../../ui/pages/SpotifySong'
-import {Provider, connect} from 'react-redux';
-import configureStore from '../../ui/redux/configureStore';
+import App from "../../ui/layouts/App";
+import Dashboard from "../../ui/pages/DashboardPage";
+import FormPage from "../../ui/pages/VoucherModifyPage";
+import LoginPage from "../../ui/pages/LoginPage";
+import SignUpPage from "../../ui/pages/SignUpPage";
+import NotFoundPage from "../../ui/pages/NotFoundPage";
+import CustomersPage from "../../ui/pages/CustomersPage";
+import SettingsPage from "../../ui/pages/SettingsPage";
+import VouchersList from "../../ui/components/vouchers/list";
+import VouchersCreate from "../../ui/components/vouchers/create";
+import VouchersUpdate from "../../ui/components/vouchers/update";
+import EstampsList from "../../ui/components/estamps/list";
+import EstampsCreate from "../../ui/components/estamps/create";
+import EstampsUpdate from "../../ui/components/estamps/update";
+import SpotifySong from "../../ui/pages/SpotifySong";
+import {Provider} from "react-redux";
+import configureStore from "../../ui/redux/configureStore";
 
 Meteor.startup(() => {
     injectTapEventPlugin();

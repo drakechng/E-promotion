@@ -1,13 +1,13 @@
-import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
-import { VouchersData} from './vouchersData'
+import {Meteor} from "meteor/meteor";
+import {check} from "meteor/check";
+import {VouchersData} from "./vouchersData";
 
 Meteor.methods({
-    'vouchers.insert'(title,desc,value,fromDate,toDate) {
+    'vouchers.insert'(title, desc, value, fromDate, toDate) {
         check(value, String);
 
         // Make sure the user is logged in before inserting a task
-        if (! this.userId) {
+        if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
@@ -19,7 +19,7 @@ Meteor.methods({
             toDate,
             createdAt: new Date(),
             owner: this.userId,
-            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
+            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name : Meteor.users.findOne(this.userId).address,
         });
 
 
@@ -37,7 +37,7 @@ Meteor.methods({
             // If the task is private, make sure only the owner can check it off
             throw new Meteor.Error('not-authorized');
         }
-        VouchersData.update(taskId, { $set: { checked: setChecked } });
+        VouchersData.update(taskId, {$set: {checked: setChecked}});
     },
     'vouchers.setPrivate'(taskId, setToPrivate) {
         check(taskId, String);
@@ -50,20 +50,18 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        VouchersData.update(taskId, { $set: { private: setToPrivate } });
+        VouchersData.update(taskId, {$set: {private: setToPrivate}});
     },
 
     'vouchers.upsert'(_id, newTitle, newDesc, newValue) {
 
 
-
         return VouchersData.upsert(
-
             {
-                _id: _id ,
-            },{
-                $set:{
-                    UpdateAt:new Date(),
+                _id: _id,
+            }, {
+                $set: {
+                    UpdateAt: new Date(),
                     title: newTitle,
                     desc: newDesc,
                     value: newValue,

@@ -6,7 +6,7 @@
 // that the UI uses (selected id,name) and one for data (coming from Mongo)
 let initialInterfaceState = {
     navDrawerOpen: false,
-    snackbarOpen:false,
+    snackbarOpen: false,
 
 };
 
@@ -22,17 +22,17 @@ export default function userInterface(state = initialInterfaceState, action) {
         case 'TOGGLE_DRAWER_STATE':
             return {
                 ...state,
-                navDrawerOpen:!state.navDrawerOpen
+                navDrawerOpen: !state.navDrawerOpen
             }
         case 'CLOSE_SNACKBAR_STATE':
             return {
                 ...state,
-                snackbarOpen:false
+                snackbarOpen: false
             }
         case 'OPEN_SNACKBAR_STATE':
             return {
                 ...state,
-                snackbarOpen:true
+                snackbarOpen: true
             }
         default:
             return state;

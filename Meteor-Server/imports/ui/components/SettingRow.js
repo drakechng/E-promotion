@@ -1,7 +1,7 @@
 /**
  * Created by fruittec on 14/1/17.
  */
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from "react";
 
 export class SettingRow extends Component {
 

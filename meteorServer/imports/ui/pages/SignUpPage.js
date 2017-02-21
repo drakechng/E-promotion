@@ -1,40 +1,38 @@
 /**
  * Created by xiongchenyu on 16/2/17.
  */
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Checkbox from 'material-ui/Checkbox';
-import PersonAdd from 'material-ui/svg-icons/social/person-add';
-import Help from 'material-ui/svg-icons/action/help';
-import TextField from 'material-ui/TextField';
-import {Link} from 'react-router';
-import ThemeDefault from '../stylesheets/theme-default';
-import { Accounts } from 'meteor/accounts-base'
-import {styles} from'../stylesheets/accountStyle'
-import {browserHistory} from 'react-router'
+import React, {Component} from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
+import Checkbox from "material-ui/Checkbox";
+import TextField from "material-ui/TextField";
+import {Link, browserHistory} from "react-router";
+import ThemeDefault from "../stylesheets/theme-default";
+import {Accounts} from "meteor/accounts-base";
+import {styles} from "../stylesheets/accountStyle";
 
 export default class LoginPage extends React.Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
-        let username= event.target.elements[0].value;
+        let username = event.target.elements[0].value;
         let password = event.target.elements[1].value;
-        console.log(username,password)
-        Accounts.createUser({username, password,profile: {
-            type: 'm',
-            IsActive: 0
-        }}, (error) => {
+        console.log(username, password)
+        Accounts.createUser({
+            username, password, profile: {
+                type: 'm',
+                IsActive: 0
+            }
+        }, (error) => {
             if (error) {
                 alert(error.reason);
-            }else {
-               Meteor.call('settings.upsert',"",1,"","",false)
+            } else {
+                Meteor.call('settings.upsert', "", 1, "", "", false)
                 browserHistory.push('/')
                 alert("Success Now Auto Sign In")
-            }});
+            }
+        });
     }
 
     render() {
@@ -68,10 +66,10 @@ export default class LoginPage extends React.Component {
                                         iconStyle={styles.checkRemember.iconStyle}
                                     />
 
-                                        <RaisedButton label="SignUp"
-                                                      type = "submit"
-                                                      primary={true}
-                                                      style={styles.loginBtn}/>
+                                    <RaisedButton label="SignUp"
+                                                  type="submit"
+                                                  primary={true}
+                                                  style={styles.loginBtn}/>
                                 </div>
                             </form>
                         </Paper>

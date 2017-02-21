@@ -1,5 +1,5 @@
-import React,{Component} from  'react';
-import Avatar from 'material-ui/Avatar';
+import React, {Component} from "react";
+import Avatar from "material-ui/Avatar";
 
 const styles = {
     chip: {
@@ -9,7 +9,7 @@ const styles = {
 
 export default class Stamp extends Component {
     render() {
-        return(
+        return (
             <div className="stamp">
                 <Avatar style={styles.chip} src="ui/EstampsManage/E-stamps1.jpg"/>
             </div>

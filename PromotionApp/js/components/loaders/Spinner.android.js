@@ -1,43 +1,42 @@
 /* @flow */
-
-import React from 'react';
-import ProgressBarAndroid from 'react-native';
-import NativeBaseComponent from 'native-base/Components/Base/NativeBaseComponent';
-import computeProps from 'native-base/Utils/computeProps';
+import React from "react";
+import ProgressBarAndroid from "react-native";
+import NativeBaseComponent from "native-base/Components/Base/NativeBaseComponent";
+import computeProps from "native-base/Utils/computeProps";
 
 export default class SpinnerNB extends NativeBaseComponent {
 
-  prepareRootProps() {
-    const type = {
-      height: 40,
-    };
+    prepareRootProps() {
+        const type = {
+            height: 40,
+        };
 
-    const defaultProps = {
-      style: type,
-    };
+        const defaultProps = {
+            style: type,
+        };
 
-    return computeProps(this.props, defaultProps);
-  }
+        return computeProps(this.props, defaultProps);
+    }
 
 
-  render() {
-    const getColor = () => {
-      if (this.props.color) {
-        return this.props.color;
-      } else if (this.props.inverse) {
-        return this.getTheme().inverseSpinnerColor;
-      }
+    render() {
+        const getColor = () => {
+            if (this.props.color) {
+                return this.props.color;
+            } else if (this.props.inverse) {
+                return this.getTheme().inverseSpinnerColor;
+            }
 
-      return this.getTheme().defaultSpinnerColor;
-    };
+            return this.getTheme().defaultSpinnerColor;
+        };
 
-    return (
-      <ProgressBarAndroid
-        {...this.prepareRootProps()}
-        styleAttr={this.props.size ? this.props.size : 'Large'}
-        color={getColor()}
-      />
+        return (
+            <ProgressBarAndroid
+                {...this.prepareRootProps()}
+                styleAttr={this.props.size ? this.props.size : 'Large'}
+                color={getColor()}
+            />
         );
-  }
+    }
 
 }

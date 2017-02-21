@@ -1,14 +1,11 @@
 /**
  * Created by 128183 on 1/23/2017.
  */
-import React, {Component, PropTypes} from 'react';
-import NavLink from '../Layouts/NavLink'
-import { createContainer } from 'meteor/react-meteor-data';
-import { VouchersData } from '../../api/vouchers/vouchersData'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Swipe, SwipeItem } from 'swipejs/react';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 
 // Task component - represents a single todo item
 export default class ManageVoucher extends Component {
@@ -26,15 +23,16 @@ export default class ManageVoucher extends Component {
 
     handleOpen() {
         this.setState({
-           open: true,
+            open: true,
         });
     }
 
     handleClose() {
         this.setState({
-           open: false,
+            open: false,
         });
     }
+
     handleChange(e) {
         this.props.vouchers.title = e.target.value;
         this.setState({[e.target.title]: e.target.value});
@@ -43,18 +41,18 @@ export default class ManageVoucher extends Component {
     deleteThisTask() {
         console.log(this.props);
         Meteor.call('vouchers.remove', this.props.vouchers._id);
-        }
+    }
 
     updateVoucher(event) {
         event.preventDefault();
         const newTitle = event.target.elements[0].value;
         const newDesc = event.target.elements[1].value;
         const newValue = event.target.elements[2].value;
-        
+
         event.target.elements[0].value = "";
         event.target.elements[1].value = "";
         event.target.elements[2].value = "";
-        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc, newValue );
+        Meteor.call('vouchers.upsert', this.props.vouchers._id, newTitle, newDesc, newValue);
     }
 
     render() {
@@ -80,43 +78,44 @@ export default class ManageVoucher extends Component {
                     <td>{this.props.vouchers.value}</td>
                     <td>
                         <button className="delete" onClick={this.deleteThisTask.bind(this)}>
-                        &times;
+                            &times;
                         </button>
                     </td>
                     <td>
-                        <RaisedButton label="Edit" onTouchTap={this.handleOpen.bind(this)} onClick={this.handleOpen.bind(this)}/>
-                    <Dialog
-                        title="Edit Voucher"
-                        actions={actions}
-                        modal={false}
-                        open={this.state.open}
-                        onRequestClose={this.handleClose.bind(this)}
-                    >
-                        <form className="new-task" onSubmit={this.updateVoucher.bind(this)}>
-                            Title: <input
+                        <RaisedButton label="Edit" onTouchTap={this.handleOpen.bind(this)}
+                                      onClick={this.handleOpen.bind(this)}/>
+                        <Dialog
+                            title="Edit Voucher"
+                            actions={actions}
+                            modal={false}
+                            open={this.state.open}
+                            onRequestClose={this.handleClose.bind(this)}
+                        >
+                            <form className="new-task" onSubmit={this.updateVoucher.bind(this)}>
+                                Title: <input
                                 type="text"
-                                className ="update"
+                                className="update"
                                 placeholder={this.props.vouchers.title}
                                 onChange={this.handleChange}
-                                value = {this.props.vouchers.title}
+                                value={this.props.vouchers.title}
                             />
-                            Description: <input
+                                Description: <input
                                 type="text"
-                                className ="update"
+                                className="update"
                                 placeholder={this.props.vouchers.desc}
                                 onChange={this.handleChange}
-                                value = {this.props.vouchers.desc}
+                                value={this.props.vouchers.desc}
                             />
-                            Voucher Amount: <input
-                                    type="text"
-                                    className ="update"
-                                    placeholder={this.props.vouchers.value}
-                                    onChange={this.handleChange}
-                                    value = {this.props.vouchers.value}
-                                />
-                            <button type="submit" hidden ="hidden">go</button>
-                        </form>
-                    </Dialog>
+                                Voucher Amount: <input
+                                type="text"
+                                className="update"
+                                placeholder={this.props.vouchers.value}
+                                onChange={this.handleChange}
+                                value={this.props.vouchers.value}
+                            />
+                                <button type="submit" hidden="hidden">go</button>
+                            </form>
+                        </Dialog>
                     </td>
                 </tr>
                 <tr>

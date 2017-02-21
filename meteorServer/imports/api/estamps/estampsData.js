@@ -1,13 +1,13 @@
 /**
  * Created by 128183 on 1/18/2017.
  */
-import { Mongo } from 'meteor/mongo';
-import moment from 'moment'
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import Text from 'simple-react-form-material-ui/lib/text'
-import Textarea from 'simple-react-form-material-ui/lib/textarea'
-import DatePicker from 'simple-react-form-material-ui/lib/date-picker'
-import HiddenField from '../../ui/components/HiddenField.jsx'
+import {Mongo} from "meteor/mongo";
+import moment from "moment";
+import {SimpleSchema} from "meteor/aldeed:simple-schema";
+import Text from "simple-react-form-material-ui/lib/text";
+import Textarea from "simple-react-form-material-ui/lib/textarea";
+import DatePicker from "simple-react-form-material-ui/lib/date-picker";
+import HiddenField from "../../ui/components/HiddenField.jsx";
 
 const estampsData = new Mongo.Collection('estamps');
 
@@ -39,8 +39,8 @@ estampsData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode:"landscape",
-            minDate : new Date(),
+            mode: "landscape",
+            minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },
@@ -49,8 +49,8 @@ estampsData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode:"landscape",
-            minDate : new Date(),
+            mode: "landscape",
+            minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },

@@ -1,13 +1,13 @@
 /**
  * Created by 128183 on 1/18/2017.
  */
-import { EStampsData } from './estampsData'
+import {EStampsData} from "./estampsData";
 
 Meteor.methods({
-    'estamps.insert'(title,desc,value,fromDate,toDate) {
+    'estamps.insert'(title, desc, value, fromDate, toDate) {
 
         // Make sure the user is logged in before inserting a task
-        if (! this.userId) {
+        if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
@@ -19,7 +19,7 @@ Meteor.methods({
             toDate,
             createdAt: new Date(),
             owner: this.userId,
-            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name :Meteor.users.findOne(this.userId).address ,
+            username: Meteor.users.findOne(this.userId).username == null ? Meteor.users.findOne(this.userId).profile.name : Meteor.users.findOne(this.userId).address,
         });
     },
     'estamps.remove'(_id) {
@@ -33,7 +33,7 @@ Meteor.methods({
             // If the task is private, make sure only the owner can check it off
             throw new Meteor.Error('not-authorized');
         }
-        EStampsData.update(taskId, { $set: { checked: setChecked } });
+        EStampsData.update(taskId, {$set: {checked: setChecked}});
     },
     'estamps.setPrivate'(taskId, setToPrivate) {
         check(taskId, String);
@@ -46,7 +46,7 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        EStampsData.update(taskId, { $set: { private: setToPrivate } });
+        EStampsData.update(taskId, {$set: {private: setToPrivate}});
     },
     updateEStampCard(eStampsCard) {
         if (this.userId != eStampsCard.owner) {
@@ -54,7 +54,7 @@ Meteor.methods({
         }
 
         EStampsData.update(eStampsCard._id,
-            { $set: eStampsCard });
+            {$set: eStampsCard});
     },
 
 });

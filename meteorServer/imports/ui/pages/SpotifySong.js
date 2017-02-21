@@ -1,18 +1,18 @@
 /**
  * Created by fruittec on 18/2/17.
  */
-import React from 'react'
-import {FieldType} from 'simple-react-form'
-import TextField from 'material-ui/TextField'
-import {List, ListItem} from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import Paper from 'material-ui/Paper'
-import RaisedButton from 'material-ui/RaisedButton'
-import _ from 'underscore'
+import React from "react";
+import {FieldType} from "simple-react-form";
+import TextField from "material-ui/TextField";
+import {List, ListItem} from "material-ui/List";
+import Avatar from "material-ui/Avatar";
+import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
+import _ from "underscore";
 
 export default class SpotifySong extends FieldType {
 
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             tracks: []
@@ -22,7 +22,7 @@ export default class SpotifySong extends FieldType {
         this.playSong = this.playSong.bind(this)
     }
 
-    playSong () {
+    playSong() {
         if (this.state.isPlaying) return this.pauseSong()
         this.setState({isPlaying: true})
         this.audio = new Audio(this.props.value.preview_url)
@@ -32,12 +32,12 @@ export default class SpotifySong extends FieldType {
         }, 1000 * 31)
     }
 
-    pauseSong () {
+    pauseSong() {
         this.audio.pause()
         this.setState({isPlaying: false})
     }
 
-    fetch (query) {
+    fetch(query) {
         if (!query) {
             this.setState({tracks: []})
             return
@@ -52,16 +52,16 @@ export default class SpotifySong extends FieldType {
             })
     }
 
-    selectTrack (data) {
+    selectTrack(data) {
         this.props.onChange(data)
         this.setState({tracks: []})
     }
 
-    renderTracks () {
+    renderTracks() {
         if (this.state.tracks.length === 0) return
         const items = this.state.tracks.map(track => {
             const image = track.album.images[0].url
-            const avatar = <Avatar src={image} />
+            const avatar = <Avatar src={image}/>
             const artistName = track.artists[0].name
             return (
                 <ListItem
@@ -81,7 +81,7 @@ export default class SpotifySong extends FieldType {
         )
     }
 
-    renderValue () {
+    renderValue() {
         if (this.state.tracks.length !== 0 || !this.props.value) return
 
         const image = this.props.value.album.images[0].url
@@ -99,7 +99,7 @@ export default class SpotifySong extends FieldType {
         )
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <TextField

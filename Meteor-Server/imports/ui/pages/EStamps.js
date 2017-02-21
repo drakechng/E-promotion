@@ -1,19 +1,18 @@
 /**
  * Created by 128183 on 1/18/2017.
  */
-import React, {Component, PropTypes} from 'react';
-import NavLink from '../Layouts/NavLink'
-import { createContainer } from 'meteor/react-meteor-data'
-import { EStampsData } from '../../api/estamps/estampsData'
-
-import SubNavBar from '../components/SubNavBar'
-const EStamps =React.createClass({
+import React, {Component, PropTypes} from "react";
+import NavLink from "../Layouts/NavLink";
+import {createContainer} from "meteor/react-meteor-data";
+import {EStampsData} from "../../api/estamps/estampsData";
+import SubNavBar from "../components/SubNavBar";
+const EStamps = React.createClass({
     getInitialState () {
         return {
             hideCompleted: false,
         };
     },
-    contextTypes:{
+    contextTypes: {
         router: React.PropTypes.object
     },
     handleSubmit(event) {
@@ -44,45 +43,60 @@ const EStamps =React.createClass({
             const currentUserId = this.props.currentUser && this.props.currentUser._id;
 
             return (
-                <li key={eStamp.createdAt.toLocaleTimeString()}><NavLink to={"/estamps/"+eStamp.value+"/"+eStamp.fromDate}>{eStamp.value}</NavLink></li>
+                <li key={eStamp.createdAt.toLocaleTimeString()}><NavLink
+                    to={"/estamps/"+eStamp.value+"/"+eStamp.fromDate}>{eStamp.value}</NavLink></li>
             );
         });
     },
 
     render() {
         return (
-            <div  className="content-wrapper" style={{minHeight : 997+"px"}}>
-                <SubNavBar title = "New E-Stamp"/>
+            <div className="content-wrapper" style={{minHeight : 997+"px"}}>
+                <SubNavBar title="New E-Stamp"/>
                 <section className="content">
                     <div className="row">
                         <ul>
                             <form className="new-task" onSubmit={this.handleSubmit}>
-                                <table><tr>
-                                    <td>E-Stamp Title:</td>
-                                    <td><input
-                                        type="text"
-                                        placeholder=""
-                                    /></td></tr>
-                                    <tr><td> E-Stamp Description:</td>
+                                <table>
+                                    <tr>
+                                        <td>E-Stamp Title:</td>
+                                        <td><input
+                                            type="text"
+                                            placeholder=""
+                                        /></td>
+                                    </tr>
+                                    <tr>
+                                        <td> E-Stamp Description:</td>
                                         <td><textarea
                                             placeholder=""
-                                        /></td></tr>
+                                        /></td>
+                                    </tr>
                                     <tr>
                                         <td>No. of Stamps:</td>
                                         <td><input
                                             type="text"
                                             placeholder=""
-                                        /></td></tr>
-                                    <tr><td>Valid Date:</td>
+                                        /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Valid Date:</td>
                                         <td><input
                                             type="date"
                                             placeholder=""
-                                        /></td><td width="10%"><center>to</center></td><td><input
+                                        /></td>
+                                        <td width="10%">
+                                            <center>to</center>
+                                        </td>
+                                        <td><input
                                             type="date"
                                             placeholder=""
-                                        /></td></tr>
-                                    <tr><td></td>
-                                        <td><button type="submit" className ="formButton">Submit</button></td>
+                                        /></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button type="submit" className="formButton">Submit</button>
+                                        </td>
                                     </tr>
                                 </table>
                             </form>
@@ -100,6 +114,6 @@ export default createContainer(() => {
     Meteor.subscribe('estamps');
     console.log(EStampsData);
     return {
-        eStamps: EStampsData.find({}, { sort: { createdAt: -1 } }).fetch(),
+        eStamps: EStampsData.find({}, {sort: {createdAt: -1}}).fetch(),
     };
 }, EStamps);

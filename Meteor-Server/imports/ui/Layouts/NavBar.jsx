@@ -1,17 +1,13 @@
-import React, {Component, PropTypes} from 'react';
-
-import AccountsUIWrapper from '../AccountUIWrapper.jsx';
-import NavLink from './NavLink'
-export default class NavBar extends Component{
-
+import React, {Component, PropTypes} from "react";
+import AccountsUIWrapper from "../AccountUIWrapper.jsx";
+import NavLink from "./NavLink";
+export default class NavBar extends Component {
 
 
-
-
-   render(){
-        return(
+    render() {
+        return (
             <header className="main-header">
-                <NavLink className ="logo" to="/" onlyActiveOnIndex>
+                <NavLink className="logo" to="/" onlyActiveOnIndex>
                     <span className="logo-mini"><b>D</b></span>
                     <span className="logo-lg"><b>D</b>ashboard</span>
                 </NavLink>
@@ -34,7 +30,8 @@ export default class NavBar extends Component{
                                             <li>
                                                 <a href="#">
                                                     <div className="pull-left">
-                                                        <img src="/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+                                                        <img src="/img/user2-160x160.jpg" className="img-circle"
+                                                             alt="User Image"/>
                                                     </div>
                                                     <h4>
                                                         Support Team
@@ -46,7 +43,8 @@ export default class NavBar extends Component{
                                             <li>
                                                 <a href="#">
                                                     <div className="pull-left">
-                                                        <img src="/img/user3-128x128.jpg" className="img-circle" alt="User Image"/>
+                                                        <img src="/img/user3-128x128.jpg" className="img-circle"
+                                                             alt="User Image"/>
                                                     </div>
                                                     <h4>
                                                         AdminLTE Design Team
@@ -58,7 +56,8 @@ export default class NavBar extends Component{
                                             <li>
                                                 <a href="#">
                                                     <div className="pull-left">
-                                                        <img src="/img/user4-128x128.jpg" className="img-circle" alt="User Image"/>
+                                                        <img src="/img/user4-128x128.jpg" className="img-circle"
+                                                             alt="User Image"/>
                                                     </div>
                                                     <h4>
                                                         Developers
@@ -70,7 +69,8 @@ export default class NavBar extends Component{
                                             <li>
                                                 <a href="#">
                                                     <div className="pull-left">
-                                                        <img src="/img/user3-128x128.jpg" className="img-circle" alt="User Image"/>
+                                                        <img src="/img/user3-128x128.jpg" className="img-circle"
+                                                             alt="User Image"/>
                                                     </div>
                                                     <h4>
                                                         Sales Department
@@ -82,7 +82,8 @@ export default class NavBar extends Component{
                                             <li>
                                                 <a href="#">
                                                     <div className="pull-left">
-                                                        <img src="/img/user4-128x128.jpg" className="img-circle" alt="User Image"/>
+                                                        <img src="/img/user4-128x128.jpg" className="img-circle"
+                                                             alt="User Image"/>
                                                     </div>
                                                     <h4>
                                                         Reviewers
@@ -90,10 +91,12 @@ export default class NavBar extends Component{
                                                     </h4>
                                                     <p>Why not buy a new awesome theme?</p>
                                                 </a>
-                                            </li></ul></li>
-                                    <li className="footer"><a href="#">See All Messages</a></li>
+                                            </li>
                                         </ul>
                                     </li>
+                                    <li className="footer"><a href="#">See All Messages</a></li>
+                                </ul>
+                            </li>
                             <li className="dropdown notifications-menu">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                     <i className="fa fa-bell-o"></i>
@@ -150,7 +153,9 @@ export default class NavBar extends Component{
                                                         <small className="pull-right">20%</small>
                                                     </h3>
                                                     <div className="progress xs">
-                                                        <div className="progress-bar progress-bar-aqua" style={ {width: 20 + "%" } } role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <div className="progress-bar progress-bar-aqua"
+                                                             style={ {width: 20 + "%" } } role="progressbar"
+                                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                             <span className="sr-only">20% Complete</span>
                                                         </div>
                                                     </div>
@@ -163,7 +168,9 @@ export default class NavBar extends Component{
                                                         <small className="pull-right">40%</small>
                                                     </h3>
                                                     <div className="progress xs">
-                                                        <div className="progress-bar progress-bar-green" style={{ width: 40+"%"} } role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <div className="progress-bar progress-bar-green"
+                                                             style={{ width: 40+"%"} } role="progressbar"
+                                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                             <span className="sr-only">40% Complete</span>
                                                         </div>
                                                     </div>
@@ -176,7 +183,9 @@ export default class NavBar extends Component{
                                                         <small className="pull-right">60%</small>
                                                     </h3>
                                                     <div className="progress xs">
-                                                        <div className="progress-bar progress-bar-red" style={{ width: 60+"%"} } role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <div className="progress-bar progress-bar-red"
+                                                             style={{ width: 60+"%"} } role="progressbar"
+                                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                             <span className="sr-only">60% Complete</span>
                                                         </div>
                                                     </div>
@@ -189,7 +198,9 @@ export default class NavBar extends Component{
                                                         <small className="pull-right">80%</small>
                                                     </h3>
                                                     <div className="progress xs">
-                                                        <div className="progress-bar progress-bar-yellow" style={{ width: 80+"%"} } role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <div className="progress-bar progress-bar-yellow"
+                                                             style={{ width: 80+"%"} } role="progressbar"
+                                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                             <span className="sr-only">80% Complete</span>
                                                         </div>
                                                     </div>
@@ -203,48 +214,50 @@ export default class NavBar extends Component{
                                 </ul>
                             </li>
                             <AccountsUIWrapper/>
-{/*                            <li className="dropdown user user-menu">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
-                                        <span className="hidden-xs">Alexander Pierce</span>
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li className="user-header">
-                                        <img src="/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+                            {/*                            <li className="dropdown user user-menu">
+                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                             <img src="/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
+                             <span className="hidden-xs">Alexander Pierce</span>
+                             </a>
+                             <ul className="dropdown-menu">
+                             <li className="user-header">
+                             <img src="/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
 
-                                            <p>
-                                                Alexander Pierce - Web Developer
-                                                <small>Member since Nov. 2012</small>
-                                            </p>
-                                    </li>
-                                    <li className="user-body">
-                                        <div className="row">
-                                            <div className="col-xs-4 text-center">
-                                                <a href="#">Followers</a>
-                                            </div>
-                                            <div className="col-xs-4 text-center">
-                                                <a href="#">Sales</a>
-                                            </div>
-                                            <div className="col-xs-4 text-center">
-                                                <a href="#">Friends</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="user-footer">
-                                        <div className="pull-left">
-                                            <a href="#" className="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div className="pull-right">
-                                            <a href="#" className="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>*/}
+                             <p>
+                             Alexander Pierce - Web Developer
+                             <small>Member since Nov. 2012</small>
+                             </p>
+                             </li>
+                             <li className="user-body">
+                             <div className="row">
+                             <div className="col-xs-4 text-center">
+                             <a href="#">Followers</a>
+                             </div>
+                             <div className="col-xs-4 text-center">
+                             <a href="#">Sales</a>
+                             </div>
+                             <div className="col-xs-4 text-center">
+                             <a href="#">Friends</a>
+                             </div>
+                             </div>
+                             </li>
+                             <li className="user-footer">
+                             <div className="pull-left">
+                             <a href="#" className="btn btn-default btn-flat">Profile</a>
+                             </div>
+                             <div className="pull-right">
+                             <a href="#" className="btn btn-default btn-flat">Sign out</a>
+                             </div>
+                             </li>
+                             </ul>
+                             </li>*/}
                             <li>
                                 <a href="#" data-toggle="control-sidebar"><i className="fa fa-gears"></i></a>
-                            </li></ul></div>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </header>
         )
-   }
+    }
 }

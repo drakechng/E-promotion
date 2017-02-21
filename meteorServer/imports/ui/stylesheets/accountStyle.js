@@ -1,8 +1,7 @@
 /**
  * Created by xiongchenyu on 16/2/17.
  */
-
-import {grey500, white} from 'material-ui/styles/colors';
+import {grey500, white} from "material-ui/styles/colors";
 
 export const styles = {
     loginContainer: {

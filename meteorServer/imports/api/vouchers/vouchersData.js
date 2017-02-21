@@ -1,12 +1,12 @@
-import { Mongo } from 'meteor/mongo';
-import moment from 'moment'
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import Text from 'simple-react-form-material-ui/lib/text'
-import Textarea from 'simple-react-form-material-ui/lib/textarea'
-import DatePicker from 'simple-react-form-material-ui/lib/date-picker'
-import ArrayComponent from 'simple-react-form-material-ui/lib/array'
-import ObjectComponent from 'simple-react-form-material-ui/lib/object'
-import HiddenField from '../../ui/components/HiddenField.jsx'
+import {Mongo} from "meteor/mongo";
+import moment from "moment";
+import {SimpleSchema} from "meteor/aldeed:simple-schema";
+import Text from "simple-react-form-material-ui/lib/text";
+import Textarea from "simple-react-form-material-ui/lib/textarea";
+import DatePicker from "simple-react-form-material-ui/lib/date-picker";
+import ArrayComponent from "simple-react-form-material-ui/lib/array";
+import ObjectComponent from "simple-react-form-material-ui/lib/object";
+import HiddenField from "../../ui/components/HiddenField.jsx";
 
 const vouchersData = new Mongo.Collection('vouchers')
 vouchersData.allow({
@@ -53,8 +53,8 @@ vouchersData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode:"landscape",
-            minDate : new Date(),
+            mode: "landscape",
+            minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },
@@ -63,8 +63,8 @@ vouchersData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode:"landscape",
-            minDate : new Date(),
+            mode: "landscape",
+            minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },

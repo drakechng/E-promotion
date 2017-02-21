@@ -1,15 +1,15 @@
-import React, {PropTypes} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from '../components/Header';
-import LeftDrawer from '../components/LeftDrawer';
-import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
-import ThemeDefault from '../stylesheets/theme-default';
-import Data from '../../api/data';
-import {Tracker} from 'meteor/tracker'
-import {browserHistory} from 'react-router'
-import {connect}  from 'react-redux';
-import {toggleDrawer} from '../redux/actions/ui-actions'
-import { bindActionCreators } from 'redux'
+import React, {PropTypes} from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Header from "../components/Header";
+import LeftDrawer from "../components/LeftDrawer";
+import withWidth, {SMALL} from "material-ui/utils/withWidth";
+import ThemeDefault from "../stylesheets/theme-default";
+import Data from "../../api/data";
+import {Tracker} from "meteor/tracker";
+import {browserHistory} from "react-router";
+import {connect} from "react-redux";
+import {toggleDrawer} from "../redux/actions/ui-actions";
+import {bindActionCreators} from "redux";
 
 class App extends React.Component {
 
@@ -70,7 +70,7 @@ App.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleDrawer: bindActionCreators(toggleDrawer,dispatch)
+        toggleDrawer: bindActionCreators(toggleDrawer, dispatch)
     };
 }
 
