@@ -1,10 +1,14 @@
 import React from 'react'
 import {Form, Field} from 'simple-react-form'
 import RaisedButton from 'material-ui/RaisedButton'
+import Snackbar from 'material-ui/Snackbar';
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
 import {browserHistory} from 'react-router'
 import vouchersData from '../../../api/vouchers/vouchersData'
+import {connect} from 'react-redux'
+import {openSnackBar,closeSnackBar} from '../../redux/actions/ui-actions'
+import {bindActionCreators} from 'redux'
 
 const propTypes = {
   voucher: React.PropTypes.object
@@ -14,16 +18,14 @@ class VouchersUpdate extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = {}
-    this.showSuccessMessage = this.showSuccessMessage.bind(this)
   }
+    handleTouchTap ()  {
+        this.props.openSnackBar()
+    }
 
-  showSuccessMessage () {
-    this.setState({successMessage: 'Voucher saved'})
-    setTimeout(() => {
-      this.setState({successMessage: null})
-    }, 1000)
-  }
+    handleRequestClose () {
+      this.props.closeSnackBar()
+    }
 
   render () {
     return (
@@ -34,7 +36,7 @@ class VouchersUpdate extends React.Component {
         type='update'
         ref='form'
         doc={this.props.voucher}
-        onSuccess={this.showSuccessMessage}>
+        onSuccess={()=>this.handleTouchTap()}>
           <Field fieldName='title'/>
           <Field fieldName='description'/>
           <Field fieldName='start_date'/>
@@ -53,9 +55,12 @@ class VouchersUpdate extends React.Component {
           <RaisedButton label='Back' onTouchTap={() => browserHistory.push('/vouchersList')}/>
           <RaisedButton primary label='Save' onTouchTap={() => this.refs.form.submit()}/>
         </div>
-        <p>
-          {this.state.successMessage}
-        </p>
+          <Snackbar
+              open={this.props.snackbarOpen}
+              message="Vouchers Updated"
+              autoHideDuration={2000}
+              onRequestClose={()=>this.handleRequestClose()}
+          />
       </div>
     )
   }
@@ -64,9 +69,23 @@ class VouchersUpdate extends React.Component {
 
 VouchersUpdate.propTypes = propTypes
 
-export default createContainer(({params}) => {
+const container = createContainer(({params}) => {
   const handler = Meteor.subscribe('voucher.update', params._id)
   const isLoading = !handler.ready()
   const voucher = vouchersData.findOne(params._id)
   return {isLoading, voucher}
 }, VouchersUpdate)
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        openSnackBar: bindActionCreators(openSnackBar,dispatch),
+        closeSnackBar: bindActionCreators(closeSnackBar,dispatch)
+    };
+}
+
+const mapStateToProps = state => ({
+    snackbarOpen: state.userInterface.snackbarOpen,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(container);

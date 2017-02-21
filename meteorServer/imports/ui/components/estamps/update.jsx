@@ -1,11 +1,14 @@
 import React from 'react'
 import {Form, Field} from 'simple-react-form'
 import RaisedButton from 'material-ui/RaisedButton'
+import Snackbar from 'material-ui/Snackbar';
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor'
 import {browserHistory} from 'react-router'
 import estampsData from '../../../api/estamps/estampsData'
-
+import {connect} from 'react-redux'
+import {openSnackBar,closeSnackBar} from '../../redux/actions/ui-actions'
+import {bindActionCreators} from 'redux'
 const propTypes = {
   estamp: React.PropTypes.object
 }
@@ -14,16 +17,14 @@ class EstampsUpdate extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = {}
-    this.showSuccessMessage = this.showSuccessMessage.bind(this)
   }
+    handleTouchTap ()  {
+        this.props.openSnackBar()
+    }
 
-  showSuccessMessage () {
-    this.setState({successMessage: 'Estamp saved'})
-    setTimeout(() => {
-      this.setState({successMessage: null})
-    }, 1000)
-  }
+    handleRequestClose () {
+        this.props.closeSnackBar()
+    }
 
   render () {
     return (
@@ -34,7 +35,7 @@ class EstampsUpdate extends React.Component {
         type='update'
         ref='form'
         doc={this.props.estamp}
-        onSuccess={this.showSuccessMessage}>
+        onSuccess={()=>this.handleTouchTap()}>
           <Field fieldName='title'/>
           <Field fieldName='description'/>
           <Field fieldName='start_date'/>
@@ -46,9 +47,12 @@ class EstampsUpdate extends React.Component {
           <RaisedButton label='Back' onTouchTap={() => browserHistory.push('/estampsList')}/>
           <RaisedButton primary label='Save' onTouchTap={() => this.refs.form.submit()}/>
         </div>
-        <p>
-          {this.state.successMessage}
-        </p>
+          <Snackbar
+              open={this.props.snackbarOpen}
+              message="Estamps Updated"
+              autoHideDuration={2000}
+              onRequestClose={()=>this.handleRequestClose()}
+          />
       </div>
     )
   }
@@ -57,9 +61,22 @@ class EstampsUpdate extends React.Component {
 
 EstampsUpdate.propTypes = propTypes
 
-export default createContainer(({params}) => {
+const container = createContainer(({params}) => {
   const handler = Meteor.subscribe('estamps.update', params._id)
   const isLoading = !handler.ready()
   const estamp = estampsData.findOne(params._id)
   return {isLoading, estamp}
 }, EstampsUpdate)
+
+function mapDispatchToProps(dispatch) {
+    return {
+        openSnackBar: bindActionCreators(openSnackBar,dispatch),
+        closeSnackBar: bindActionCreators(closeSnackBar,dispatch)
+    };
+}
+
+const mapStateToProps = state => ({
+    snackbarOpen: state.userInterface.snackbarOpen,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(container);

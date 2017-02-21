@@ -25,8 +25,7 @@ export default class LoginPage extends React.Component {
         let password = event.target.elements[1].value;
         console.log(username,password)
         Accounts.createUser({username, password,profile: {
-            type: 'c',
-            point: 0,
+            type: 'm',
             IsActive: 0
         }}, (error) => {
             if (error) {

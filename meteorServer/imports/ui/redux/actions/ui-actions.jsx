@@ -5,3 +5,17 @@ export function toggleDrawer() {
         });
     }
 }
+export function openSnackBar() {
+    return (dispatch, getState) => {
+        dispatch ({
+            type: 'OPEN_SNACKBAR_STATE'
+        });
+    }
+}
+export function closeSnackBar() {
+    return (dispatch, getState) => {
+        dispatch ({
+            type: 'CLOSE_SNACKBAR_STATE'
+        });
+    }
+}

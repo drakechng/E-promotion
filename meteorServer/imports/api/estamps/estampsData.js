@@ -10,6 +10,7 @@ import DatePicker from 'simple-react-form-material-ui/lib/date-picker'
 import HiddenField from '../../ui/components/HiddenField.jsx'
 
 const estampsData = new Mongo.Collection('estamps');
+
 estampsData.allow({
         update: () => {
             return true;
@@ -35,19 +36,21 @@ estampsData.attachSchema(new SimpleSchema({
     },
     start_date: {
         type: Date,
-        optional: true,
+        min: new Date(),
         srf: {
             type: DatePicker,
             mode:"landscape",
+            minDate : new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },
     valid_date: {
         type: Date,
-        optional: true,
+        min: new Date(),
         srf: {
             type: DatePicker,
             mode:"landscape",
+            minDate : new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },

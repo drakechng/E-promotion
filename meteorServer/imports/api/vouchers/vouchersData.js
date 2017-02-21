@@ -34,7 +34,6 @@ const voucher = new SimpleSchema({
         }
     }
 })
-
 vouchersData.attachSchema(new SimpleSchema({
     title: {
         type: String,
@@ -51,19 +50,21 @@ vouchersData.attachSchema(new SimpleSchema({
     },
     start_date: {
         type: Date,
-        optional: true,
+        min: new Date(),
         srf: {
             type: DatePicker,
             mode:"landscape",
+            minDate : new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },
     valid_date: {
         type: Date,
-        optional: true,
+        min: new Date(),
         srf: {
             type: DatePicker,
             mode:"landscape",
+            minDate : new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
     },

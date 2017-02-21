@@ -15,7 +15,7 @@ export default class VouchersCreate extends React.Component {
         type='insert'
         ref='form'
         logErrors
-        onSuccess={(docId) => browserHistory.push('/vouchersList')}/>
+        onSuccess={() => browserHistory.push('/vouchersList')}/>
         <br/>
         <RaisedButton label='Cancel' onTouchTap={() => browserHistory.push('/voucherList')}/>
         <RaisedButton primary label='Create' onTouchTap={() => this.refs.form.submit()}/>
