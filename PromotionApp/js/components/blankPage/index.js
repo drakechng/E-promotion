@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {connect} from "react-redux-meteor";
+import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
 import {Container, Header, Title, Content, Text, Button, Icon, Alert} from "native-base";
 import Meteor, {createContainer} from "react-native-meteor";
@@ -67,8 +67,8 @@ function bindAction(dispatch) {
 const mapStateToProps = state => ({
     navigation: state.cardNavigation,
     name: state.user.name,
-    index: state.list.selectedIndex,
-    list: state.list.list,
+    index: state.shop.selectedIndex,
+    shopId : state.shop.shopId,
 });
 
 
@@ -80,9 +80,9 @@ const container = createContainer((props) => {
         member: handle.ready(),
         members: Meteor.collection('memberships').findOne({
             customer: Meteor.userId(),
-            merchant: props.list[props.index].id
+            merchant: props.shopId,
         }),
     };
 }, BlankPage);
 
-export default connect([],mapStateToProps, bindAction)(container);
+export default connect(mapStateToProps, bindAction)(container);

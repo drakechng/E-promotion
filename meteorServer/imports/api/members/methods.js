@@ -20,14 +20,6 @@ Meteor.methods({
             }
         );
     },
-    'members.fetchMerchants'(customer) {
-        let merchants = MembersData.find({customer: customer}, {fields: {merchant: 1}}).fetch();
-        let merchantId = [];
-        for (let key in merchants) {
-            merchantId.push(merchants[key].merchant)
-        }
-        return Settings.find({userId: {$in: merchantId}}).fetch();
-    },
     'members.addVouchers'(customer, voucher_id, index,quantity) {
 
         let key = 'vouchers.' + voucher_id +"."+index;
