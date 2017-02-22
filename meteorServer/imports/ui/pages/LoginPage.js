@@ -7,7 +7,7 @@ import Paper from "material-ui/Paper";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import ThemeDefault from "../stylesheets/theme-default";
 import {styles} from "../stylesheets/accountStyle";
-import {Link, browserHistory} from "react-router";
+import {Link} from "react-router";
 /**
  * Form.propTypes = {
  *   fields: React.PropTypes.object.isRequired,

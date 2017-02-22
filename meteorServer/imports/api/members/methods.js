@@ -4,7 +4,6 @@
 // Methods related to links
 import {Meteor} from "meteor/meteor";
 import {MembersData} from "./membersData";
-import {Settings} from "../settings/settings";
 
 Meteor.methods({
     'members.upsert'(customer, options) {
@@ -20,21 +19,21 @@ Meteor.methods({
             }
         );
     },
-    'members.addVouchers'(customer, voucher_id, index,quantity) {
+    'members.addVouchers'(customer, voucher_id, index, quantity) {
 
-        let key = 'vouchers.' + voucher_id +"."+index;
+        let key = 'vouchers.' + voucher_id + "." + index;
 
         return MembersData.upsert({
                 merchant: this.userId,
                 customer: customer,
             }, {
                 $set: {
-                    [key]:quantity
+                    [key]: active
                 }
             }
         );
     },
-    'members.addEstamps'(customer, estamp_id, number) {
+    'members.addEstamps'(customer, estamp_id, active) {
 
         let key = 'estamps.' + estamp_id;
         return MembersData.upsert({
@@ -42,7 +41,7 @@ Meteor.methods({
                 customer: customer,
             }, {
                 $set: {
-                    [key]: number
+                    [key]: active
                 }
             }
         );

@@ -15,18 +15,18 @@ import VouchersUpdate from "../../ui/components/vouchers/update";
 import EstampsList from "../../ui/components/estamps/list";
 import EstampsCreate from "../../ui/components/estamps/create";
 import EstampsUpdate from "../../ui/components/estamps/update";
-import AddMembersPage from "../../ui/pages/AddMembersPage"
+import AddMembersPage from "../../ui/pages/AddMembersPage";
 import SpotifySong from "../../ui/pages/SpotifySong";
 import {Provider} from "react-redux";
 import configureStore from "../../ui/redux/configureStore";
-import { Accounts, STATES } from '../../ui/pages/LoginPage';
+import {Accounts, STATES} from "../../ui/pages/LoginPage";
 
 Meteor.startup(() => {
     injectTapEventPlugin();
     render((
         <Provider store={configureStore}>
             <Router history={browserHistory}>
-                <Route path="login" component={() => <Accounts.ui.LoginForm />} />
+                <Route path="login" component={() => <Accounts.ui.LoginForm />}/>
                 <Route path="/" component={App}>
                     <IndexRoute component={Dashboard}/>
                     <Route path="dashboard" component={Dashboard}/>

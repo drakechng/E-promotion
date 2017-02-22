@@ -23,47 +23,39 @@ const MemberEditPage = React.createClass({
 
     },
     getVoucher(){
-        let options = []
-        this.props.vouchers.map((voucher) =>
-            options.push({value: voucher._id, lable: voucher.value})
+        this.props.vouchers.map(voucher => {
+                return {value: voucher._id, lable: voucher.value};
+            }
         )
-        console.log(options)
-        return options
     },
     renderVouchers() {
         let filteredVouchers = this.props.vouchers;
-        if (this.state.hideCompleted) {
-            filteredVouchers = filteredVouchers.filter(voucher => !voucher.checked);
-        }
         return filteredVouchers.map((voucher) => {
-            const currentUserId = this.props.currentUser && this.props.currentUser._id;
             let quantityMap = {};
             for (let key in this.props.member.vouchers) {
                 if (key == voucher._id) {
-                    quantityMap = this.props.member.vouchers[key]
+                    quantityMap = this.props.member.vouchers[key];
+                    break;
                 }
             }
             return (
-                <AddVoucher key = {voucher._id} customer={this.props.member.customer} quantityMap={quantityMap} voucher={ voucher}/>
+                <AddVoucher key={voucher._id} customer={this.props.member.customer} quantityMap={quantityMap}
+                            voucher={ voucher}/>
             );
         });
     },
+
     renderEstamps() {
         let filteredEstamps = this.props.estamps;
-        if (this.state.hideCompleted) {
-            filteredEstamps = filteredEstamps.filter(estamp => !estamp.checked);
-        }
         return filteredEstamps.map((estamp) => {
-            const currentUserId = this.props.currentUser && this.props.currentUser._id;
-            let quantity = 0;
+            let active = false;
             for (let key in this.props.member.estamps) {
                 if (key == estamp._id) {
-
-                    quantity = this.props.member.estamps[key]
+                    active = this.props.member.estamps[key]
                 }
             }
             return (
-                <AddEstamps key ={estamp._id} customer={this.props.member.customer} quantity={quantity} estamp={ estamp}/>
+                <AddEstamps key={estamp._id} customer={this.props.member.customer} active={active} estamp={ estamp}/>
             );
         });
     },
@@ -71,9 +63,9 @@ const MemberEditPage = React.createClass({
         return (
             <div>
                 <p>Vouchers</p>
-                    {this.renderVouchers()}
+                {this.renderVouchers()}
                 <p>E-Stamps</p>
-                    {this.renderEstamps()}
+                {this.renderEstamps()}
             </div>
         )
     }

@@ -6,10 +6,10 @@ import {createContainer} from "meteor/react-meteor-data";
 
 export default AddVoucher = React.createClass({
     addVoucher(){
-        Meteor.call('members.addVouchers', this.props.customer, this.props.voucher._id, this.props.quantity + 1)
+        Meteor.call('members.addVouchers', this.props.customer, this.props.voucher._id, this.props.active + 1)
     },
     componentDidMount(){
-        this.setState({count: this.props.quantity});
+        this.setState({count: this.props.active});
     },
     render() {
         return (
@@ -19,7 +19,7 @@ export default AddVoucher = React.createClass({
                 <label>{this.props.voucher.value}</label>
 
                 <br/>
-                <label>{this.props.quantity}</label>
+                <label>{this.props.active}</label>
                 <button onClick={()=>this.addVoucher()}>+</button>
             </li>
         )

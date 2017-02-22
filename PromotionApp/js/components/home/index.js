@@ -29,7 +29,7 @@ class Home extends Component {
         }),
     }
 
-    pushRoute(route,i,id) {
+    pushRoute(route, i, id) {
         this.props.setShop(id);
         this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
     }
@@ -51,7 +51,7 @@ class Home extends Component {
 
                 <Content>
                     <Grid style={styles.mt}>
-                        {this.props.merchantsSettings.map((settings,i) =>
+                        {this.props.merchantsSettings.map((settings, i) =>
                             <Row key={i}>
                                 <TouchableOpacity
                                     style={styles.row}

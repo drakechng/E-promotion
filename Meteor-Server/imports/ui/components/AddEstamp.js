@@ -6,10 +6,10 @@ import {createContainer} from "meteor/react-meteor-data";
 
 export default AddEstamp = React.createClass({
     addEstamp(){
-        Meteor.call('members.addEstamps', this.props.customer, this.props.estamp._id, this.props.quantity + 1)
+        Meteor.call('members.addEstamps', this.props.customer, this.props.estamp._id, this.props.active + 1)
     },
     componentDidMount(){
-        this.setState({count: this.props.quantity});
+        this.setState({count: this.props.active});
     },
     render() {
         return (
@@ -19,7 +19,7 @@ export default AddEstamp = React.createClass({
                 <label>{this.props.estamp.value}</label>
 
                 <br/>
-                <label>{this.props.quantity}</label>
+                <label>{this.props.active}</label>
                 <button onClick={()=>this.addEstamp()}>+</button>
             </li>
         )

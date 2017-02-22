@@ -41,11 +41,11 @@ const Member = React.createClass({
             for (let key in this.props.member.vouchers) {
                 if (key == voucher._id) {
 
-                    quantity = this.props.member.vouchers[key]
+                    active = this.props.member.vouchers[key]
                 }
             }
             return (
-                <AddVoucher customer={this.props.member.customer} quantity={quantity} voucher={ voucher}/>
+                <AddVoucher customer={this.props.member.customer} quantity={active} voucher={ voucher}/>
             );
         });
     },
@@ -60,11 +60,11 @@ const Member = React.createClass({
             for (let key in this.props.member.estamps) {
                 if (key == estamp._id) {
 
-                    quantity = this.props.member.estamps[key]
+                    active = this.props.member.estamps[key]
                 }
             }
             return (
-                <AddEstamps customer={this.props.member.customer} quantity={quantity} estamp={ estamp}/>
+                <AddEstamps customer={this.props.member.customer} quantity={active} estamp={ estamp}/>
             );
         });
     },

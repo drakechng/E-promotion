@@ -46,7 +46,8 @@ class BlankPage extends Component {
                 <Content padder>
                     <Text>
                         {this.props.members != null &&
-                        JSON.stringify(this.props.members.vouchers)
+                        JSON.stringify(this.props.members.vouchers) +
+                        JSON.stringify(this.props.members.estamps)
 
                         }
                         {(!isNaN(index)) ? list[index].company_name : 'Create Something Awesome . . .'}
@@ -68,7 +69,7 @@ const mapStateToProps = state => ({
     navigation: state.cardNavigation,
     name: state.user.name,
     index: state.shop.selectedIndex,
-    shopId : state.shop.shopId,
+    shopId: state.shop.shopId,
 });
 
 
