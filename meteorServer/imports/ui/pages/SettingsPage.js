@@ -59,6 +59,9 @@ class SettingsPage extends React.Component {
 
     render() {
         if (!this.props.settings) {
+            if(this.props.ready){
+                Meteor.call('settings.upsert', "", 1, "", "", false)
+            }
             return false;
         }
 
@@ -130,8 +133,9 @@ class SettingsPage extends React.Component {
 ;
 
 export default createContainer(() => {
-    Meteor.subscribe('settings');
+    const sub = Meteor.subscribe('settings');
     return {
         settings: Settings.findOne(),
+        ready:sub.ready()
     };
 }, SettingsPage);

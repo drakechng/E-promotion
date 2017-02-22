@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {TouchableOpacity} from "react-native";
-import {connect} from "react-redux";
+import {connect} from "react-redux-meteor";
 import {actions} from "react-native-navigation-redux-helpers";
 import {Container, Header, Title, Content, Text, Button, Icon} from "native-base";
 import {Grid, Row} from "react-native-easy-grid";
@@ -37,10 +37,7 @@ class Home extends Component {
     setShop(members) {
         let shop = [];
         if (members != null) {
-            members.map((member) =>
-                shop.push(member.merchant)
-            )
-
+           shop = members.map(member => member.merchant )
             this.props.setShop(shop)
         }
     }
@@ -95,7 +92,7 @@ const mapStateToProps = state => ({
 });
 
 
-const connector = connect(mapStateToProps, bindAction)(Home);
+const connector = connect([],mapStateToProps, bindAction)(Home);
 
 export default createContainer((props) => {
     const handle = Meteor.subscribe("members");

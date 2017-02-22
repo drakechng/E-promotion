@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
+import {connect} from "react-redux-meteor";
 import {Content, Text, List, ListItem} from "native-base";
 import {setIndex} from "../../actions/shopList";
 import navigateTo from "../../actions/sideBarNav";
@@ -44,4 +44,4 @@ const mapStateToProps = state => ({
     navigation: state.cardNavigation,
 });
 
-export default connect(mapStateToProps, bindAction)(SideBar);
+export default connect([],mapStateToProps, bindAction)(SideBar);

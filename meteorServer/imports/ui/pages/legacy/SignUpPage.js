@@ -8,9 +8,9 @@ import RaisedButton from "material-ui/RaisedButton";
 import Checkbox from "material-ui/Checkbox";
 import TextField from "material-ui/TextField";
 import {Link, browserHistory} from "react-router";
-import ThemeDefault from "../stylesheets/theme-default";
+import ThemeDefault from "../../stylesheets/theme-default";
 import {Accounts} from "meteor/accounts-base";
-import {styles} from "../stylesheets/accountStyle";
+import {styles} from "../../stylesheets/accountStyle";
 
 export default class LoginPage extends React.Component {
 

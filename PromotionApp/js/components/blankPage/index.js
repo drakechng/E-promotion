@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
+import {connect} from "react-redux-meteor";
 import {actions} from "react-native-navigation-redux-helpers";
 import {Container, Header, Title, Content, Text, Button, Icon, Alert} from "native-base";
 import Meteor, {createContainer} from "react-native-meteor";
@@ -85,4 +85,4 @@ const container = createContainer((props) => {
     };
 }, BlankPage);
 
-export default connect(mapStateToProps, bindAction)(container);
+export default connect([],mapStateToProps, bindAction)(container);

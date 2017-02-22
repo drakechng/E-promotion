@@ -1,100 +1,312 @@
-import React, {Component} from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import React from "react";
+import {Accounts, STATES} from "meteor/std:accounts-ui";
+import {RaisedButton, FlatButton, FontIcon, TextField, Snackbar} from "material-ui";
+import {socialButtonsColors, socialButtonIcons} from "./social_buttons_config";
+import {green500, red500, yellow600, lightBlue600} from "material-ui/styles/colors";
 import Paper from "material-ui/Paper";
-import RaisedButton from "material-ui/RaisedButton";
-import FlatButton from "material-ui/FlatButton";
-import Checkbox from "material-ui/Checkbox";
-import PersonAdd from "material-ui/svg-icons/social/person-add";
-import Help from "material-ui/svg-icons/action/help";
-import TextField from "material-ui/TextField";
-import {Link, browserHistory} from "react-router";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import ThemeDefault from "../stylesheets/theme-default";
 import {styles} from "../stylesheets/accountStyle";
-export default class LoginPage extends React.Component {
+import {Link, browserHistory} from "react-router";
+/**
+ * Form.propTypes = {
+ *   fields: React.PropTypes.object.isRequired,
+ *   buttons: React.PropTypes.object.isRequired,
+ *   error: React.PropTypes.string,
+ *   ready: React.PropTypes.bool
+ * };
+ */
+Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_AND_EMAIL',
+});
 
-    handleOnSubmit(event) {
-        event.preventDefault();
-        console.log(this.refs)
-        let emailAddress = event.target.elements[0].value;
-        let password = event.target.elements[1].value;
-
-        Meteor.loginWithPassword(emailAddress, password, (error) => {
-            if (error) {
-                console.log(error);
-            } else {
-                browserHistory.push('/')
-            }
-        });
+class LoginForm extends Accounts.ui.LoginForm {
+    componentWillMount() {
+        // FIXME hack to solve issue #18
     }
+}
+
+class Form extends Accounts.ui.Form {
 
     render() {
+        const {
+            hasPasswordService,
+            oauthServices,
+            fields,
+            buttons,
+            error,
+            message,
+            ready = true,
+            className,
+            formState
+        } = this.props;
         return (
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
                     <div style={styles.loginContainer}>
 
                         <Paper style={styles.paper}>
+                            <form
+                                ref={(ref) => this.form = ref}
+                                className={["accounts", className].join(' ')}>
+                                {Object.keys(fields).length > 0
+                                    ? (<Accounts.ui.Fields fields={fields}/>)
+                                    : null}
+                                <Accounts.ui.Buttons buttons={buttons}/>
+                                <br/>
+                                {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+                                    ? (
+                                        <div className="or-sep">
+                                            <Accounts.ui.PasswordOrService oauthServices={oauthServices}/>
+                                        </div>
+                                    )
+                                    : null}
+                                {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+                                    ? (<Accounts.ui.SocialButtons oauthServices={oauthServices}/>)
+                                    : null}
 
-                            <form onSubmit={this.handleOnSubmit}>
-                                <TextField
-                                    ref="emailAddress"
-                                    hintText="E-mail"
-                                    floatingLabelText="E-mail"
-                                    fullWidth={true}
-                                />
-                                <TextField
-                                    ref="password"
-                                    hintText="Password"
-                                    floatingLabelText="Password"
-                                    fullWidth={true}
-                                    type="password"
-                                />
-
-                                <div>
-                                    <Checkbox
-                                        label="Remember me"
-                                        style={styles.checkRemember.style}
-                                        labelStyle={styles.checkRemember.labelStyle}
-                                        iconStyle={styles.checkRemember.iconStyle}
-                                    />
-
-                                    <RaisedButton label="Login"
-                                                  type="submit"
-                                                  primary={true}
-                                                  style={styles.loginBtn}/>
-                                </div>
+                                {formState == STATES.PROFILE
+                                    ? (<Link to="/">jump to main</Link>)
+                                    : null}
+                                <br/>
+                                <Accounts.ui.FormMessage {...message}/>
                             </form>
                         </Paper>
-
-                        <div style={styles.buttonsDiv}>
-                            <FlatButton
-                                label="Register"
-                                href="/signup"
-                                style={styles.flatButton}
-                                icon={<PersonAdd />}
-                            />
-
-                            <FlatButton
-                                label="Forgot Password?"
-                                href="/"
-                                style={styles.flatButton}
-                                icon={<Help />}
-                            />
-                        </div>
-
-                        <div style={styles.buttonsDiv}>
-                            <Link to="/" style={{...styles.btn, ...styles.btnFacebook}}>
-                                <i className="fa fa-facebook fa-lg"/>
-                                <span style={styles.btnSpan}>Log in with Facebook</span>
-                            </Link>
-                            <Link to="/" style={{...styles.btn, ...styles.btnGoogle}}>
-                                <i className="fa fa-google-plus fa-lg"/>
-                                <span style={styles.btnSpan}>Log in with Google</span>
-                            </Link>
-                        </div>
                     </div>
                 </div>
+
             </MuiThemeProvider>
         );
     }
-};
+}
+
+class Buttons extends Accounts.ui.Buttons {
+}
+class Button extends Accounts.ui.Button {
+    render() {
+        const {
+            label,
+            href = null,
+            type,
+            disabled = false,
+            onClick,
+            className,
+            icon
+        } = this.props;
+        return type == 'link'
+            ? (
+                <FlatButton
+                    href={href}
+                    label={label}
+                    icon={icon
+					? <FontIcon className={`fa ${icon}`}/>
+					: null}
+                    className={className}
+                    onTouchTap={onClick}
+                    disabled={disabled}
+                    style={{marginRight: '5px'}}
+                />
+            )
+            : (
+                <RaisedButton
+                    label={label}
+                    icon={icon
+					? <FontIcon className={`fa ${icon}`}/>
+					: null}
+                    primary={true}
+                    type={type}
+                    className={className}
+                    onTouchTap={onClick}
+                    disabled={disabled}
+                    style={{marginRight: '5px'}}
+                />
+            )
+    }
+}
+class Fields extends Accounts.ui.Fields {
+
+    render() {
+        let {
+            fields = {},
+            className = ""
+        } = this.props;
+        return (
+            <div className={[className].join(' ')}>
+                {Object.keys(fields).map((id, i) => <div key={i}>
+                    <Accounts.ui.Field {...fields[id]}/>
+                    <br/>
+                </div>)}
+            </div>
+        );
+    }
+}
+class Field extends Accounts.ui.Field {
+    triggerUpdate() {
+        const {onChange} = this.props;
+        let value;
+        if (this.input) {
+            value = this.input.value;
+        }
+        if (value === undefined) {
+            value = '';
+        } else {
+            // do nothing
+        }
+
+        if (this.input) {
+            onChange({
+                target: {
+                    value
+                }
+            })
+        }
+    }
+
+    render() {
+        const {
+            id,
+            hint,
+            label,
+            type = 'text',
+            onChange,
+            required = false,
+            className,
+            defaultValue = ""
+        } = this.props;
+        const {
+            mount = true
+        } = this.state;
+        return mount
+            ? (<TextField
+                floatingLabelText={label}
+                hintText={hint}
+                onChange={onChange}
+                fullWidth={true}
+                defaultValue={defaultValue}
+                name={id}
+                type={type}
+                ref={(ref) => this.input = ref}
+                required={required
+				? "required"
+				: ""}
+                autoCapitalize={type == 'email'
+				? 'none'
+				: false}
+                autoCorrect="off"/>)
+            : null;
+    }
+}
+class SocialButtons extends Accounts.ui.SocialButtons {
+    render() {
+        let {
+            oauthServices = {},
+            className = "social-buttons"
+        } = this.props;
+        if (Object.keys(oauthServices).length > 0) {
+            return (
+                <div className={[className].join(' ')}>
+                    {Object.keys(oauthServices).map((id, i) => {
+                        let serviceClass = id.replace(/google|meteor\-developer/gi, (matched) => {
+                            return socialButtonIcons[matched];
+                        });
+                        const {label, type, onClick, disabled} = oauthServices[id];
+                        return (
+                            <RaisedButton
+                                key={i}
+                                label={label}
+                                type={type}
+                                onTouchTap={onClick}
+                                disabled={disabled}
+                                className={serviceClass.length > 0
+								? `${serviceClass}`
+								: ''}
+                                icon={serviceClass.length > 0
+								? <FontIcon className={`fa fa-${serviceClass}`}/>
+								: ''}
+                                backgroundColor={socialButtonsColors[id].background}
+                                labelColor={socialButtonsColors[id].label}
+                                style={{marginRight: '5px'}}
+                            />
+                        );
+                    })}
+                </div>
+            )
+        } else {
+            return null;
+        }
+
+    }
+}
+
+
+class FormMessage extends Accounts.ui.FormMessage {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.message) {
+            this.setState({open: true});
+        }
+    }
+
+    handleRequestClose() {
+        this.setState({open: false});
+    };
+
+    render() {
+        const {message, type} = this.props;
+        let bodyStyle;
+        switch (type) {
+            case 'warning':
+                bodyStyle = {
+                    backgroundColor: yellow600
+                }
+                break;
+            case 'success':
+                bodyStyle = {
+                    backgroundColor: green500
+                }
+                break;
+            case 'error':
+                bodyStyle = {
+                    backgroundColor: red500
+                }
+                break;
+            case 'info':
+                bodyStyle = {
+                    backgroundColor: lightBlue600
+                }
+                break;
+        }
+
+        return message
+            ? (<Snackbar
+                open={this.state.open}
+                message={message}
+                bodyStyle={bodyStyle}
+                action="OK"
+                autoHideDuration={4000}
+                onActionTouchTap={this.handleRequestClose.bind(this)}
+                onRequestClose={this.handleRequestClose.bind(this)}/>)
+            : null;
+    }
+}
+
+// Notice! Accounts.ui.LoginForm manages all state logic at the moment, so avoid overwriting this
+// one, but have a look at it and learn how it works. And pull requests altering how that works are
+// welcome. Alter provided default unstyled UI.
+Accounts.ui.LoginForm = LoginForm;
+Accounts.ui.Form = Form;
+Accounts.ui.Buttons = Buttons;
+Accounts.ui.Button = Button;
+Accounts.ui.Fields = Fields;
+Accounts.ui.Field = Field;
+Accounts.ui.FormMessage = FormMessage;
+Accounts.ui.SocialButtons = SocialButtons;
+
+// Export the themed version.
+export {Accounts, STATES};

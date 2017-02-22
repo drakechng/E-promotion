@@ -5,8 +5,6 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import App from "../../ui/layouts/App";
 import Dashboard from "../../ui/pages/DashboardPage";
 import FormPage from "../../ui/pages/VoucherModifyPage";
-import LoginPage from "../../ui/pages/LoginPage";
-import SignUpPage from "../../ui/pages/SignUpPage";
 import NotFoundPage from "../../ui/pages/NotFoundPage";
 import MembersPage from "../../ui/pages/MembersPage";
 import MembersEditPage from "../../ui/pages/MembersEditPage";
@@ -21,14 +19,14 @@ import AddMembersPage from "../../ui/pages/AddMembersPage"
 import SpotifySong from "../../ui/pages/SpotifySong";
 import {Provider} from "react-redux";
 import configureStore from "../../ui/redux/configureStore";
+import { Accounts, STATES } from '../../ui/pages/LoginPage';
 
 Meteor.startup(() => {
     injectTapEventPlugin();
     render((
         <Provider store={configureStore}>
             <Router history={browserHistory}>
-                <Route path="login" component={LoginPage}/>
-                <Route path="signup" component={SignUpPage}/>
+                <Route path="login" component={() => <Accounts.ui.LoginForm />} />
                 <Route path="/" component={App}>
                     <IndexRoute component={Dashboard}/>
                     <Route path="dashboard" component={Dashboard}/>

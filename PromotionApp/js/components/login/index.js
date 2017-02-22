@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Image} from "react-native";
-import {connect} from "react-redux";
+import {connect} from "react-redux-meteor";
 import {actions} from "react-native-navigation-redux-helpers";
 import {Container, Content, InputGroup, Input, Button, Icon, View, Alert} from "native-base";
 import Meteor, {Accounts} from "react-native-meteor";
@@ -131,4 +131,4 @@ const mapStateToProps = state => ({
     navigation: state.cardNavigation,
 });
 
-export default connect(mapStateToProps, bindActions)(Login);
+export default connect([],mapStateToProps, bindActions)(Login);

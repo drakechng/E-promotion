@@ -74,12 +74,6 @@ const MemberEditPage = React.createClass({
                     {this.renderVouchers()}
                 <p>E-Stamps</p>
                     {this.renderEstamps()}
-                {this.props.member ?
-                    <p>
-                        {this.props.member._id}
-                    </p>
-                    : ""
-                }
             </div>
         )
     }
