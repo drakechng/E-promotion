@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
 import {Container, Content, InputGroup, Input, Button, Icon, View, Alert} from "native-base";
 import Meteor, {Accounts} from "react-native-meteor";
+import {setShop} from "../../actions/shopList";
 import {setUser} from "../../actions/user";
 import styles from "./styles";
 
@@ -48,6 +49,18 @@ class Login extends Component {
                 this.props.replaceAt('login', {key: route}, this.props.navigation.key);
             }
         });
+        Meteor.subscribe("members");
+        Meteor.call('members.fetchMerchants', Meteor.userId(), (error, result) => {
+                let merchantList = []
+                for (let key in result) {
+                    console.log(key)
+                    merchantList.push({id: result[key].userId, company_name: result[key].company_name})
+                }
+                console.log(merchantList)
+                this.props.setShop(merchantList)
+
+            }
+        );
     }
 
     setSignup(route) {
@@ -91,9 +104,11 @@ class Login extends Component {
                                 </InputGroup>
                                 <View
                                     style={{flex: 1, flexDirection: 'row',justifyContent: 'space-around',  alignItems: 'center',}}>
-                                    <Button title={"Login"} style={styles.btn} onPress={() => this.setLogin('home')}>
+                                    <Button style={styles.btn} onPress={() => this.setLogin('home')}>
+                                        Login
                                     </Button>
-                                    <Button title={"NativeBaseComponent"} style={styles.btn} onPress={() => this.setSignup('home')}>
+                                    <Button style={styles.btn} onPress={() => this.setSignup('home')}>
+                                        Create Account
                                     </Button></View>
                             </View>
                         </Image>
@@ -108,6 +123,7 @@ function bindActions(dispatch) {
     return {
         replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
         setUser: (name, password) => dispatch(setUser(name, password)),
+        setShop: shop => dispatch(setShop(shop)),
     };
 }
 

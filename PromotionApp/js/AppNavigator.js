@@ -76,7 +76,7 @@ class AppNavigator extends Component {
                 return <Login />;
             case 'home':
                 return <Home />;
-            case 'shopPage':
+            case 'blankPage':
                 return <ShopPage />;
             default :
                 return <Login />;
