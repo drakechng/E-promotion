@@ -8,6 +8,7 @@ import estampsData from "../../api/estamps/estampsData";
 import vouchersData from "../../api/vouchers/vouchersData";
 import AddVoucher from "../components/members/AddVoucher";
 import AddEstamps from "../components/members/AddEstamp";
+import {List} from "material-ui/List";
 const MemberEditPage = React.createClass({
     getInitialState () {
         return {
@@ -65,7 +66,9 @@ const MemberEditPage = React.createClass({
                 <p>Vouchers</p>
                 {this.renderVouchers()}
                 <p>E-Stamps</p>
+                <List>
                 {this.renderEstamps()}
+                </List>
             </div>
         )
     }

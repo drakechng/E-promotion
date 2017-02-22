@@ -91,11 +91,9 @@ class Login extends Component {
                                 </InputGroup>
                                 <View
                                     style={{flex: 1, flexDirection: 'row',justifyContent: 'space-around',  alignItems: 'center',}}>
-                                    <Button style={styles.btn} onPress={() => this.setLogin('home')}>
-                                        Login
+                                    <Button title={"Login"} style={styles.btn} onPress={() => this.setLogin('home')}>
                                     </Button>
-                                    <Button style={styles.btn} onPress={() => this.setSignup('home')}>
-                                        Create Account
+                                    <Button title={"NativeBaseComponent"} style={styles.btn} onPress={() => this.setSignup('home')}>
                                     </Button></View>
                             </View>
                         </Image>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
-import {Container, Header, Title, Content, Text, Button, Icon, Alert} from "native-base";
+import {Container, Header, Title, Content, Text, Button, Icon, Alert,Footer, FooterTab} from "native-base";
 import Meteor, {createContainer} from "react-native-meteor";
 import {openDrawer} from "../../actions/drawer";
 import styles from "./styles";
@@ -10,7 +10,7 @@ const {
     popRoute,
 } = actions;
 
-class BlankPage extends Component {
+class ShopPage extends Component {
 
     static propTypes = {
         name: React.PropTypes.string,
@@ -53,6 +53,24 @@ class BlankPage extends Component {
                         {(!isNaN(index)) ? list[index].company_name : 'Create Something Awesome . . .'}
                     </Text>
                 </Content>
+                <Footer >
+                    <FooterTab>
+                        <Button
+                        title={"aaa"}
+                        >
+                            <Icon name="apps" />
+                        </Button>
+                        <Button>
+                            <Icon name="camera" />
+                        </Button>
+                        <Button active>
+                            <Icon active name="navigate" />
+                        </Button>
+                        <Button>
+                            <Icon name="person" />
+                        </Button>
+                    </FooterTab>
+                </Footer>
             </Container>
         );
     }
@@ -84,6 +102,6 @@ const container = createContainer((props) => {
             merchant: props.shopId,
         }),
     };
-}, BlankPage);
+}, ShopPage);
 
 export default connect(mapStateToProps, bindAction)(container);

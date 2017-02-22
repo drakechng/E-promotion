@@ -21,7 +21,7 @@ export default class AddVoucher extends React.Component {
     }
 
     addVoucher(index, quantity) {
-        Meteor.call('members.addVouchers', this.props.customer, this.props.voucher._id, index, active)
+        Meteor.call('members.addVouchers', this.props.customer, this.props.voucher._id, index, quantity)
 
     }
 
@@ -29,7 +29,7 @@ export default class AddVoucher extends React.Component {
 
         let quantity = 0;
         if (this.props.quantityMap[index] != undefined) {
-            active = this.props.quantityMap[index];
+            quantity = this.props.quantityMap[index];
         }
         return (
             <ListItem
@@ -37,8 +37,8 @@ export default class AddVoucher extends React.Component {
                 leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={yellow600} />}
                 rightIcon={<AddIcon />}
                 primaryText={voucher.name}
-                secondaryText={"S$"+voucher.value+" Total Number: "+active}
-                onTouchTap={()=>this.addVoucher(index,active+1)}
+                secondaryText={"S$"+voucher.value+" Total Number: "+quantity}
+                onTouchTap={()=>this.addVoucher(index,quantity+1)}
             />)
     }
 

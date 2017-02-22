@@ -47,7 +47,7 @@ class MembersPage extends React.Component {
     render() {
         return (
             <PageBase title="Customer Page"
-                      navigation="Application / Customer Page"
+                      navigation="Application / Member Page"
             >
 
                 <Link to="/form">

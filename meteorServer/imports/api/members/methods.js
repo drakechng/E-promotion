@@ -28,7 +28,7 @@ Meteor.methods({
                 customer: customer,
             }, {
                 $set: {
-                    [key]: active
+                    [key]: quantity
                 }
             }
         );

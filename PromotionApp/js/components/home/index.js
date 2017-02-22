@@ -55,7 +55,7 @@ class Home extends Component {
                             <Row key={i}>
                                 <TouchableOpacity
                                     style={styles.row}
-                                    onPress={() =>  this.pushRoute('blankPage',i,settings.userId)}
+                                    onPress={() =>  this.pushRoute('shopPage',i,settings.userId)}
                                 >
                                     <Text style={styles.text}>{settings.company_name}</Text>
                                 </TouchableOpacity>
