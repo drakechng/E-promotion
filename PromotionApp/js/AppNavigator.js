@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {BackAndroid, StatusBar, NavigationExperimental} from "react-native";
 import {connect} from "react-redux";
-import {Drawer} from "native-base";
+import {Drawer} from "native-base/dist";
 import {actions} from "react-native-navigation-redux-helpers";
 import {closeDrawer} from "./actions/drawer";
 import Login from "./components/login/";
@@ -76,7 +76,7 @@ class AppNavigator extends Component {
                 return <Login />;
             case 'home':
                 return <Home />;
-            case 'blankPage':
+            case 'shopPage':
                 return <ShopPage />;
             default :
                 return <Login />;

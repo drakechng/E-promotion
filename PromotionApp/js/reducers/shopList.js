@@ -1,28 +1,27 @@
 import type {Action} from "../actions/types";
-import {SET_INDEX, SET_SHOP} from "../actions/shopList";
+import {SET_TAP, SET_SHOP} from "../actions/shopList";
 
 export type State = {
-    list: string
+    activeShopId: string
 }
 
 const initialState = {
-    list: [
-        {id: null, company_name: "default"}
-    ],
-    selectedIndex: undefined,
+    activeShopId: "",
+    activeTap:"vouchers"
 };
 
 export default function (state: State = initialState, action: Action): State {
-    if (action.type === SET_INDEX) {
-        return {
-            ...state,
-            selectedIndex: action.payload,
-        };
-    }
+
     if (action.type === SET_SHOP) {
         return {
             ...state,
-            list: action.payload,
+            activeShopId: action.payload,
+        };
+    }
+    if (action.type === SET_TAP) {
+        return {
+            ...state,
+            activeTap: action.payload,
         };
     }
     return state;

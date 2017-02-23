@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import {StyleSheet} from "react-native";
-import CodePush from "react-native-code-push";
-import {Container, Content, Text, View} from "native-base";
+import {Container, Content, Text, View} from "native-base/dist";
 import Modal from "react-native-modalbox";
 import AppNavigator from "./AppNavigator";
-import ProgressBar from "./components/loaders/ProgressBar";
 import theme from "./themes/base-theme";
+import CodePush from "react-native-code-push";
 
 const styles = StyleSheet.create({
     container: {

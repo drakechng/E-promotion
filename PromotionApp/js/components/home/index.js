@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import {TouchableOpacity} from "react-native";
 import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
-import {Container, Header, Title, Content, Text, Button, Icon} from "native-base";
+import {Container, Header, Title, Content, Text, Button, Icon} from "native-base/dist";
 import {Grid, Row} from "react-native-easy-grid";
 import Meteor, {createContainer} from "react-native-meteor";
 import {openDrawer} from "../../actions/drawer";
-import {setIndex} from "../../actions/shopList";
+import {setShop} from "../../actions/shopList";
 import myTheme from "../../themes/base-theme";
 import styles from "./styles";
 
@@ -20,7 +20,7 @@ class Home extends Component {
     static propTypes = {
         name: React.PropTypes.string,
         list: React.PropTypes.arrayOf(React.PropTypes.object),
-        setIndex: React.PropTypes.func,
+        setShop: React.PropTypes.func,
         openDrawer: React.PropTypes.func,
         pushRoute: React.PropTypes.func,
         reset: React.PropTypes.func,
@@ -29,20 +29,9 @@ class Home extends Component {
         }),
     }
 
-    pushRoute(route, index) {
-        this.props.setIndex(index);
+    pushRoute(route, i, id) {
+        this.props.setShop(id);
         this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
-    }
-
-    setShop(members) {
-        let shop = [];
-        if (members != null) {
-            members.map((member) =>
-                shop.push(member.merchant)
-            )
-
-            this.props.setShop(shop)
-        }
     }
 
     render() {
@@ -62,13 +51,13 @@ class Home extends Component {
 
                 <Content>
                     <Grid style={styles.mt}>
-                        {this.props.list.map((item, i) =>
+                        {this.props.merchantsSettings.map((settings, i) =>
                             <Row key={i}>
                                 <TouchableOpacity
                                     style={styles.row}
-                                    onPress={() => this.pushRoute('blankPage', i)}
+                                    onPress={() =>  this.pushRoute('shopPage',i,settings.userId)}
                                 >
-                                    <Text style={styles.text}>{item.company_name}</Text>
+                                    <Text style={styles.text}>{settings.company_name}</Text>
                                 </TouchableOpacity>
                             </Row>
                         )}
@@ -81,7 +70,7 @@ class Home extends Component {
 
 function bindAction(dispatch) {
     return {
-        setIndex: index => dispatch(setIndex(index)),
+        setShop: shop => dispatch(setShop(shop)),
         openDrawer: () => dispatch(openDrawer()),
         pushRoute: (route, key) => dispatch(pushRoute(route, key)),
         reset: key => dispatch(reset([{key: 'login'}], key, 0)),
@@ -90,7 +79,7 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
     name: state.user.name,
-    list: state.list.list,
+    shop: state.shop.activeShopId,
     navigation: state.cardNavigation,
 });
 
@@ -99,9 +88,11 @@ const connector = connect(mapStateToProps, bindAction)(Home);
 
 export default createContainer((props) => {
     const handle = Meteor.subscribe("members");
+    const merchantHandle = Meteor.subscribe("members.marchentsSettings")
 
     return {
         member: handle.ready(),
         members: Meteor.collection('memberships').find({customer: Meteor.userId()}),
+        merchantsSettings: Meteor.collection('settings').find({}),
     };
 }, connector);

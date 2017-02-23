@@ -20,4 +20,3 @@ export default function configureStore(onCompletion: ()=>void): any {
 
     return store;
 }
-

@@ -1,10 +1,12 @@
+
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
-import {Container, Header, Title, Content, Text, Button, Icon, Alert,Footer, FooterTab} from "native-base";
+import {Container, Header,Badge, Title, Content, Text, Button, Icon, Alert,Footer, FooterTab} from "native-base/dist";
 import Meteor, {createContainer} from "react-native-meteor";
 import {openDrawer} from "../../actions/drawer";
 import styles from "./styles";
+import {setTap} from "../../actions/shopList"
 
 const {
     popRoute,
@@ -29,6 +31,13 @@ class ShopPage extends Component {
 
     render() {
         const {props: {name, index, list}} = this;
+        let AppComponent = null;
+//Here you can add as many tabs you need
+       if (this.props.activeTap == "vouchers") {
+          AppComponent = this.props.members != null &&JSON.stringify(this.props.members.vouchers)
+       } else {
+          AppComponent = JSON.stringify(this.props.members.estamps)
+       }
         return (
             <Container style={styles.container}>
                 <Header>
@@ -45,32 +54,23 @@ class ShopPage extends Component {
 
                 <Content padder>
                     <Text>
-                        {this.props.members != null &&
-                        JSON.stringify(this.props.members.vouchers) +
-                        JSON.stringify(this.props.members.estamps)
-
-                        }
+                        {AppComponent}
                         {(!isNaN(index)) ? list[index].company_name : 'Create Something Awesome . . .'}
                     </Text>
                 </Content>
                 <Footer >
-                    <FooterTab>
-                        <Button
-                        title={"aaa"}
-                        >
-                            <Icon name="apps" />
-                        </Button>
-                        <Button>
-                            <Icon name="camera" />
-                        </Button>
-                        <Button active>
-                            <Icon active name="navigate" />
-                        </Button>
-                        <Button>
-                            <Icon name="person" />
-                        </Button>
-                    </FooterTab>
-                </Footer>
+                         <FooterTab>
+                             <Button onPress={()=>this.props.setTap("vouchers")} active ={this.props.activeTap === "vouchers"}>
+                                 <Badge>2</Badge>
+                                 Vouchers
+                                 <Icon name='ios-apps-outline' />
+                             </Button>
+                             <Button onPress={()=>this.props.setTap("estamps")} active ={this.props.activeTap === "estamps"}>
+                                E-stamps
+                                 <Icon name='ios-contact-outline' />
+                             </Button>
+                         </FooterTab>
+                     </Footer>
             </Container>
         );
     }
@@ -80,26 +80,26 @@ function bindAction(dispatch) {
     return {
         openDrawer: () => dispatch(openDrawer()),
         popRoute: key => dispatch(popRoute(key)),
+        setTap : tap => dispatch(setTap(tap))
     };
 }
 
 const mapStateToProps = state => ({
     navigation: state.cardNavigation,
     name: state.user.name,
-    index: state.shop.selectedIndex,
-    shopId: state.shop.shopId,
+    activeShopId: state.shop.activeShopId,
+    activeTap: state.shop.activeTap,
 });
 
 
 const container = createContainer((props) => {
-    console.log(props)
     const handle = Meteor.subscribe("members");
 
     return {
         member: handle.ready(),
         members: Meteor.collection('memberships').findOne({
             customer: Meteor.userId(),
-            merchant: props.shopId,
+            merchant: props.activeShopId,
         }),
     };
 }, ShopPage);
