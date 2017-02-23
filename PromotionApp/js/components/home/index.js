@@ -35,6 +35,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <Container theme={myTheme} style={styles.container}>
                 <Header>
@@ -89,10 +90,14 @@ const connector = connect(mapStateToProps, bindAction)(Home);
 export default createContainer((props) => {
     const handle = Meteor.subscribe("members");
     const merchantHandle = Meteor.subscribe("members.marchentsSettings")
+    const vouchersHandle = Meteor.subscribe("members.vouchers")
+    const estampsHandle = Meteor.subscribe("members.estamps")
 
     return {
         member: handle.ready(),
         members: Meteor.collection('memberships').find({customer: Meteor.userId()}),
         merchantsSettings: Meteor.collection('settings').find({}),
+        vouchers:Meteor.collection('vouchers').find({}),
+        estamps:Meteor.collection('estamps').find({}),
     };
 }, connector);
