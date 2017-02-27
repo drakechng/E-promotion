@@ -28,7 +28,6 @@ class Home extends Component {
             key: React.PropTypes.string,
         }),
     }
-
     pushRoute(route, i, id) {
         this.props.setShop(id);
         this.props.pushRoute({key: route, index: 1}, this.props.navigation.key);
