@@ -53,7 +53,6 @@ vouchersData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode: "landscape",
             minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
@@ -63,7 +62,6 @@ vouchersData.attachSchema(new SimpleSchema({
         min: new Date(),
         srf: {
             type: DatePicker,
-            mode: "landscape",
             minDate: new Date(),
             formatDate: (date) => moment(date).format('LL')
         }
