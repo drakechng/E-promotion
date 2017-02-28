@@ -7,8 +7,8 @@ export type State = {
 }
 
 const initialState = {
-    name: '',
-    password: ''
+    name: 'zzz',
+    password: '11111111'
 };
 
 export default function (state: State = initialState, action: Action): State {

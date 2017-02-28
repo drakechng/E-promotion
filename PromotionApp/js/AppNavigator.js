@@ -9,6 +9,8 @@ import Home from "./components/home/";
 import ShopPage from "./components/shopPage";
 import SplashPage from "./components/splashscreen/";
 import SideBar from "./components/sideBar";
+import VouchersPage from "./components/vouchersPage"
+import EstampsPage from "./components/estampsPage/"
 import {statusBarColor} from "./themes/base-theme";
 
 const {
@@ -78,6 +80,10 @@ class AppNavigator extends Component {
                 return <Home />;
             case 'shopPage':
                 return <ShopPage />;
+            case 'vouchersPage':
+                return <VouchersPage />;
+            case 'estampsPage':
+                return <EstampsPage />;
             default :
                 return <Login />;
         }

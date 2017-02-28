@@ -35,7 +35,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Container theme={myTheme} style={styles.container}>
                 <Header>

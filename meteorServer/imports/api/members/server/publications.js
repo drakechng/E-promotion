@@ -22,18 +22,12 @@ Meteor.publish('members.marchentsSettings', function () {
 
 Meteor.publish('members.vouchers', function () {
     let vouchers = MembersData.find({customer: this.userId}, {fields: {vouchers: 1}}).fetch();
-    let vouchersId = [];
-    for (let [key] of Object.entries(vouchers)) {
-        vouchersId.push(key)
-    }
-    return vouchersData.find({_id: {$in: vouchersId}});
+    let voucherList = vouchers.reduce((vouchersId,voucher)=>{for(let [key] of Object.entries(voucher.vouchers)){vouchersId.push(key)}return vouchersId},[]);
+    return vouchersData.find({_id: {$in: voucherList}})
 });
 
 Meteor.publish('members.estamps', function () {
     let estamps = MembersData.find({customer: this.userId}, {fields: {estamps: 1}}).fetch();
-    let estampsId = [];
-    for (let [key] of Object.entries(estamps)) {
-        estampsId.push(key)
-    }
-    return estampsData.find({_id: {$in: estampsId}});
+    let estampsList = estamps.reduce((estampsId,estamp)=>{for(let [key] of Object.entries(estamp.estamps)){estampsId.push(key)}return estampsId},[]);
+    return estampsData.find({_id: {$in: estampsList}});
 });

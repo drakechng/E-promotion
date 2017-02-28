@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Content, Text, List, ListItem} from "native-base/dist";
-import {setIndex} from "../../actions/shopList";
 import navigateTo from "../../actions/sideBarNav";
 import myTheme from "../../themes/base-theme";
 import styles from "./style";
@@ -24,8 +23,14 @@ class SideBar extends Component {
                     <ListItem button onPress={() => this.navigateTo('home')}>
                         <Text>Home</Text>
                     </ListItem>
-                    <ListItem button onPress={() => this.navigateTo('blankPage')}>
-                        <Text>Blank Page</Text>
+                    <ListItem button onPress={() => this.navigateTo('shopPage')}>
+                        <Text>Shop Page</Text>
+                    </ListItem>
+                    <ListItem button onPress={() => this.navigateTo('vouchersPage')}>
+                        <Text>Vouchers Page</Text>
+                    </ListItem>
+                    <ListItem button onPress={() => this.navigateTo('estampsPage')}>
+                        <Text>Estamps Page</Text>
                     </ListItem>
                 </List>
             </Content>
@@ -35,7 +40,6 @@ class SideBar extends Component {
 
 function bindAction(dispatch) {
     return {
-        setIndex: index => dispatch(setIndex(index)),
         navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
     };
 }
