@@ -2,11 +2,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {actions} from "react-native-navigation-redux-helpers";
-import {Container, Header,Badge, Title, Content, Text, Button, Icon, Alert,Footer, FooterTab} from "native-base/dist";
+import {Container,Card,CardItem, Header,Badge, Title, Content, Text, Button, Icon, Alert,Footer, FooterTab} from "native-base/dist";
 import Meteor, {createContainer} from "react-native-meteor";
 import {openDrawer} from "../../actions/drawer";
 import styles from "./styles";
 import {setTap} from "../../actions/shopList"
+import Cards from "./cards.js"
 
 const {
     popRoute,
@@ -28,17 +29,27 @@ class ShopPage extends Component {
     popRoute() {
         this.props.popRoute(this.props.navigation.key);
     }
+    renderCard(content){
+        for([key,value] of Object.entries(content))
+        {
+            return <Cards name = {key}/>
+        }
 
+
+    }
     render() {
         const {props: {name, index, list}} = this;
         let AppComponent = null;
 //Here you can add as many tabs you need
        if (this.props.activeTap == "vouchers") {
-          AppComponent = this.props.members != null &&JSON.stringify(this.props.members.vouchers)
-       } else {
-          AppComponent = JSON.stringify(this.props.members.estamps)
+          AppComponent =  this.props.members != null && this.renderCard( this.props.members.vouchers)
        }
-        return (
+        else{
+
+          AppComponent =  this.props.members != null && this.renderCard( this.props.members.estamps)
+        }
+
+    return(
             <Container style={styles.container}>
                 <Header>
                     <Button transparent onPress={() => this.popRoute()}>
@@ -53,10 +64,9 @@ class ShopPage extends Component {
                 </Header>
 
                 <Content padder>
-                    <Text>
-                        {AppComponent}
-                        {(!isNaN(index)) ? list[index].company_name : 'Create Something Awesome . . .'}
-                    </Text>
+               <Card>
+        {AppComponent}
+           </Card>
                 </Content>
                 <Footer >
                          <FooterTab>
@@ -72,9 +82,8 @@ class ShopPage extends Component {
                          </FooterTab>
                      </Footer>
             </Container>
-        );
-    }
-}
+)
+}}
 
 function bindAction(dispatch) {
     return {
