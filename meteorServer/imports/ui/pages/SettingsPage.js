@@ -10,7 +10,8 @@ import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
 import {Settings} from "../../api/settings/settings";
 import {createContainer} from "meteor/react-meteor-data";
-
+var Dropzone = require('react-dropzone');
+import Images from  "../../api/images/imagesData";
 const styles = {
     toggleDiv: {
         maxWidth: 300,
@@ -57,6 +58,15 @@ class SettingsPage extends React.Component {
         Meteor.call('settings.upsert', company_name, city, industry, contact, disabled);
     }
 
+    _handleUpload(files) { //this function is called whenever a file was dropped in your dropzone
+        _.each(files, function(file) {
+            file.owner = Meteor.userId(); //before upload also save the owner of that file
+            console.log(file);
+            Images.insert(file)
+
+        });
+    }
+
     render() {
         if (!this.props.settings) {
             if (this.props.ready) {
@@ -64,6 +74,7 @@ class SettingsPage extends React.Component {
             }
             return false;
         }
+
 
         return (
             <PageBase title="Settings"
@@ -125,6 +136,12 @@ class SettingsPage extends React.Component {
                                       type="submit"
                                       primary={true}/>
                     </div>
+                    <div>
+
+                        <Dropzone onDrop={this._handleUpload}>
+                            <div>Try dropping some files here, or click to select files to upload.</div>
+                        </Dropzone>
+                    </div>
                 </form>
             </PageBase>
         );
@@ -134,8 +151,11 @@ class SettingsPage extends React.Component {
 
 export default createContainer(() => {
     const sub = Meteor.subscribe('settings');
+    const image = Meteor.subscribe('images');
     return {
         settings: Settings.findOne(),
-        ready: sub.ready()
+        ready: sub.ready(),
+        imageBlob: Images.findOne(),
+        blobReady:image.ready()
     };
 }, SettingsPage);

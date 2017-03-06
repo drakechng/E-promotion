@@ -44,7 +44,7 @@ export default class renderEstamp extends React.Component {
                                subtitle={estamp.description}
                     >
                     </CardTitle>
-{/*                    <CardActions>
+                   <CardActions>
                         <FlatButton>
                             <HardwareKeyboardArrowUp/>
                         </FlatButton>
@@ -53,7 +53,7 @@ export default class renderEstamp extends React.Component {
                         </FlatButton>
                         <ActionDeleteForever hoverColor={red500}
                                              className="stampDeleteButton"/>
-                    </CardActions>*/}
+                    </CardActions>
                 </Card>
             </ListItem>
         )
