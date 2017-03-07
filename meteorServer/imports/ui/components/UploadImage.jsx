@@ -1,4 +1,4 @@
-import React from "react";
+mport React from "react";
 
 export default class UploadImage extends React.Component {
     render() {

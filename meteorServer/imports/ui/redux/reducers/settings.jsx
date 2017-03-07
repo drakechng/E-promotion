@@ -2,7 +2,8 @@ let initialInterfaceState = {
     companyName: null,
     city: null,
     industry: null,
-    contactNumber: null
+    contactNumber: null,
+    imageUrl:null
 };
 
 
@@ -19,6 +20,11 @@ export default function settings(state = initialInterfaceState, action) {
                 contactNumber: action.payload.contactNumber,
 
             }
+        case 'SET_IMAGEURL':
+          return{
+            ...state,
+            imageUrl:action.payload.imageUrl,
+          }
         default:
             return state;
     }

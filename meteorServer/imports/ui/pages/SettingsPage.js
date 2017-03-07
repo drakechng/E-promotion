@@ -10,7 +10,7 @@ import Divider from "material-ui/Divider";
 import PageBase from "../components/PageBase";
 import {Settings} from "../../api/settings/settings";
 import {createContainer} from "meteor/react-meteor-data";
-var Dropzone = require('react-dropzone');
+import Dropzone  from 'react-dropzone';
 import Images from  "../../api/images/imagesData";
 const styles = {
     toggleDiv: {
@@ -38,7 +38,8 @@ class SettingsPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this._handleUpload = this._handleUpload.bind(this);
         this.state = {
-            selectValue: 1
+            selectValue: 1,
+            previewUrl:""
         }
     }
 
@@ -60,11 +61,14 @@ class SettingsPage extends React.Component {
     }
 
     _handleUpload(files) { //this function is called whenever a file was dropped in your dropzone
-        _.each(files, function(file) {
+      console.log(files)
+      files.map((file)=>{
             let fileObj;
             fileObj = Images.insert(file);
             Meteor.call('settings.setProfile',fileObj);
-        });
+            this.setState({previewUrl : file.preview});
+          }
+)
     }
 
     render() {
@@ -74,8 +78,11 @@ class SettingsPage extends React.Component {
             }
             return false;
         }
-        console.log(this.props.settings.photo)
-
+        if(!this.props.imageReady)
+        {
+          return false;
+        }
+        let imageUrl = this.props.settings.photo?this.props.settings.photo.getFileRecord().url():'default_profile.png';
 
         return (
             <PageBase title="Settings"
@@ -138,9 +145,9 @@ class SettingsPage extends React.Component {
                                       primary={true}/>
                     </div>
                     <div>
-
                         <Dropzone onDrop={this._handleUpload}>
-                          <img alt = 'Try dropping some files here, or click to select files to upload.' src ={this.props.settings.photo?this.props.settings.photo.getFileRecord().url():null}></img>
+                          <img src ={imageUrl}></img>
+                          <img src ={this.state.previewUrl}></img>
                         </Dropzone>
                     </div>
                 </form>
@@ -156,6 +163,6 @@ export default createContainer(() => {
     return {
         settings: Settings.findOne(),
         ready: sub.ready(),
-        blobReady:image.ready()
+        imageReady :image.ready()
     };
 }, SettingsPage);
