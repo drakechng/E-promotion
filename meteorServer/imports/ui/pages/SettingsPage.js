@@ -36,6 +36,7 @@ class SettingsPage extends React.Component {
         super();
         this.onSelectChanged = this.onSelectChanged.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this._handleUpload = this._handleUpload.bind(this);
         this.state = {
             selectValue: 1
         }
@@ -60,10 +61,9 @@ class SettingsPage extends React.Component {
 
     _handleUpload(files) { //this function is called whenever a file was dropped in your dropzone
         _.each(files, function(file) {
-            file.owner = Meteor.userId(); //before upload also save the owner of that file
-            console.log(file);
-            Images.insert(file)
-
+            let fileObj;
+            fileObj = Images.insert(file);
+            Meteor.call('settings.setProfile',fileObj);
         });
     }
 
@@ -74,6 +74,7 @@ class SettingsPage extends React.Component {
             }
             return false;
         }
+        console.log(this.props.settings.photo)
 
 
         return (
@@ -139,7 +140,7 @@ class SettingsPage extends React.Component {
                     <div>
 
                         <Dropzone onDrop={this._handleUpload}>
-                            <div>Try dropping some files here, or click to select files to upload.</div>
+                          <img alt = 'Try dropping some files here, or click to select files to upload.' src ={this.props.settings.photo?this.props.settings.photo.getFileRecord().url():null}></img>
                         </Dropzone>
                     </div>
                 </form>
@@ -155,7 +156,6 @@ export default createContainer(() => {
     return {
         settings: Settings.findOne(),
         ready: sub.ready(),
-        imageBlob: Images.findOne(),
         blobReady:image.ready()
     };
 }, SettingsPage);

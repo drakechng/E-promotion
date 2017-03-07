@@ -24,4 +24,16 @@ Meteor.methods({
             }
         );
     },
+    'settings.setProfile' (fileObj){
+
+        return Settings.upsert({
+                userId: this.userId,
+            }, {
+                $set: {
+                    UpdateAt: new Date(),
+                    photo:fileObj
+                }
+            }
+        );
+    }
 });

@@ -27,6 +27,6 @@ std:accounts-ui
 fortawesome:fontawesome
 aldeed:collection2
 cfs:standard-packages
-cfs:gridfs
 mrt:smart-publish
 cfs:filesystem
+cfs:ejson-file
