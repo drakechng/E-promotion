@@ -72,12 +72,6 @@ class SettingsPage extends React.Component {
     }
 
     render() {
-        if (!this.props.settings) {
-            if (this.props.ready) {
-                Meteor.call('settings.upsert', "", 1, "", "", false)
-            }
-            return false;
-        }
         if(!this.props.imageReady)
         {
           return false;

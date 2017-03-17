@@ -2,7 +2,28 @@ import React, {Component} from "react";
 import {convertToRaw,Editor, EditorState,RichUtils} from 'draft-js';
 import '../stylesheets/RichEditor.css'
 import TextField from 'material-ui/TextField';
+import RaisedButton from "material-ui/RaisedButton";
+import {grey400} from "material-ui/styles/colors";
+import {Link} from "react-router";
 
+const styles = {
+    toggleDiv: {
+        maxWidth: 300,
+        marginTop: 40,
+        marginBottom: 5
+    },
+    toggleLabel: {
+        color: grey400,
+        fontWeight: 100
+    },
+    buttons: {
+        marginTop: 30,
+        float: 'right'
+    },
+    saveButton: {
+        marginLeft: 5
+    }
+};
 export default class MyEditor extends React.Component {
       constructor(props) {
           super(props);
@@ -92,6 +113,16 @@ export default class MyEditor extends React.Component {
                   spellCheck={true}
                 />
               </div>
+                <div style={styles.buttons}>
+                    <Link to="/">
+                        <RaisedButton label="Cancel"/>
+                    </Link>
+
+                    <RaisedButton label="Save"
+                                  style={styles.saveButton}
+                                  type="submit"
+                                  primary={true}/>
+                </div>
             </div>
             </div>
           );
