@@ -27,20 +27,20 @@ const styles = {
 export default class MyEditor extends React.Component {
       constructor(props) {
           super(props);
-          this.state = {editorState: EditorState.createEmpty()};
+          this.state = {editorState: EditorState.createEmpty(),subject:""};
           this.focus = () => this.refs.editor.focus();
           this.onChange = (editorState) =>this._onChange(editorState);
           this.handleKeyCommand = (command) => this._handleKeyCommand(command);
           this.onTab = (e) => this._onTab(e);
           this.toggleBlockType = (type) => this._toggleBlockType(type);
           this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+          this.save = ()=> this._save()
         }
         _onChange (editorState) {
               this.setState({
             editorState,
           });
           const contentState = editorState.getCurrentContent();
-          console.log(convertToRaw(contentState));
         }
 
         _handleKeyCommand(command) {
@@ -76,6 +76,10 @@ export default class MyEditor extends React.Component {
           );
         }
 
+        _save(){
+          const contentState = editorState.getCurrentContent();
+        }
+
         render() {
           const {editorState} = this.state;
           // If the user changes block type before entering any text, we can
@@ -90,7 +94,7 @@ export default class MyEditor extends React.Component {
 
           return (
               <div>
-                  <TextField hintText="Subject"></TextField>
+                  <TextField value={this.state.subject} onChange={(e)=>this.setState({subject:e.target.value})} hintText="Subject"></TextField>
             <div className="RichEditor-root">
               <BlockStyleControls
                 editorState={editorState}
@@ -120,6 +124,7 @@ export default class MyEditor extends React.Component {
 
                     <RaisedButton label="Save"
                                   style={styles.saveButton}
+                                  onClick={()=>console.log("dfs")}
                                   type="submit"
                                   primary={true}/>
                 </div>
@@ -227,3 +232,4 @@ export default class MyEditor extends React.Component {
           </div>
         );
       };
+
