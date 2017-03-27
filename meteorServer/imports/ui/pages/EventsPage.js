@@ -77,7 +77,7 @@ export default class MyEditor extends React.Component {
         }
 
         _save(){
-          const contentState = editorState.getCurrentContent();
+           Meteor.call('events.insert',convertToRaw(this.props.editorState),this.state.subject)
         }
 
         render() {
