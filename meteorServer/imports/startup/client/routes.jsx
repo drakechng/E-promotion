@@ -20,7 +20,7 @@ import SpotifySong from "../../ui/pages/SpotifySong";
 import {Provider} from "react-redux";
 import configureStore from "../../ui/redux/configureStore";
 import {Accounts, STATES} from "../../ui/pages/LoginPage";
-import MyEditor from "../../ui/pages/EventsPage.js"
+import MyEditor from "../../ui/components/events/create"
 
 Meteor.startup(() => {
     injectTapEventPlugin();

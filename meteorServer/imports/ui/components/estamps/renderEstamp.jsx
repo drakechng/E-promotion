@@ -15,7 +15,7 @@ const propTypes = {
 }
 
 export default class renderEstamp extends React.Component {
-        renderStamp(max) {
+    renderStamp(max) {
         const stampNumber = max;
         let stamp = [];
         for (i = 0; i < stampNumber; i++) {
@@ -26,36 +26,36 @@ export default class renderEstamp extends React.Component {
         ));
     }
     render() {
-            const estamp = this.props.estamp
+        const estamp = this.props.estamp
         return (
             <ListItem onTouchTap={this.props.method} key={estamp._id} className="stampCard">
                 <Card style={{
-                      width: '95%',
-                      margin: '0 auto'
-                  }}>
-                    <CardMedia
-                        overlay={
-                              this.renderStamp(estamp.max)
-                        }
-                    >
-                        <img src="ui/EstampsManage/loyalty card.jpg"/>
-                    </CardMedia>
-                    <CardTitle title={estamp.title}
-                               subtitle={estamp.description}
-                    >
-                    </CardTitle>
-                   <CardActions>
-                        <FlatButton>
-                            <HardwareKeyboardArrowUp/>
-                        </FlatButton>
-                        <FlatButton>
-                            <HardwareKeyboardArrowDown/>
-                        </FlatButton>
-                        <ActionDeleteForever hoverColor={red500}
-                                             className="stampDeleteButton"/>
-                    </CardActions>
-                </Card>
-            </ListItem>
+                    width: '95%',
+                    margin: '0 auto'
+                }}>
+                <CardMedia
+                    overlay={
+                        this.renderStamp(estamp.max)
+                    }
+                >
+                    <img src="ui/EstampsManage/loyalty card.jpg"/>
+                </CardMedia>
+                <CardTitle title={estamp.title}
+                    subtitle={estamp.description}
+                >
+                </CardTitle>
+                <CardActions>
+                    <FlatButton>
+                        <HardwareKeyboardArrowUp/>
+                    </FlatButton>
+                    <FlatButton>
+                        <HardwareKeyboardArrowDown/>
+                    </FlatButton>
+                    <ActionDeleteForever hoverColor={red500}
+                        className="stampDeleteButton"/>
+                </CardActions>
+            </Card>
+        </ListItem>
         )
     }
 }
