@@ -34,7 +34,7 @@ export default class MyEditor extends React.Component {
           this.onTab = (e) => this._onTab(e);
           this.toggleBlockType = (type) => this._toggleBlockType(type);
           this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-          this.save = ()=> this._save()
+          this.save = ()=> this._save();
         }
         _onChange (editorState) {
               this.setState({
@@ -77,7 +77,8 @@ export default class MyEditor extends React.Component {
         }
 
         _save(){
-           Meteor.call('events.insert',convertToRaw(this.props.editorState),this.state.subject)
+            let data = Date();
+           Meteor.call('events.insert',convertToRaw(this.state.editorState.getCurrentContent()),this.state.subject,date)
         }
 
         render() {
@@ -124,7 +125,7 @@ export default class MyEditor extends React.Component {
 
                     <RaisedButton label="Save"
                                   style={styles.saveButton}
-                                  onClick={()=>console.log("dfs")}
+                                  onClick={()=>this.save()}
                                   type="submit"
                                   primary={true}/>
                 </div>
