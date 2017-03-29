@@ -7,6 +7,7 @@ import eventsData from "../../../api/events/server/publications";
 import {browserHistory} from "react-router";
 import RenderEstamp from './renderEstamp'
 import PageBase from "../PageBase";
+import {convertFromRaw,Editor, EditorState} from 'draft-js';
 
 const propTypes = {
     estamps: React.PropTypes.array.isRequired,
@@ -41,12 +42,12 @@ class EventsList extends React.Component {
                         <Divider />
                         {
                             this.props.events.map(estamp=>
-                                <RenderEstamp
-                                    key = {estamp._id}
-                                    estamp ={estamp}
-                                    method = {()=>
-                                            browserHistory.push('/estampsUpdate/' + estamp._id)}
-                                        />
+                                <p>estamp.subject</P>
+                                <Editor
+                                    customStyleMap={styleMap}
+                                    editorState={estamp.editorState}
+                                />
+                                <p>estamp.date</p>
                             )
                         }
                     </List>
