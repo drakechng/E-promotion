@@ -5,7 +5,7 @@
 import {Meteor} from "meteor/meteor";
 import Images from "../imagesData";
 
-Meteor.smartPublish('images', function () {
+Meteor.publish('images', function () {
     return Images.find()
 });
 

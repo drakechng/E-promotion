@@ -9,6 +9,7 @@ import ObjectComponent from "simple-react-form-material-ui/lib/object";
 import HiddenField from "../../ui/components/HiddenField.jsx";
 
 const vouchersData = new Mongo.Collection('vouchers')
+
 vouchersData.allow({
         update: () => {
             return true;
@@ -34,6 +35,7 @@ const voucher = new SimpleSchema({
         }
     }
 })
+
 vouchersData.attachSchema(new SimpleSchema({
     title: {
         type: String,

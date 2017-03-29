@@ -43,7 +43,7 @@ Meteor.startup(() => {
                     <Route path="estampsCreate" component={EstampsCreate}/>
                     <Route path="estampsUpdate/:_id" component={EstampsUpdate}/>
                     <Route path="addMembers" component={AddMembersPage}/>
-                    <Route path="editor" component={MyEditor}/>
+                    <Route path="edit or" component={MyEditor}/>
                     <Route path="*" component={NotFoundPage}/>
                 </Route>
             </Router>

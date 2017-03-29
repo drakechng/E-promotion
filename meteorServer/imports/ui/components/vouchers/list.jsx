@@ -27,26 +27,33 @@ class VouchersList extends React.Component {
         return this.props.vouchers.map(voucher => {
             const onTouchTap = () => browserHistory.push('/vouchersUpdate/' + voucher._id)
             return (
-                <ListItem key={voucher._id} primaryText={voucher.title} onTouchTap={onTouchTap}/>
+                <ListItem
+                    key={voucher._id}
+                    primaryText={voucher.title}
+                    onTouchTap={onTouchTap}
+                />
             )
         })
     }
 
     render() {
         return (
-            <PageBase title="Vouchers Management"
-                      navigation="Application / Vouchers Management"
+            <PageBase
+                title="Vouchers Management"
+                navigation="Application / Vouchers Management"
             >
                 <div>
                     <List>
-                        <ListItem primaryText='Create' onTouchTap={this.create}/>
+                        <ListItem
+                            primaryText='Create'
+                            onTouchTap={this.create}
+                        />
                         {this.renderVouchers()}
                     </List>
                 </div>
             </PageBase>
         )
     }
-
 }
 
 VouchersList.propTypes = propTypes
