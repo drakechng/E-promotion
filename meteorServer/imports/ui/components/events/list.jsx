@@ -10,57 +10,57 @@ import PageBase from "../PageBase";
 import {convertFromRaw,Editor, EditorState} from 'draft-js';
 
 const propTypes = {
-    estamps: React.PropTypes.array.isRequired,
-    isLoading: React.PropTypes.bool.isRequired
+  estamps: React.PropTypes.array.isRequired,
+  isLoading: React.PropTypes.bool.isRequired
 }
 
 const defaultProps = {}
 
 class EventsList extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.create = this.create.bind(this)
-    }
+  constructor(props) {
+    super(props)
+    this.create = this.create.bind(this)
+  }
 
-    create() {
-        browserHistory.push('/editor');
-    }
+  create() {
+    browserHistory.push('/editor');
+  }
 
-    render() {
-        return (
-            <PageBase
-                title="Events Management"
-                navigation="Application / Events Management"
-            >
-                <div>
-                    <List>
-                        <ListItem
-                            primaryText='Create'
-                            onTouchTap={this.create}
-                        />
-                        <Divider />
-                        {
-                            this.props.events.map(estamp=>
-                                <p>estamp.subject</P>
-                                <Editor
-                                    customStyleMap={styleMap}
-                                    editorState={estamp.editorState}
-                                />
-                                <p>estamp.date</p>
-                            )
-                        }
-                    </List>
-                </div>
-            </PageBase>
-        )
-    }
-}
+  render() {
+    return (
+      <PageBase
+        title="Events Management"
+        navigation="Application / Events Management"
+      >
+        <div>
+          <List>
+            <ListItem
+              primaryText='Create'
+              onTouchTap={this.create}
+            />
+            <Divider />
+            {
+              this.props.events.map(estamp=>
+                <p>estamp.subject<p/>
+                <Editor
+                  customStyleMap={styleMap}
+                  editorState={estamp.editorState}
+                />
+                <p>estamp.date<p/>
+              )
+            }
+            <List/>
+            <div/>
+            <PageBase/>
+            )
+            }
+            }
 
-EstampsList.propTypes = propTypes
-EstampsList.defaultProps = defaultProps
+            EventsList.propTypes = propTypes
+            EventsList.defaultProps = defaultProps
 
-export default createContainer(() => {
-    const events = eventsData.find().fetch()
-    return {events}
-}, EventsList)
+            export default createContainer(() => {
+              const events = eventsData.find().fetch()
+              return {events}
+            }, EventsList)

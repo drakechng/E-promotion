@@ -20,6 +20,7 @@ import SpotifySong from "../../ui/pages/SpotifySong";
 import {Provider} from "react-redux";
 import configureStore from "../../ui/redux/configureStore";
 import {Accounts, STATES} from "../../ui/pages/LoginPage";
+import EventList from "../../ui/components/events/list.jsx";
 import MyEditor from "../../ui/components/events/create"
 
 Meteor.startup(() => {
@@ -43,7 +44,8 @@ Meteor.startup(() => {
                     <Route path="estampsCreate" component={EstampsCreate}/>
                     <Route path="estampsUpdate/:_id" component={EstampsUpdate}/>
                     <Route path="addMembers" component={AddMembersPage}/>
-                    <Route path="edit or" component={MyEditor}/>
+                    <Route path="eventList" component={EventList}/>
+                    <Route path="editor" component={MyEditor}/>
                     <Route path="*" component={NotFoundPage}/>
                 </Route>
             </Router>
