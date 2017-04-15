@@ -49,3 +49,4 @@ fabric.properties
 *.xml
 
 meteorServer/tags
+.meteor/

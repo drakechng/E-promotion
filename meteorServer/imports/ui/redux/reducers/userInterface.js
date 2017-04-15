@@ -4,9 +4,9 @@
 // several hundred lines. See store.jsx to see how these reducers get 'combined'
 // into one single app state. We'll use two reducers, one for transient state
 // that the UI uses (selected id,name) and one for data (coming from Mongo)
-let initialInterfaceState = {
-    navDrawerOpen: false,
-    snackbarOpen: false,
+const initialInterfaceState = {
+  navDrawerOpen: false,
+  snackbarOpen: false,
 
 };
 
@@ -16,26 +16,26 @@ let initialInterfaceState = {
 // never directly mutate the `state` param, use merge instead
 
 export default function userInterface(state = initialInterfaceState, action) {
-    //console.log("reducers.userInterface  action:", {state, action});
+    // console.log("reducers.userInterface  action:", {state, action});
 
-    switch (action.type) {
-        case 'TOGGLE_DRAWER_STATE':
-            return {
-                ...state,
-                navDrawerOpen: !state.navDrawerOpen
-            }
-        case 'CLOSE_SNACKBAR_STATE':
-            return {
-                ...state,
-                snackbarOpen: false
-            }
-        case 'OPEN_SNACKBAR_STATE':
-            return {
-                ...state,
-                snackbarOpen: true
-            }
-        default:
-            return state;
-    }
-};
+  switch (action.type) {
+    case 'TOGGLE_DRAWER_STATE':
+      return {
+        ...state,
+        navDrawerOpen: !state.navDrawerOpen,
+      };
+    case 'CLOSE_SNACKBAR_STATE':
+      return {
+        ...state,
+        snackbarOpen: false,
+      };
+    case 'OPEN_SNACKBAR_STATE':
+      return {
+        ...state,
+        snackbarOpen: true,
+      };
+    default:
+      return state;
+  }
+}
 

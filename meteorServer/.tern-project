@@ -1,0 +1,10 @@
+{
+  "defs": [
+    "underscore",
+    "ecmascript"
+  ],
+  "plugins": {
+    "node": {},
+    "es_modules":{}
+  }
+}

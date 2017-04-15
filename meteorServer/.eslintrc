@@ -2,10 +2,13 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:meteor/recommended",
+    "@meteorjs/eslint-config-meteor"
   ],
   "plugins": [
-    "react"
+    "react",
+    "meteor"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -61,10 +64,10 @@
     "react/prefer-es6-class": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
+    "import/extensions": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/jsx-wrap-multilines": 1
   },
   "globals": {
   }
