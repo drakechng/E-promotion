@@ -1,10 +1,10 @@
-import "../../api/settings/methods.js";
-import "../../api/settings/server/publications.js";
-import "../../api/vouchers/server/publications.js";
-import "../../api/events/methods.js";
-import "../../api/events/server/publications.js";
-import "../../api/estamps/methods.js";
-import "../../api/estamps/server/publications.js";
+import "../../api/settings/methods";
+import "../../api/settings/server/publications";
+import "../../api/vouchers/server/publications";
+import "../../api/events/methods";
+import "../../api/events/server/publications";
+import "../../api/estamps/methods";
+import "../../api/estamps/server/publications";
 import "../../api/members/server/publications";
 import "../../api/members/methods";
 import "../../api/customers/server/publications";

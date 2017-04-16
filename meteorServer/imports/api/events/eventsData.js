@@ -3,4 +3,6 @@
  */
 import { Mongo } from "meteor/mongo";
 
-export const EventsData = new Mongo.Collection('events');
+const eventsData = new Mongo.Collection('events');
+
+export default eventsData;

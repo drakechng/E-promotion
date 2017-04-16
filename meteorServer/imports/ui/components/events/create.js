@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { convertToRaw, Editor, EditorState, RichUtils } from 'draft-js';
-import '../../stylesheets/RichEditor.css';
 import TextField from 'material-ui/TextField';
 import RaisedButton from "material-ui/RaisedButton";
 import { grey400 } from "material-ui/styles/colors";
 import DatePicker from 'material-ui/DatePicker';
 import { Link } from "react-router";
+import '../../stylesheets/RichEditor.css';
 
 const styles = {
   toggleDiv: {
@@ -53,7 +53,6 @@ export default class MyEditor extends React.Component {
     this.setState({
       editorState,
     });
-    const contentState = editorState.getCurrentContent();
   }
 
   _handleKeyCommand(command) {
@@ -90,7 +89,6 @@ export default class MyEditor extends React.Component {
   }
 
   _save() {
-    const data = Date();
     Meteor.call('events.insert', convertToRaw(this.state.editorState.getCurrentContent()), this.state.subject, this.state.controlledDate);
   }
 

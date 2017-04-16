@@ -3,8 +3,8 @@
  */
 // All links-related publications
 import { Meteor } from "meteor/meteor";
-import { EventsData } from "../eventsData";
+import eventsData from "../eventsData";
 
-Meteor.publish('events', function () {
-  return EventsData.find();
+Meteor.publish('events.index', function () {
+  return eventsData.find();
 });

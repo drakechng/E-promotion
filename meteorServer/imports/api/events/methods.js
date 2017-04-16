@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
-import { EventsData } from "./eventsData";
+import { eventsData } from "./eventsData";
 
 Meteor.methods({
   'events.insert'(subject, content, date) {
@@ -9,7 +9,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    EventsData.insert({
+    eventsData.insert({
       subject,
       content,
       date,
@@ -21,6 +21,6 @@ Meteor.methods({
   'events.remove'(taskId) {
     check(taskId, String);
 
-    EventsData.remove(taskId);
+    eventsData.remove(taskId);
   },
 });
