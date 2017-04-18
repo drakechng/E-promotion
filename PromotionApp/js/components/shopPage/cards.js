@@ -4,13 +4,13 @@ import {Container,Card,CardItem, Header,Badge,Body, Title, Content, Text, Button
 
 export default class Cards extends Component {
 
-render(){
-            return(
-                        <CardItem>
-                                <Text>
-                {this.props.name}
-                                </Text>
-                        </CardItem>
-            )
-};
+  render(){
+    return(
+      <CardItem>
+        <Text>
+          {this.props.name}
+        </Text>
+      </CardItem>
+    )
+  };
 }

@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
-import { eventsData } from "./eventsData";
+import eventsData from "./eventsData";
 
 Meteor.methods({
   'events.insert'(subject, content, date) {

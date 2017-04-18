@@ -10,107 +10,110 @@ import {setTap} from "../../actions/shopList"
 import Cards from "./cards.js"
 
 const {
-    popRoute,
+  popRoute,
 } = actions;
 
 class ShopPage extends Component {
 
-    static propTypes = {
-        name: React.PropTypes.string,
-        index: React.PropTypes.number,
-        list: React.PropTypes.arrayOf(React.PropTypes.object),
-        openDrawer: React.PropTypes.func,
-        popRoute: React.PropTypes.func,
-        navigation: React.PropTypes.shape({
-            key: React.PropTypes.string,
-        }),
+  static propTypes = {
+    name: React.PropTypes.string,
+    index: React.PropTypes.number,
+    list: React.PropTypes.arrayOf(React.PropTypes.object),
+    openDrawer: React.PropTypes.func,
+    popRoute: React.PropTypes.func,
+    navigation: React.PropTypes.shape({
+      key: React.PropTypes.string,
+    }),
+  }
+
+  popRoute() {
+    this.props.popRoute(this.props.navigation.key);
+  }
+  renderCard(content){
+    for([key,value] of Object.entries(content))
+    {
+      return <Cards name = {key}/>
+    }
     }
 
-    popRoute() {
-        this.props.popRoute(this.props.navigation.key);
+  renderBadge(content){
+  }
+
+  }
+  render() {
+    const {props: {name, index, list}} = this;
+    let AppComponent = null;
+    //Here you can add as many tabs you need
+    if (this.props.activeTap == "vouchers") {
+      AppComponent =  this.props.members != null && this.renderCard( this.props.members.vouchers)
     }
-    renderCard(content){
-        for([key,value] of Object.entries(content))
-        {
-            return <Cards name = {key}/>
-        }
+    else{
 
-
+      AppComponent =  this.props.members != null && this.renderCard( this.props.members.estamps)
     }
-    render() {
-        const {props: {name, index, list}} = this;
-        let AppComponent = null;
-//Here you can add as many tabs you need
-       if (this.props.activeTap == "vouchers") {
-          AppComponent =  this.props.members != null && this.renderCard( this.props.members.vouchers)
-       }
-        else{
-
-          AppComponent =  this.props.members != null && this.renderCard( this.props.members.estamps)
-        }
 
     return(
-            <Container style={styles.container}>
-                <Header>
-                    <Button transparent onPress={() => this.popRoute()}>
-                        <Icon name="ios-arrow-back"/>
-                    </Button>
+      <Container style={styles.container}>
+        <Header>
+          <Button transparent onPress={() => this.popRoute()}>
+            <Icon name="ios-arrow-back"/>
+          </Button>
 
-                    <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
+          <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
 
-                    <Button transparent onPress={this.props.openDrawer}>
-                        <Icon name="ios-menu"/>
-                    </Button>
-                </Header>
+          <Button transparent onPress={this.props.openDrawer}>
+            <Icon name="ios-menu"/>
+          </Button>
+        </Header>
 
-                <Content padder>
-               <Card>
-        {AppComponent}
-           </Card>
-                </Content>
-                <Footer >
-                         <FooterTab>
-                             <Button onPress={()=>this.props.setTap("vouchers")} active ={this.props.activeTap === "vouchers"}>
-                                 <Badge>2</Badge>
-                                 Vouchers
-                                 <Icon name='ios-apps-outline' />
-                             </Button>
-                             <Button onPress={()=>this.props.setTap("estamps")} active ={this.props.activeTap === "estamps"}>
-                                E-stamps
-                                 <Icon name='ios-contact-outline' />
-                             </Button>
-                         </FooterTab>
-                     </Footer>
-            </Container>
-)
-}}
+        <Content padder>
+          <Card>
+            {AppComponent}
+          </Card>
+        </Content>
+        <Footer >
+          <FooterTab>
+            <Button onPress={()=>this.props.setTap("vouchers")} active ={this.props.activeTap === "vouchers"}>
+              <Badge>2</Badge>
+              Vouchers
+              <Icon name='ios-apps-outline' />
+            </Button>
+            <Button onPress={()=>this.props.setTap("estamps")} active ={this.props.activeTap === "estamps"}>
+              E-stamps
+              <Icon name='ios-contact-outline' />
+            </Button>
+          </FooterTab>
+        </Footer>
+      </Container>
+    )
+  }}
 
 function bindAction(dispatch) {
-    return {
-        openDrawer: () => dispatch(openDrawer()),
-        popRoute: key => dispatch(popRoute(key)),
-        setTap : tap => dispatch(setTap(tap))
-    };
+  return {
+    openDrawer: () => dispatch(openDrawer()),
+    popRoute: key => dispatch(popRoute(key)),
+    setTap : tap => dispatch(setTap(tap))
+  };
 }
 
 const mapStateToProps = state => ({
-    navigation: state.cardNavigation,
-    name: state.user.name,
-    activeShopId: state.shop.activeShopId,
-    activeTap: state.shop.activeTap,
+  navigation: state.cardNavigation,
+  name: state.user.name,
+  activeShopId: state.shop.activeShopId,
+  activeTap: state.shop.activeTap,
 });
 
 
 const container = createContainer((props) => {
-    const handle = Meteor.subscribe("members");
+  const handle = Meteor.subscribe("members");
 
-    return {
-        member: handle.ready(),
-        members: Meteor.collection('memberships').findOne({
-            customer: Meteor.userId(),
-            merchant: props.activeShopId,
-        }),
-    };
+  return {
+    member: handle.ready(),
+    members: Meteor.collection('memberships').findOne({
+      customer: Meteor.userId(),
+      merchant: props.activeShopId,
+    }),
+  };
 }, ShopPage);
 
 export default connect(mapStateToProps, bindAction)(container);

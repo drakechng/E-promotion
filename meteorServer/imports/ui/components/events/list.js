@@ -1,9 +1,11 @@
 import React from "react";
 import { browserHistory } from "react-router";
 import { Meteor } from "meteor/meteor";
+import { convertFromRaw, Editor, EditorState } from 'draft-js';
 import { List, ListItem } from "material-ui/List";
 import Divider from "material-ui/Divider";
 import { createContainer } from "meteor/react-meteor-data";
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import eventsData from "../../../api/events/eventsData";
 import PageBase from "../PageBase";
 
@@ -29,11 +31,22 @@ class EventsList extends React.Component {
           <List>
             <ListItem primaryText="Create Event" onTouchTap={() => browserHistory.push('/eventCreate')} />
             <Divider />
-            {this.props.events.map((event) => {
-              return (
-                <p key={event._id}>{event.date.toLocaleString()}</p>
-              );
-            }
+            {this.props.events.map(event => 
+              <div key={event._id}>
+                <Card>
+                  <CardHeader
+                    title={event.content}
+                    subtitle={event.date.toLocaleString()}
+                  />
+                  <CardMedia>
+                    <Editor
+                      editorState={EditorState.createWithContent(convertFromRaw(event.subject))}
+                      readOnly="true" 
+                    />
+                  </CardMedia>
+                  <CardActions></CardActions>
+                </Card>
+              </div>,
             )}
           </List>
         </div>
