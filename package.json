@@ -1,0 +1,22 @@
+{
+  "name": "epromotion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "git-push-master": "git checkout master && git add --all && git commit -m 'source files update' && git push origin master",
+    "build": "gitbook build && cp package.json ./_book",
+    "git-push-gh-pages": "git checkout gh-pages && cp -r _book/* . && git add --all && git commit -m 'new build' && git push origin gh-pages && git checkout master",
+    "deploy": "npm run git-push-master && npm run build && npm run git-push-gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drakechng/E-promotion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drakechng/E-promotion/issues"
+  },
+  "homepage": "https://github.com/drakechng/E-promotion#readme"
+}
