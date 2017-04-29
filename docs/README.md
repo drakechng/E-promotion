@@ -63,5 +63,3 @@ The whole system consists of a Web-based dashboard and native applications both 
 
 
 Write by Chenyu
-
-
