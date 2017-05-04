@@ -1,5 +1,5 @@
 import React from "react";
-import { Accounts } from "meteor/std:accounts-ui";
+import { Accounts, STATES } from "meteor/std:accounts-ui";
 import { RaisedButton, FlatButton, FontIcon, TextField, Snackbar } from "material-ui";
 import { socialButtonsColors, socialButtonIcons } from "./social_buttons_config";
 import { green500, red500, yellow600, lightBlue600 } from "material-ui/styles/colors";
