@@ -13,10 +13,55 @@
 
 <h1>NodeJs Basic Set Up</h1>
 
-<ul>
-<li>Mac</li>
-<li>Linux</li>
-</ul>
+<h2>Mac</h2>
+
+<p>To install Nodejs on mac os you should install systems packages manager first the <em>brew</em> :</p>
+
+<p><code>sh
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
+</code>
+Then you can install nodejs by simply type.</p>
+
+<p><code>sh
+brew install node
+</code></p>
+
+<p>To view and modify the documentation. You need to install gitbook globally.</p>
+
+<p><code>sh
+npm install -g gitbook
+</code></p>
+
+<p>Then you can view and modify the documentation in gh-pages branch</p>
+
+<p><code>sh
+cd E-promotion
+git check out gh-pages
+git serve #To life preview the doc in 4000 port
+git build #To build the doc from md to html
+</code>
+Next, Let's install the meteor cli.
+<code>sh
+curl https://install.meteor.com/ | sh
+</code></p>
+
+<p>Then you can view and modify the server code in master branch
+<code>sh
+git check out master
+meteor npm install #Install the the packages
+meteor #To build and run the code
+</code></p>
+
+<p>If you want to try the application also, you need to set android environment first.
+```sh</p>
+
+<p>```</p>
+
+<h2>Linux</h2>
+
+<p><code>sh
+apt-get install node
+</code></p>
 
 </body>
 </html>
