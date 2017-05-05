@@ -91,6 +91,16 @@ After that you need to reverse the port form simulator to mac.
 ```shell
 adb reverse tcp:3000 tcp:3000
 ```
+Then you can start to run react-native application.
+```shell
+react-native run-android
+```
+To run the ios version. It is simple, you just need to ensure the Xcode get installed.
+Then run the cli command inside PromotionApp folder.
+
+```shell
+react-native run-ios
+```
 
 ## Linux
 ```shell
