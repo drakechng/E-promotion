@@ -101,8 +101,10 @@ Then run the cli command inside PromotionApp folder.
 ```shell
 react-native run-ios
 ```
+Now you can use the application.
 
 ## Linux
+
 ```shell
 apt-get install node
 ```
