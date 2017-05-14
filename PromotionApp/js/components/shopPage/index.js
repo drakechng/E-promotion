@@ -39,7 +39,6 @@ class ShopPage extends Component {
   renderBadge(content){
   }
 
-  }
   render() {
     const {props: {name, index, list}} = this;
     let AppComponent = null;
